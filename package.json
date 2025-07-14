@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A personal portfolio web application",
   "author": "Javid Ahmed",
-  "homepage": "https://javidahmed64592.github.io/portfolio",
+  "homepage": "https://javidahmed64592.github.io/portfolio-web-app",
   "type": "module",
   "private": true,
   "dependencies": {

@@ -1,10 +1,10 @@
 {
-  "name": "portfolio-web-app",
+  "name": "portfolio",
   "version": "0.1.0",
   "description": "A personal portfolio web application",
   "author": "Javid Ahmed",
   "license": "MIT",
-  "homepage": "https://javidahmed64592.github.io/portfolio-web-app",
+  "homepage": "https://javidahmed64592.github.io/portfolio",
   "type": "module",
   "private": true,
   "dependencies": {

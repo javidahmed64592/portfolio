@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import importPlugin from "eslint-plugin-import";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
@@ -15,6 +16,7 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
+      "import": importPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -24,6 +26,24 @@ export default tseslint.config(
       ],
       quotes: ["error", "double"],
       "jsx-quotes": ["error", "prefer-double"],
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "newlines-between": "never",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true
+          }
+        }
+      ],
     },
   }
 );

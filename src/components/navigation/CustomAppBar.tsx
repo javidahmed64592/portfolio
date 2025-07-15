@@ -3,7 +3,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ComputerIcon from "@mui/icons-material/Computer";
-import { pages } from "../../data/appData";
+import { pages, Pages } from "../../data/appData";
+import { useAppDispatch } from "../../store/hooks";
+import { setCurrentPage } from "../../store/slices/pageSlice";
 
 export default function CustomAppBar() {
   return (
@@ -31,6 +33,12 @@ function AppBarHeader() {
 }
 
 function AppBarPages() {
+  const dispatch = useAppDispatch();
+
+  const handlePageClick = (page: Pages) => {
+    dispatch(setCurrentPage(page));
+  };
+
   return (
     <>
       {pages.map((page) => (
@@ -38,6 +46,7 @@ function AppBarPages() {
           key={page}
           color="inherit"
           sx={{ ml: 2 }}
+          onClick={() => handlePageClick(page as Pages)}
         >
           {page}
         </Button>

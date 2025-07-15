@@ -1,4 +1,4 @@
-import CustomAppBar from "./components/navigation/CustomAppBar";
+import { CustomAppBar } from "./components/navigation";
 import { useAppSelector } from "./store/hooks";
 import { Pages } from "./data/appData";
 import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";

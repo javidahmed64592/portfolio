@@ -1,8 +1,8 @@
+import ComputerIcon from "@mui/icons-material/Computer";
 import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import ComputerIcon from "@mui/icons-material/Computer";
 import { pages, Pages } from "../../data/appData";
 import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";

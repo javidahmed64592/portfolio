@@ -1,7 +1,7 @@
 import { CustomAppBar } from "./components/navigation";
-import { useAppSelector } from "./store/hooks";
-import { Pages } from "./data/appData";
 import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";
+import { Pages } from "./data/appData";
+import { useAppSelector } from "./store/hooks";
 
 function App() {
   const currentPage = useAppSelector((state) => state.page.currentPage);

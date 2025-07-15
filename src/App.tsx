@@ -1,10 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CustomAppBar from "./components/navigation/CustomAppBar";
+import logo from "./logo.svg";
 
 function App() {
   return (
     <div className="App">
+      <CustomAppBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

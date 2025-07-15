@@ -1,24 +1,30 @@
 import CustomAppBar from "./components/navigation/CustomAppBar";
-import logo from "./logo.svg";
+import { useAppSelector } from "./store/hooks";
+import { Pages } from "./data/appData";
+import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";
 
 function App() {
+  const currentPage = useAppSelector((state) => state.page.currentPage);
+
+  const renderPageContent = () => {
+    switch (currentPage) {
+      case Pages.Home:
+        return <HomePage />;
+      case Pages.Experience:
+        return <ExperiencePage />;
+      case Pages.Projects:
+        return <ProjectsPage />;
+      case Pages.Contact:
+        return <ContactPage />;
+      default:
+        return <div>Page not found</div>;
+    }
+  };
+
   return (
     <div className="App">
       <CustomAppBar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {renderPageContent()}
     </div>
   );
 }

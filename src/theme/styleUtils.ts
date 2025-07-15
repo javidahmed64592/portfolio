@@ -1,6 +1,15 @@
 import { CSSProperties } from "react";
 import { Theme } from "./theme";
 
+export const createAppStyles = (theme: Theme): CSSProperties => ({
+  display: "flex",
+  flexDirection: "column" as const,
+  height: "100vh",
+  fontFamily: theme.typography.fontFamily,
+  backgroundColor: theme.colors.background.primary,
+  color: theme.colors.text.primary,
+});
+
 export const createPageStyles = (theme: Theme): CSSProperties => ({
   flex: 1,
   backgroundColor: theme.colors.background.tertiary,

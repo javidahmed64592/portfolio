@@ -1,8 +1,16 @@
+import { useTheme, createPageStyles, createHeadingStyles, createTextStyles } from "../../theme";
+
 export default function HomePage() {
+  const { theme } = useTheme();
+
+  const pageStyles = createPageStyles(theme);
+  const headingStyles = createHeadingStyles(theme);
+  const textStyles = createTextStyles(theme);
+
   return (
-    <header className="App-header">
-      <h1>Home</h1>
-      <p>This is the Home page</p>
-    </header>
+    <div style={pageStyles}>
+      <h1 style={headingStyles}>Home</h1>
+      <p style={textStyles}>This is the Home page</p>
+    </div>
   );
 }

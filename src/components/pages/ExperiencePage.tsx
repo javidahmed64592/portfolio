@@ -1,8 +1,16 @@
+import { useTheme, createPageStyles, createHeadingStyles, createTextStyles } from "../../theme";
+
 export default function ExperiencePage() {
+  const { theme } = useTheme();
+
+  const pageStyles = createPageStyles(theme);
+  const headingStyles = createHeadingStyles(theme);
+  const textStyles = createTextStyles(theme);
+
   return (
-    <div className="App-header">
-      <h1>Experience</h1>
-      <p>This is the Experience page</p>
+    <div style={pageStyles}>
+      <h1 style={headingStyles}>Experience</h1>
+      <p style={textStyles}>This is the Experience page</p>
     </div>
   );
 }

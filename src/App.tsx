@@ -2,9 +2,11 @@ import { CustomAppBar } from "./components/navigation";
 import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";
 import { Pages } from "./data/appData";
 import { useAppSelector } from "./store/hooks";
+import { useTheme, createAppStyles } from "./theme";
 
 function App() {
   const currentPage = useAppSelector((state) => state.page.currentPage);
+  const { theme } = useTheme();
 
   const renderPageContent = () => {
     switch (currentPage) {
@@ -21,8 +23,10 @@ function App() {
     }
   };
 
+  const appStyles = createAppStyles(theme);
+
   return (
-    <div className="App">
+    <div style={appStyles}>
       <CustomAppBar />
       {renderPageContent()}
     </div>

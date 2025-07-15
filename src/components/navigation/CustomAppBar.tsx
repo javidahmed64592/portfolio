@@ -3,8 +3,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ComputerIcon from "@mui/icons-material/Computer";
-
-const pages = ["Home", "Experience", "Projects", "Contact"];
+import { pages } from "../../data/appData";
 
 export default function CustomAppBar() {
   return (

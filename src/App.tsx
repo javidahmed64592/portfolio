@@ -1,5 +1,5 @@
 import { CustomAppBar } from "./components/navigation";
-import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";
+import { HomePage, ExperiencePage, ProjectsPage } from "./components/pages";
 import { Pages } from "./data/appData";
 import { useAppSelector } from "./store/hooks";
 import { useTheme, createAppStyles, createPageStyles } from "./theme";
@@ -16,8 +16,6 @@ function App() {
         return <ExperiencePage />;
       case Pages.Projects:
         return <ProjectsPage />;
-      case Pages.Contact:
-        return <ContactPage />;
       default:
         return <div>Page not found</div>;
     }

@@ -46,7 +46,7 @@ function AppBarHeader() {
         {appHeaderText}
       </Typography>
     </>
-  )
+  );
 }
 
 function AppBarPages() {

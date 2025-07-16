@@ -1,4 +1,4 @@
-export const appHeaderText = "Portfolio"
+export const appHeaderText = "Portfolio";
 
 export enum Pages {
   Home = "Home",

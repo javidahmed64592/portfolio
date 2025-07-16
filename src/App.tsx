@@ -2,7 +2,7 @@ import { CustomAppBar } from "./components/navigation";
 import { HomePage, ExperiencePage, ProjectsPage, ContactPage } from "./components/pages";
 import { Pages } from "./data/appData";
 import { useAppSelector } from "./store/hooks";
-import { useTheme, createAppStyles } from "./theme";
+import { useTheme, createAppStyles, createPageStyles } from "./theme";
 
 function App() {
   const currentPage = useAppSelector((state) => state.page.currentPage);
@@ -24,11 +24,14 @@ function App() {
   };
 
   const appStyles = createAppStyles(theme);
+  const pageStyles = createPageStyles(theme);
 
   return (
     <div style={appStyles}>
       <CustomAppBar />
-      {renderPageContent()}
+      <div style={pageStyles}>
+        {renderPageContent()}
+      </div>
     </div>
   );
 }

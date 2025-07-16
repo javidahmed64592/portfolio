@@ -1,13 +1,15 @@
 import React from "react";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles, createButtonStyles } from "../../../theme";
 
+type Project = {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+};
+
 interface ProjectCardProps {
-  project: {
-    title: string;
-    description: string;
-    url: string;
-    image: string;
-  };
+  project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {

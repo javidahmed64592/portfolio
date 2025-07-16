@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { pages, Pages } from "../../data/appData";
+import { pages, Pages, appHeaderText } from "../../data/appData";
 import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";
 import { useTheme } from "../../theme";
@@ -27,7 +27,6 @@ export default function CustomAppBar() {
 
 function AppBarHeader() {
   const { theme } = useTheme();
-  const headerText = "Javid Ahmed - Portfolio";
   const textVariant = "h6";
 
   const iconStyles = {
@@ -44,7 +43,7 @@ function AppBarHeader() {
     <>
       <ComputerIcon sx={iconStyles} />
       <Typography variant={textVariant} component="div" sx={textStyles}>
-        {headerText}
+        {appHeaderText}
       </Typography>
     </>
   )

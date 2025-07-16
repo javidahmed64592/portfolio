@@ -4,8 +4,8 @@ export default function ContactPage() {
   const { theme } = useTheme();
 
   const pageStyles = createPageStyles(theme);
-  const headingStyles = createHeadingStyles(theme);
-  const textStyles = createTextStyles(theme);
+  const headingStyles = createHeadingStyles(theme, "tertiary");
+  const textStyles = createTextStyles(theme, "tertiary");
 
   return (
     <div style={pageStyles}>

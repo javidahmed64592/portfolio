@@ -3,16 +3,12 @@ export interface Theme {
     primary: string;
     secondary: string;
     tertiary: string;
-    background: {
-      primary: string;
-      secondary: string;
-      tertiary: string;
-    };
+    background: string;
     text: {
-      primary: string;
-      secondary: string;
       onPrimary: string;
       onSecondary: string;
+      onTertiary: string;
+      onBackground: string;
     };
     accent: string;
     border: string;
@@ -50,22 +46,18 @@ export interface Theme {
 
 export const defaultTheme: Theme = {
   colors: {
-    primary: "#1976d2",
-    secondary: "#dc004e",
-    tertiary: "#9c27b0",
-    background: {
-      primary: "#ffffff",
-      secondary: "#f5f5f5",
-      tertiary: "#282c34",
-    },
+    primary: "#0D659D",
+    secondary: "#5C8AAC",
+    tertiary: "#C7D8E7",
+    background: "#050B1F",
     text: {
-      primary: "#333333",
-      secondary: "#666666",
-      onPrimary: "#ffffff",
-      onSecondary: "#ffffff",
+      onPrimary: "#E8EEF1",
+      onSecondary: "#E8EEF1",
+      onTertiary: "#E8EEF1",
+      onBackground: "#E8EEF1",
     },
-    accent: "#61dafb",
-    border: "#e0e0e0",
+    accent: "#5C8AAC",
+    border: "#E8EEF1",
   },
   spacing: {
     xs: "4px",

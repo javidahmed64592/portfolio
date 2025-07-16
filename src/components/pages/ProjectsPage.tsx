@@ -4,8 +4,8 @@ export default function ProjectsPage() {
   const { theme } = useTheme();
 
   const pageStyles = createPageStyles(theme);
-  const headingStyles = createHeadingStyles(theme);
-  const textStyles = createTextStyles(theme);
+  const headingStyles = createHeadingStyles(theme, "secondary");
+  const textStyles = createTextStyles(theme, "secondary");
 
   return (
     <div style={pageStyles}>

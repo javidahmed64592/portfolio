@@ -6,10 +6,17 @@ import Typography from "@mui/material/Typography";
 import { pages, Pages } from "../../data/appData";
 import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";
+import { useTheme } from "../../theme";
 
 export default function CustomAppBar() {
+  const { theme } = useTheme();
+
+  const appBarStyles = {
+    backgroundColor: theme.colors.primary,
+  };
+
   return (
-      <AppBar position="static">
+      <AppBar position="static" sx={appBarStyles}>
         <Toolbar>
           <AppBarHeader />
           <AppBarPages />
@@ -19,13 +26,24 @@ export default function CustomAppBar() {
 }
 
 function AppBarHeader() {
+  const { theme } = useTheme();
   const headerText = "Javid Ahmed - Portfolio";
   const textVariant = "h6";
 
+  const iconStyles = {
+    mr: 2,
+    color: theme.colors.text.onPrimary,
+  };
+
+  const textStyles = {
+    flexGrow: 1,
+    color: theme.colors.text.onPrimary,
+  };
+
   return (
     <>
-      <ComputerIcon sx={{ mr: 2 }} />
-      <Typography variant={textVariant} component="div" sx={{ flexGrow: 1 }}>
+      <ComputerIcon sx={iconStyles} />
+      <Typography variant={textVariant} component="div" sx={textStyles}>
         {headerText}
       </Typography>
     </>
@@ -33,10 +51,19 @@ function AppBarHeader() {
 }
 
 function AppBarPages() {
+  const { theme } = useTheme();
   const dispatch = useAppDispatch();
 
   const handlePageClick = (page: Pages) => {
     dispatch(setCurrentPage(page));
+  };
+
+  const buttonStyles = {
+    ml: 2,
+    color: theme.colors.text.onPrimary,
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+    },
   };
 
   return (
@@ -44,8 +71,7 @@ function AppBarPages() {
       {pages.map((page) => (
         <Button
           key={page}
-          color="inherit"
-          sx={{ ml: 2 }}
+          sx={buttonStyles}
           onClick={() => handlePageClick(page as Pages)}
         >
           {page}

@@ -4,8 +4,8 @@ export default function ExperiencePage() {
   const { theme } = useTheme();
 
   const pageStyles = createPageStyles(theme);
-  const headingStyles = createHeadingStyles(theme);
-  const textStyles = createTextStyles(theme);
+  const headingStyles = createHeadingStyles(theme, "primary");
+  const textStyles = createTextStyles(theme, "primary");
 
   return (
     <div style={pageStyles}>

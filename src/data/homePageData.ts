@@ -1,5 +1,11 @@
 const iconPath = (icon: string) => `/assets/icons/${icon}`;
 
+type ProfileSummary = {
+  name: string;
+  title: string;
+  description: string;
+};
+
 type Technology = {
   name: string;
   url: string;
@@ -10,6 +16,12 @@ type SocialLink = {
   name: string;
   url: string;
   icon: string;
+};
+
+export const profileSummary: ProfileSummary = {
+  name: "Javid Ahmed",
+  title: "Software Developer",
+  description: "I am a passionate software developer with experience in building modern web applications and solutions. I enjoy working with cutting-edge technologies and am always eager to learn new skills and tackle challenging problems. My goal is to create efficient, scalable, and user-friendly applications that make a positive impact.\nI have experience in full-stack development, with a focus on React, TypeScript, and modern web technologies. I'm comfortable working in both frontend and backend environments and enjoy collaborating with teams to deliver high-quality software solutions.",
 };
 
 export const technologies: Technology[] = [

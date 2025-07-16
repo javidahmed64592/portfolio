@@ -1,4 +1,4 @@
-import { technologies, socialLinks } from "../../data/homePageData";
+import { technologies, socialLinks, profileSummary } from "../../data/homePageData";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
 import { TechnologyButton, SocialLinkButton } from "./home";
 
@@ -60,20 +60,17 @@ export default function HomePage() {
   return (
     <div>
       {/* Header */}
-      <h1 style={headerStyles}>Javid Ahmed (Software Developer)</h1>
+      <h1 style={headerStyles}>{profileSummary.name} ({profileSummary.title})</h1>
 
       {/* Profile Summary */}
       <div style={profileSummaryStyles}>
         <p style={profileTextStyles}>
-          I am a passionate software developer with experience in building modern web applications
-          and solutions. I enjoy working with cutting-edge technologies and am always eager to learn
-          new skills and tackle challenging problems. My goal is to create efficient, scalable, and
-          user-friendly applications that make a positive impact.
-        </p>
-        <p style={profileTextStyles}>
-          I have experience in full-stack development, with a focus on React, TypeScript, and modern
-          web technologies. I'm comfortable working in both frontend and backend environments and
-          enjoy collaborating with teams to deliver high-quality software solutions.
+          {profileSummary.description.split("\n").map((paragraph, index) => (
+            <span key={index}>
+              {paragraph}
+              {index < profileSummary.description.split("\n").length - 1 && <><br /><br /></>}
+            </span>
+          ))}
         </p>
       </div>
 

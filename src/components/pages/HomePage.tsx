@@ -1,9 +1,35 @@
-import { homePageData } from "../../data/homePageData";
+import { useState, useEffect } from "react";
+import { getHomePageData, type HomePageData, type Technology, type SocialLink } from "../../data/homePageData";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
 import { TechnologyButton, SocialLinkButton } from "./home";
 
 export default function HomePage() {
   const { theme } = useTheme();
+  const [homeData, setHomeData] = useState<HomePageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await getHomePageData();
+        setHomeData(data);
+      } catch (error) {
+        console.error("Failed to load home page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!homeData) {
+    return <div>Failed to load home page data</div>;
+  }
 
   const headerStyles = {
     ...createHeadingStyles(theme, "background"),
@@ -58,15 +84,15 @@ export default function HomePage() {
   return (
     <div>
       {/* Header */}
-      <h1 style={headerStyles}>{homePageData.profileSummary.name} ({homePageData.profileSummary.title})</h1>
+      <h1 style={headerStyles}>{homeData.profileSummary.name} ({homeData.profileSummary.title})</h1>
 
       {/* Profile Summary */}
       <div style={profileSummaryStyles}>
         <p style={profileTextStyles}>
-          {homePageData.profileSummary.description.map((paragraph, index) => (
+          {homeData.profileSummary.description.map((paragraph: string, index: number) => (
             <span key={index}>
               {paragraph}
-              {index < homePageData.profileSummary.description.length - 1 && <><br /><br /></>}
+              {index < homeData.profileSummary.description.length - 1 && <><br /><br /></>}
             </span>
           ))}
         </p>
@@ -76,7 +102,7 @@ export default function HomePage() {
       <div style={{ width: "100%", maxWidth: "800px" }}>
         <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
         <div style={techIconsContainerStyles}>
-          {homePageData.technologies.map((tech) => (
+          {homeData.technologies.map((tech: Technology) => (
             <TechnologyButton key={tech.name} technology={tech} />
           ))}
         </div>
@@ -84,7 +110,7 @@ export default function HomePage() {
 
       {/* Social Links Footer */}
       <div style={socialLinksFooterStyles}>
-        {homePageData.socialLinks.map((link) => (
+        {homeData.socialLinks.map((link: SocialLink) => (
           <SocialLinkButton key={link.name} link={link} />
         ))}
       </div>

@@ -1,35 +1,34 @@
-import { imagePath } from "./commonData";
+import { dataPath, imagePath } from "./commonData";
 
-type GitHubProject = {
+export type GitHubProject = {
     title: string;
     description: string;
     url: string;
     image: string;
 }
 
-type ProjectsPageData = {
+export type ProjectsPageData = {
     projects: GitHubProject[];
 };
 
-export const projectsPageData: ProjectsPageData = {
-    projects: [
-        {
-            title: "Portfolio Website",
-            description: "A personal portfolio website showcasing my skills and projects.",
-            url: "https://github.com/username/portfolio",
-            image: imagePath("portfolio.png")
-        },
-        {
-            title: "Project 2",
-            description: "Description for project 2.",
-            url: "https://github.com/username/project2",
-            image: imagePath("project2.png")
-        },
-        {
-            title: "Project 3",
-            description: "Description for project 3.",
-            url: "https://github.com/username/project3",
-            image: imagePath("project3.png")
-        }
-    ]
+let projectsPageData: ProjectsPageData | null = null;
+
+export const getProjectsPageData = async (): Promise<ProjectsPageData> => {
+    if (projectsPageData) {
+        return projectsPageData;
+    }
+
+    const response = await fetch(dataPath("projectsPageData.json"));
+    const rawData = await response.json();
+
+    // Process the data to add full paths for images
+    projectsPageData = {
+        ...rawData,
+        projects: rawData.projects.map((project: GitHubProject) => ({
+            ...project,
+            image: imagePath(project.image)
+        }))
+    };
+
+    return projectsPageData!;
 };

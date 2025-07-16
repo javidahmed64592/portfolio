@@ -1,9 +1,11 @@
-type Project = {
+import { dataPath } from "./commonData";
+
+export type Project = {
     title: string;
     description: string;
 };
 
-type ProfessionalExperience = {
+export type ProfessionalExperience = {
     company: string;
     position: string;
     startDate: string;
@@ -11,7 +13,7 @@ type ProfessionalExperience = {
     projects: Project[];
 };
 
-type AcademicExperience = {
+export type AcademicExperience = {
     institution: string;
     degree: string;
     startDate: string;
@@ -19,34 +21,19 @@ type AcademicExperience = {
     projects: Project[];
 };
 
-type ExperiencePageData = {
+export type ExperiencePageData = {
     professionalExperience: ProfessionalExperience[];
     academicExperience: AcademicExperience[];
 };
 
-export const experiencePageData: ExperiencePageData = {
-    professionalExperience: [
-        {
-            company: "Hybrid Intelligence, Capgemini Engineering",
-            position: "Software Engineer",
-            startDate: "01/08/2022",
-            endDate: "Present",
-            projects: [
-                { title: "Web Application Development", description: "Developed a scalable web application using React and Node.js." },
-                { title: "API Integration", description: "Integrated third-party APIs to enhance application functionality." }
-            ]
-        }
-    ],
-    academicExperience: [
-        {
-            institution: "University of Birmingham",
-            degree: "M.Sci Physics with Honours, Class II (Division I)",
-            startDate: "01/10/2018",
-            endDate: "27/06/2022",
-            projects: [
-                { title: "Capstone Project", description: "Developed a machine learning model for predictive analytics." },
-                { title: "Open Source Contribution", description: "Contributed to various open source projects on GitHub." }
-            ]
-        }
-    ]
+let experiencePageData: ExperiencePageData | null = null;
+
+export const getExperiencePageData = async (): Promise<ExperiencePageData> => {
+    if (experiencePageData) {
+        return experiencePageData;
+    }
+
+    const response = await fetch(dataPath("experiencePageData.json"));
+    experiencePageData = await response.json();
+    return experiencePageData!;
 };

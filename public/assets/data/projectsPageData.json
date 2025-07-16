@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "title": "Portfolio Website",
+      "description": "A personal portfolio website showcasing my skills and projects.",
+      "url": "https://github.com/username/portfolio",
+      "image": "portfolio.png"
+    },
+    {
+      "title": "Project 2",
+      "description": "Description for project 2.",
+      "url": "https://github.com/username/project2",
+      "image": "project2.png"
+    },
+    {
+      "title": "Project 3",
+      "description": "Description for project 3.",
+      "url": "https://github.com/username/project3",
+      "image": "project3.png"
+    }
+  ]
+}

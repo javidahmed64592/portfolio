@@ -1,9 +1,35 @@
-import { experiencePageData } from "../../data/experiencePageData";
+import { useState, useEffect } from "react";
+import { getExperiencePageData, type ExperiencePageData, type ProfessionalExperience, type AcademicExperience } from "../../data/experiencePageData";
 import { useTheme, createHeadingStyles } from "../../theme";
 import { ExperiencePanel } from "./experience";
 
 export default function ExperiencePage() {
   const { theme } = useTheme();
+  const [experienceData, setExperienceData] = useState<ExperiencePageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await getExperiencePageData();
+        setExperienceData(data);
+      } catch (error) {
+        console.error("Failed to load experience data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!experienceData) {
+    return <div>Failed to load experience data</div>;
+  }
 
   const headerStyles = {
     ...createHeadingStyles(theme, "background"),
@@ -49,7 +75,7 @@ export default function ExperiencePage() {
           <div style={sectionStyles}>
             <h2 style={sectionHeaderStyles}>Professional Experience</h2>
 
-            {experiencePageData.professionalExperience.map((experience, index) => (
+            {experienceData.professionalExperience.map((experience: ProfessionalExperience, index: number) => (
               <ExperiencePanel
                 key={index}
                 experience={experience}
@@ -62,7 +88,7 @@ export default function ExperiencePage() {
           <div style={sectionStyles}>
             <h2 style={sectionHeaderStyles}>Academic Experience</h2>
 
-            {experiencePageData.academicExperience.map((experience, index) => (
+            {experienceData.academicExperience.map((experience: AcademicExperience, index: number) => (
               <ExperiencePanel
                 key={index}
                 experience={experience}

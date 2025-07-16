@@ -1,4 +1,5 @@
-const assetsDir = "/assets";
+const baseUrl = process.env.PUBLIC_URL || "";
+const assetsDir = `${baseUrl}/assets`;
 const dataDir = `${assetsDir}/data`;
 const iconDir = `${assetsDir}/icons`;
 const imageDir = `${assetsDir}/images`;

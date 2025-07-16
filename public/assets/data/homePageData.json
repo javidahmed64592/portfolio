@@ -58,27 +58,5 @@
       "url": "https://www.docker.com/",
       "icon": "docker.svg"
     }
-  ],
-  "socialLinks": [
-    {
-      "name": "GitHub",
-      "url": "https://github.com/javidahmed64592",
-      "icon": "github.svg"
-    },
-    {
-      "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/javidahmed64592",
-      "icon": "linkedin.svg"
-    },
-    {
-      "name": "Email",
-      "url": "mailto:your.email@example.com",
-      "icon": "email.svg"
-    },
-    {
-      "name": "Source Code",
-      "url": "https://github.com/javidahmed64592/portfolio",
-      "icon": "source.svg"
-    }
   ]
 }

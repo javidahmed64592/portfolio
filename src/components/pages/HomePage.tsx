@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getHomePageData, type HomePageData, type Technology, type SocialLink } from "../../data/homePageData";
+import { getHomePageData, type HomePageData, type Technology } from "../../data/homePageData";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
-import { TechnologyButton, SocialLinkButton } from "./home";
+import { TechnologyButton } from "./home";
 
 export default function HomePage() {
   const { theme } = useTheme();
@@ -69,18 +69,6 @@ export default function HomePage() {
     maxWidth: "600px",
   };
 
-  const socialLinksFooterStyles = {
-    display: "flex",
-    flexWrap: "wrap" as const,
-    gap: theme.spacing.sm,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    marginTop: "auto",
-    paddingTop: theme.spacing.lg,
-    borderTop: `1px solid ${theme.colors.border}`,
-  };
-
   return (
     <div>
       {/* Header */}
@@ -106,13 +94,6 @@ export default function HomePage() {
             <TechnologyButton key={tech.name} technology={tech} />
           ))}
         </div>
-      </div>
-
-      {/* Social Links Footer */}
-      <div style={socialLinksFooterStyles}>
-        {homeData.socialLinks.map((link: SocialLink) => (
-          <SocialLinkButton key={link.name} link={link} />
-        ))}
       </div>
     </div>
   );

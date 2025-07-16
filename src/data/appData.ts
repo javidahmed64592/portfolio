@@ -1,4 +1,4 @@
-import { dataPath } from "./commonData";
+import { dataPath, iconPath } from "./commonData";
 
 export enum Pages {
   Home = "Home",
@@ -6,8 +6,15 @@ export enum Pages {
   Projects = "Projects",
 }
 
+export type SocialLink = {
+  name: string;
+  url: string;
+  icon: string;
+};
+
 export type AppData = {
   appHeaderText: string;
+  socialLinks: SocialLink[];
 };
 
 let appData: AppData | null = null;
@@ -18,7 +25,17 @@ export const getAppData = async (): Promise<AppData> => {
   }
 
   const response = await fetch(dataPath("appData.json"));
-  appData = await response.json();
+  const rawData = await response.json();
+
+  // Process the data to add full paths for icons
+  appData = {
+    ...rawData,
+    socialLinks: rawData.socialLinks.map((link: SocialLink) => ({
+      ...link,
+      icon: iconPath(link.icon)
+    }))
+  };
+
   return appData!;
 };
 
@@ -27,4 +44,9 @@ export const pages = Object.values(Pages);
 export const getAppHeaderText = async (): Promise<string> => {
   const data = await getAppData();
   return data.appHeaderText;
+};
+
+export const getSocialLinks = async (): Promise<SocialLink[]> => {
+  const data = await getAppData();
+  return data.socialLinks;
 };

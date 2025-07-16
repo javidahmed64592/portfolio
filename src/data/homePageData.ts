@@ -12,16 +12,9 @@ export type Technology = {
   icon: string;
 };
 
-export type SocialLink = {
-  name: string;
-  url: string;
-  icon: string;
-};
-
 export type HomePageData = {
   profileSummary: ProfileSummary;
   technologies: Technology[];
-  socialLinks: SocialLink[];
 };
 
 let homePageData: HomePageData | null = null;
@@ -40,10 +33,6 @@ export const getHomePageData = async (): Promise<HomePageData> => {
     technologies: rawData.technologies.map((tech: Technology) => ({
       ...tech,
       icon: iconPath(tech.icon)
-    })),
-    socialLinks: rawData.socialLinks.map((link: SocialLink) => ({
-      ...link,
-      icon: iconPath(link.icon)
     }))
   };
 

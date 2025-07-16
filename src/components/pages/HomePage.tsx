@@ -43,18 +43,16 @@ export default function HomePage() {
     maxWidth: "600px",
   };
 
-  const socialLinksContainerStyles = {
-    ...createCardStyles(theme, "primary"),
-    width: "100%",
-    maxWidth: "400px",
-    textAlign: "center" as const,
-  };
-
-  const socialLinksGridStyles = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+  const socialLinksFooterStyles = {
+    display: "flex",
+    flexWrap: "wrap" as const,
     gap: theme.spacing.sm,
-    marginTop: theme.spacing.md,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    marginTop: "auto",
+    paddingTop: theme.spacing.lg,
+    borderTop: `1px solid ${theme.colors.border}`,
   };
 
   return (
@@ -84,16 +82,11 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Social Links */}
-      <div style={socialLinksContainerStyles}>
-        <h2 style={{ ...createHeadingStyles(theme, "primary"), fontSize: theme.typography.fontSize.lg }}>
-          Connect With Me
-        </h2>
-        <div style={socialLinksGridStyles}>
-          {socialLinks.map((link) => (
-            <SocialLinkButton key={link.name} link={link} />
-          ))}
-        </div>
+      {/* Social Links Footer */}
+      <div style={socialLinksFooterStyles}>
+        {socialLinks.map((link) => (
+          <SocialLinkButton key={link.name} link={link} />
+        ))}
       </div>
     </div>
   );

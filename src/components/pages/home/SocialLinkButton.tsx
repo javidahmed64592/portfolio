@@ -11,14 +11,17 @@ export default function SocialLinkButton({ link }: SocialLinkButtonProps) {
   const { theme } = useTheme();
 
   const socialLinkStyles = {
-    ...createTextStyles(theme, "primary"),
+    ...createTextStyles(theme, "background"),
     textDecoration: "none",
-    padding: theme.spacing.sm,
+    padding: `${theme.spacing.sm} ${theme.spacing.md}`,
     borderRadius: "4px",
-    border: `1px solid ${theme.colors.text.onPrimary}`,
+    border: `1px solid ${theme.colors.border}`,
+    backgroundColor: "transparent",
     transition: "all 0.2s ease",
     cursor: "pointer",
-    display: "block",
+    display: "inline-block",
+    fontSize: theme.typography.fontSize.sm,
+    fontWeight: theme.typography.fontWeight.medium,
   };
 
   return (

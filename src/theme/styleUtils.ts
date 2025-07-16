@@ -18,8 +18,6 @@ export const createPageStyles = (theme: Theme): CSSProperties => {
     color: theme.colors.text.onBackground,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
     fontSize: theme.typography.fontSize.lg,
     overflowY: "auto",
     minHeight: 0,

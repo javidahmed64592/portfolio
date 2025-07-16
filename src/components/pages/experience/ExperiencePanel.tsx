@@ -25,9 +25,13 @@ export default function ExperiencePanel({ experience, type }: ExperiencePanelPro
   const { theme } = useTheme();
 
   const experienceItemStyles = {
-    ...createCardStyles(theme, "secondary"),
+    ...createCardStyles(theme, "primary"),
     marginBottom: theme.spacing.lg,
     padding: theme.spacing.lg,
+    backgroundColor: theme.colors.primary,
+    border: `2px solid ${theme.colors.accent}`,
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
   };
 
   const experienceHeaderStyles = {
@@ -40,24 +44,25 @@ export default function ExperiencePanel({ experience, type }: ExperiencePanelPro
   };
 
   const companyNameStyles = {
-    ...createHeadingStyles(theme, "secondary"),
+    ...createHeadingStyles(theme, "primary"),
     fontSize: theme.typography.fontSize.lg,
     margin: 0,
+    color: theme.colors.text.onPrimary,
   };
 
   const positionStyles = {
-    ...createTextStyles(theme, "secondary"),
-    fontSize: theme.typography.fontSize.md,
-    fontWeight: theme.typography.fontWeight.medium,
-    color: theme.colors.primary,
+    ...createHeadingStyles(theme, "primary"),
+    fontSize: theme.typography.fontSize.lg,
     margin: 0,
+    color: theme.colors.text.onPrimary,
+    fontWeight: theme.typography.fontWeight.normal,
   };
 
   const dateRangeStyles = {
-    ...createTextStyles(theme, "secondary"),
-    fontSize: theme.typography.fontSize.sm,
+    ...createTextStyles(theme, "primary"),
+    fontSize: theme.typography.fontSize.md,
     fontStyle: "italic",
-    color: theme.colors.accent,
+    color: theme.colors.text.onPrimary,
     margin: 0,
   };
 
@@ -66,41 +71,36 @@ export default function ExperiencePanel({ experience, type }: ExperiencePanelPro
   };
 
   const projectsHeaderStyles = {
-    ...createHeadingStyles(theme, "secondary"),
+    ...createHeadingStyles(theme, "primary"),
     fontSize: theme.typography.fontSize.md,
     marginBottom: theme.spacing.sm,
+    color: theme.colors.text.onPrimary,
   };
 
   const projectItemStyles = {
-    ...createCardStyles(theme, "tertiary"),
+    ...createCardStyles(theme, "secondary"),
     marginBottom: theme.spacing.sm,
     padding: theme.spacing.md,
+    backgroundColor: theme.colors.secondary,
     border: `1px solid ${theme.colors.border}`,
-    borderLeft: `4px solid ${theme.colors.primary}`,
+    borderLeft: `4px solid ${theme.colors.accent}`,
+    borderRadius: "8px",
   };
 
   const projectTitleStyles = {
-    ...createHeadingStyles(theme, "tertiary"),
+    ...createHeadingStyles(theme, "secondary"),
     fontSize: theme.typography.fontSize.sm,
     fontWeight: theme.typography.fontWeight.medium,
     marginBottom: theme.spacing.xs,
+    color: theme.colors.text.onSecondary,
   };
 
   const projectDescriptionStyles = {
-    ...createTextStyles(theme, "tertiary"),
+    ...createTextStyles(theme, "secondary"),
     fontSize: theme.typography.fontSize.sm,
     lineHeight: 1.5,
     margin: 0,
-  };
-
-  const formatDateRange = (startDate: string, endDate: string) => {
-    const formatDate = (dateStr: string) => {
-      if (dateStr.toLowerCase() === "present") return "Present";
-      const date = new Date(dateStr);
-      return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
-    };
-
-    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+    color: theme.colors.text.onSecondary,
   };
 
   const getTitle = () => {
@@ -117,25 +117,21 @@ export default function ExperiencePanel({ experience, type }: ExperiencePanelPro
     return experience.degree || "";
   };
 
-  const getProjectsLabel = () => {
-    return type === "professional" ? "Key Projects:" : "Notable Projects:";
-  };
-
   return (
     <div style={experienceItemStyles}>
       <div style={experienceHeaderStyles}>
         <div>
           <h3 style={companyNameStyles}>{getTitle()}</h3>
-          <p style={positionStyles}>{getSubtitle()}</p>
+          <h3 style={positionStyles}>{getSubtitle()}</h3>
         </div>
         <p style={dateRangeStyles}>
-          {formatDateRange(experience.startDate, experience.endDate)}
+          {experience.startDate} - {experience.endDate}
         </p>
       </div>
 
       {experience.projects.length > 0 && (
         <div style={projectsContainerStyles}>
-          <h4 style={projectsHeaderStyles}>{getProjectsLabel()}</h4>
+          <h4 style={projectsHeaderStyles}>Projects</h4>
           {experience.projects.map((project, projectIndex) => (
             <div key={projectIndex} style={projectItemStyles}>
               <h5 style={projectTitleStyles}>{project.title}</h5>

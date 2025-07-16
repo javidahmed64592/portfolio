@@ -12,10 +12,21 @@ export default function ExperiencePage() {
     marginBottom: theme.spacing.md,
   };
 
-  const sectionStyles = {
+  const mainContainerStyles = {
     width: "100%",
-    maxWidth: "1000px",
     margin: "0 auto",
+  };
+
+  const sectionsContainerStyles = {
+    display: "flex",
+    gap: theme.spacing.xl,
+    alignItems: "flex-start",
+    flexWrap: "wrap" as const,
+  };
+
+  const sectionStyles = {
+    flex: 1,
+    minWidth: "400px",
     marginBottom: theme.spacing.xl,
   };
 
@@ -32,30 +43,34 @@ export default function ExperiencePage() {
       {/* Header */}
       <h1 style={headerStyles}>Experience</h1>
 
-      {/* Professional Experience Section */}
-      <div style={sectionStyles}>
-        <h2 style={sectionHeaderStyles}>Professional Experience</h2>
+      <div style={mainContainerStyles}>
+        <div style={sectionsContainerStyles}>
+          {/* Professional Experience Section */}
+          <div style={sectionStyles}>
+            <h2 style={sectionHeaderStyles}>Professional Experience</h2>
 
-        {experiencePageData.professionalExperience.map((experience, index) => (
-          <ExperiencePanel
-            key={index}
-            experience={experience}
-            type="professional"
-          />
-        ))}
-      </div>
+            {experiencePageData.professionalExperience.map((experience, index) => (
+              <ExperiencePanel
+                key={index}
+                experience={experience}
+                type="professional"
+              />
+            ))}
+          </div>
 
-      {/* Academic Experience Section */}
-      <div style={sectionStyles}>
-        <h2 style={sectionHeaderStyles}>Academic Experience</h2>
+          {/* Academic Experience Section */}
+          <div style={sectionStyles}>
+            <h2 style={sectionHeaderStyles}>Academic Experience</h2>
 
-        {experiencePageData.academicExperience.map((experience, index) => (
-          <ExperiencePanel
-            key={index}
-            experience={experience}
-            type="academic"
-          />
-        ))}
+            {experiencePageData.academicExperience.map((experience, index) => (
+              <ExperiencePanel
+                key={index}
+                experience={experience}
+                type="academic"
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ export default tseslint.config(
       ],
       quotes: ["error", "double"],
       "jsx-quotes": ["error", "prefer-double"],
+      semi: ["error", "always"],
       "import/order": [
         "error",
         {

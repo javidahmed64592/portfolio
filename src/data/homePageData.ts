@@ -1,4 +1,4 @@
-const iconPath = (icon: string) => `/assets/icons/${icon}`;
+import { iconPath } from "./commonData";
 
 type ProfileSummary = {
   name: string;

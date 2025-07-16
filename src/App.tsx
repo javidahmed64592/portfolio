@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { CustomAppBar } from "./components/navigation";
 import { HomePage, ExperiencePage, ProjectsPage } from "./components/pages";
-import { SocialLinkButton } from "./components/pages/home";
+import { SocialLinkButton } from "./components/pages/common";
 import { Pages, getSocialLinks, type SocialLink } from "./data/appData";
 import { useAppSelector } from "./store/hooks";
 import { useTheme, createAppStyles, createPageStyles } from "./theme";

@@ -63,10 +63,10 @@ export default function HomePage() {
       {/* Profile Summary */}
       <div style={profileSummaryStyles}>
         <p style={profileTextStyles}>
-          {homePageData.profileSummary.description.split("\n").map((paragraph, index) => (
+          {homePageData.profileSummary.description.map((paragraph, index) => (
             <span key={index}>
               {paragraph}
-              {index < homePageData.profileSummary.description.split("\n").length - 1 && <><br /><br /></>}
+              {index < homePageData.profileSummary.description.length - 1 && <><br /><br /></>}
             </span>
           ))}
         </p>

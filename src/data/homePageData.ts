@@ -9,7 +9,7 @@ type ProfileSummary = {
 type Technology = {
   name: string;
   url: string;
-  icon?: string;
+  icon: string;
 };
 
 type SocialLink = {

@@ -1,4 +1,4 @@
-import { technologies, socialLinks, profileSummary } from "../../data/homePageData";
+import { homePageData } from "../../data/homePageData";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
 import { TechnologyButton, SocialLinkButton } from "./home";
 
@@ -58,15 +58,15 @@ export default function HomePage() {
   return (
     <div>
       {/* Header */}
-      <h1 style={headerStyles}>{profileSummary.name} ({profileSummary.title})</h1>
+      <h1 style={headerStyles}>{homePageData.profileSummary.name} ({homePageData.profileSummary.title})</h1>
 
       {/* Profile Summary */}
       <div style={profileSummaryStyles}>
         <p style={profileTextStyles}>
-          {profileSummary.description.split("\n").map((paragraph, index) => (
+          {homePageData.profileSummary.description.split("\n").map((paragraph, index) => (
             <span key={index}>
               {paragraph}
-              {index < profileSummary.description.split("\n").length - 1 && <><br /><br /></>}
+              {index < homePageData.profileSummary.description.split("\n").length - 1 && <><br /><br /></>}
             </span>
           ))}
         </p>
@@ -76,7 +76,7 @@ export default function HomePage() {
       <div style={{ width: "100%", maxWidth: "800px" }}>
         <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
         <div style={techIconsContainerStyles}>
-          {technologies.map((tech) => (
+          {homePageData.technologies.map((tech) => (
             <TechnologyButton key={tech.name} technology={tech} />
           ))}
         </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
 
       {/* Social Links Footer */}
       <div style={socialLinksFooterStyles}>
-        {socialLinks.map((link) => (
+        {homePageData.socialLinks.map((link) => (
           <SocialLinkButton key={link.name} link={link} />
         ))}
       </div>

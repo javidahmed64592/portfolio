@@ -51,7 +51,8 @@ function App() {
     alignItems: "center",
     width: "100%",
     marginTop: "auto",
-    paddingTop: theme.spacing.lg,
+    paddingTop: theme.spacing.md,
+    paddingBottom: theme.spacing.md,
     borderTop: `1px solid ${theme.colors.border}`,
   };
 

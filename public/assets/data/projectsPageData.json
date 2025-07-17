@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "title": "Project 1",
+      "description": "Project details to be added.",
+      "url": "https://github.com/username/portfolio",
+      "image": "portfolio.png"
+    },
+    {
+      "title": "Project 2",
+      "description": "Project details to be added.",
+      "url": "https://github.com/username/project2",
+      "image": "project2.png"
+    },
+    {
+      "title": "Project 3",
+      "description": "Project details to be added.",
+      "url": "https://github.com/username/project3",
+      "image": "project3.png"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CustomAppBar, Footer } from "./components/common";
 import { pages, Pages } from "./data";
 import { HomePage, ExperiencePage, ProjectsPage } from "./pages";
@@ -31,6 +31,9 @@ function App() {
   // Projects page selectors
   const projects = useAppSelector(selectProjects);
 
+  // State for rendered page content
+  const [pageContent, setPageContent] = useState<React.JSX.Element | null>(null);
+
   useEffect(() => {
     dispatch(fetchAppData());
     dispatch(fetchHomePageData());
@@ -38,9 +41,10 @@ function App() {
     dispatch(fetchProjectsPageData());
   }, [dispatch]);
 
-  const renderPageContent = () => {
+  // Update page content when loading state or page changes
+  useEffect(() => {
     if (allDataLoading) {
-      return (
+      setPageContent(
         <div style={{
           display: "flex",
           justifyContent: "center",
@@ -52,19 +56,27 @@ function App() {
           Loading...
         </div>
       );
+      return;
     }
 
+    let content: React.JSX.Element;
     switch (currentPage) {
       case Pages.Home:
-        return <HomePage profileSummary={profileSummary} technologies={technologies} />;
+        content = <HomePage profileSummary={profileSummary} technologies={technologies} />;
+        break;
       case Pages.Experience:
-        return <ExperiencePage professionalExperience={professionalExperience} academicExperience={academicExperience} />;
+        content = <ExperiencePage professionalExperience={professionalExperience} academicExperience={academicExperience} />;
+        break;
       case Pages.Projects:
-        return <ProjectsPage projects={projects} />;
+        content = <ProjectsPage projects={projects} />;
+        break;
       default:
-        return <div>Page not found</div>;
+        content = <div>Page not found</div>;
+        break;
     }
-  };
+
+    setPageContent(content);
+  }, [allDataLoading, currentPage, theme, profileSummary, technologies, professionalExperience, academicExperience, projects]);
 
   const appStyles = createAppStyles(theme);
   const pageStyles = createPageStyles(theme);
@@ -76,7 +88,7 @@ function App() {
 
       {/* Page Content */}
       <div style={pageStyles}>
-        {renderPageContent()}
+        {pageContent}
       </div>
 
       {/* Footer */}

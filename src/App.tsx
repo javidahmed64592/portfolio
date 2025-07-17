@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { CustomAppBar, Footer } from "./components/common";
-import { Pages } from "./data";
+import { pages, Pages } from "./data";
 import { HomePage, ExperiencePage, ProjectsPage } from "./pages";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
 import { selectAllDataLoading, selectAppHeaderText, selectSocialLinks } from "./store/selectors";
@@ -59,7 +59,7 @@ function App() {
   return (
     <div style={appStyles}>
       {/* Custom App Bar */}
-      <CustomAppBar appHeaderText={appHeaderText} />
+      <CustomAppBar appHeaderText={appHeaderText} pages={pages} />
 
       {/* Page Content */}
       <div style={pageStyles}>

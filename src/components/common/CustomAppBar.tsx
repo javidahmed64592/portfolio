@@ -3,16 +3,25 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { pages, Pages } from "../../data";
+import { Pages } from "../../data";
 import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";
 import { useTheme } from "../../theme";
 
 interface CustomAppBarProps {
   appHeaderText: string;
+  pages: Pages[];
 }
 
-export default function CustomAppBar({ appHeaderText }: CustomAppBarProps) {
+interface AppBarHeaderProps {
+  appHeaderText: string;
+}
+
+interface AppBarPagesProps {
+  pages: Pages[];
+}
+
+export default function CustomAppBar({ appHeaderText, pages }: CustomAppBarProps) {
   const { theme } = useTheme();
 
   const appBarStyles = {
@@ -23,14 +32,10 @@ export default function CustomAppBar({ appHeaderText }: CustomAppBarProps) {
       <AppBar position="static" sx={appBarStyles}>
         <Toolbar>
           <AppBarHeader appHeaderText={appHeaderText} />
-          <AppBarPages />
+          <AppBarPages pages={pages} />
         </Toolbar>
       </AppBar>
   );
-}
-
-interface AppBarHeaderProps {
-  appHeaderText: string;
 }
 
 function AppBarHeader({ appHeaderText }: AppBarHeaderProps) {
@@ -57,7 +62,7 @@ function AppBarHeader({ appHeaderText }: AppBarHeaderProps) {
   );
 }
 
-function AppBarPages() {
+function AppBarPages({ pages }: AppBarPagesProps) {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
 

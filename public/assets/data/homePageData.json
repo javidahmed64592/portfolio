@@ -3,11 +3,17 @@
     "name": "Javid Ahmed",
     "title": "Software Developer",
     "description": [
-      "I am a passionate software developer with experience in building modern web applications and solutions. I enjoy working with cutting-edge technologies and am always eager to learn new skills and tackle challenging problems. My goal is to create efficient, scalable, and user-friendly applications that make a positive impact.",
-      "I have experience in full-stack development, with a focus on React, TypeScript, and modern web technologies. I'm comfortable working in both frontend and backend environments and enjoy collaborating with teams to deliver high-quality software solutions."
+      "I have a passion for learning and problem solving and I enjoy developing my skills in new technologies and methods. Since joining Capgemini Engineering, I have gained project experience of full stack software development and worked in multiple project teams. My work has included creating automated CI/CD pipelines for Python applications. I have also worked on databases and the APIs being consumed by these applications. Additionally, I have developed User Interfaces using different frameworks to create web, desktop, and mobile applications. This has involved learning to use a wide range of technologies, as well as the Agile methodologies used for these projects.",
+      "Prior to starting at Capgemini Engineering, I studied Physics at the University of Birmingham and during this time, I worked on multiple scientific computing projects in Python. These involved developing and training convolutional neural networks, image processing, 2D simulations, and data analysis in a scientific context. Additionally, I developed my capacity for quick learning, writing technical reports, delivering presentations, and working effectively within a team.",
+      "In my free time, I enjoy exploring technical topics such as reinforcement learning algorithms with artificial neural networks to train AI to drive simulated cars through obstacles. I have also created genetic algorithms which can solve alphanumeric phrases by using random guesses and employing ideas from natural selection and biological evolution. I also enjoy learning music theory, composing in digital audio workstations, and playing piano and guitar."
     ]
   },
   "technologies": [
+    {
+      "name": "Python",
+      "url": "https://www.python.org/",
+      "icon": "python.svg"
+    },
     {
       "name": "React",
       "url": "https://reactjs.org/",
@@ -19,44 +25,49 @@
       "icon": "typescript.svg"
     },
     {
-      "name": "Node.js",
-      "url": "https://nodejs.org/",
-      "icon": "nodejs.svg"
+      "name": "Electron",
+      "url": "https://www.electronjs.org/",
+      "icon": "electron.svg"
     },
     {
-      "name": "Python",
-      "url": "https://www.python.org/",
-      "icon": "python.svg"
+      "name": "Flutter",
+      "url": "https://flutter.dev/",
+      "icon": "flutter.svg"
     },
     {
-      "name": "JavaScript",
-      "url": "https://www.javascript.com/",
-      "icon": "javascript.svg"
+      "name": "Dart",
+      "url": "https://dart.dev/",
+      "icon": "dart.svg"
     },
     {
-      "name": "HTML/CSS",
-      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-      "icon": "html.svg"
+      "name": "C#",
+      "url": "https://docs.microsoft.com/en-us/dotnet/csharp/",
+      "icon": "csharp.svg"
     },
     {
-      "name": "Git",
-      "url": "https://git-scm.com/",
-      "icon": "git.svg"
+      "name": "Unity",
+      "url": "https://unity.com/",
+      "icon": "unity.svg"
     },
     {
-      "name": "SQL",
-      "url": "https://www.mysql.com/",
-      "icon": "mysql.svg"
+      "name": "Protobuf",
+      "url": "https://protobuf.dev/",
+      "icon": "protobuf.svg"
     },
     {
-      "name": "MongoDB",
-      "url": "https://www.mongodb.com/",
-      "icon": "mongodb.svg"
+      "name": "GitHub",
+      "url": "https://github.com/",
+      "icon": "github.svg"
     },
     {
-      "name": "Docker",
-      "url": "https://www.docker.com/",
-      "icon": "docker.svg"
+      "name": "Gitlab",
+      "url": "https://gitlab.com/",
+      "icon": "gitlab.svg"
+    },
+    {
+      "name": "DevOps",
+      "url": "https://azure.microsoft.com/en-us/products/devops/",
+      "icon": "devops.svg"
     }
   ]
 }

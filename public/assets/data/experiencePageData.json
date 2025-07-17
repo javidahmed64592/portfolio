@@ -7,12 +7,12 @@
       "endDate": "Present",
       "projects": [
         {
-          "title": "Web Application Development",
-          "description": "Developed a scalable web application using React and Node.js."
+          "title": "Project 1",
+          "description": "Project details to be added."
         },
         {
-          "title": "API Integration",
-          "description": "Integrated third-party APIs to enhance application functionality."
+          "title": "Project 2",
+          "description": "Project details to be added."
         }
       ]
     }
@@ -25,12 +25,12 @@
       "endDate": "27/06/2022",
       "projects": [
         {
-          "title": "Capstone Project",
-          "description": "Developed a machine learning model for predictive analytics."
+          "title": "Project 1",
+          "description": "Project details to be added."
         },
         {
-          "title": "Open Source Contribution",
-          "description": "Contributed to various open source projects on GitHub."
+          "title": "Project 2",
+          "description": "Project details to be added."
         }
       ]
     }

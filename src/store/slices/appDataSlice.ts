@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { getAppData, type AppData } from "../../data/appData";
+import { getAppData, type AppData } from "../../data";
 
 interface AppDataState {
   data: AppData | null;

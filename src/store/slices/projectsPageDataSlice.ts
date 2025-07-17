@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { getProjectsPageData, type ProjectsPageData } from "../../data/projectsPageData";
+import { getProjectsPageData, type ProjectsPageData } from "../../data";
 
 interface ProjectsPageDataState {
   data: ProjectsPageData | null;

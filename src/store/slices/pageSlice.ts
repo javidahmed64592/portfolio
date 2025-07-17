@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Pages } from "../../data/appData";
+import { Pages } from "../../data";
 
 interface PageState {
   currentPage: Pages;

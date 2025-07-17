@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { getExperiencePageData, type ExperiencePageData } from "../../data/experiencePageData";
+import { getExperiencePageData, type ExperiencePageData } from "../../data";
 
 interface ExperiencePageDataState {
   data: ExperiencePageData | null;

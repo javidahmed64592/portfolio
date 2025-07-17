@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { getHomePageData, type HomePageData } from "../../data/homePageData";
+import { getHomePageData, type HomePageData } from "../../data";
 
 interface HomePageDataState {
   data: HomePageData | null;

@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { pages, Pages } from "../../data/appData";
+import { pages, Pages } from "../../data";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectAppHeaderText } from "../../store/selectors";
 import { setCurrentPage } from "../../store/slices/pageSlice";
@@ -69,11 +69,11 @@ function AppBarPages() {
 
   return (
     <>
-      {pages.map((page) => (
+      {pages.map((page: Pages) => (
         <Button
           key={page}
           sx={buttonStyles}
-          onClick={() => handlePageClick(page as Pages)}
+          onClick={() => handlePageClick(page)}
         >
           {page}
         </Button>

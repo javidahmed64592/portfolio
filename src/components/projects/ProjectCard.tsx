@@ -1,15 +1,9 @@
 import React from "react";
+import { type GitHubProject } from "../../data";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles, createButtonStyles } from "../../theme";
 
-type Project = {
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-};
-
 interface ProjectCardProps {
-  project: Project;
+  project: GitHubProject;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {

@@ -1,11 +1,10 @@
+import { type SocialLink } from "../../data";
 import { useTheme, createTextStyles } from "../../theme";
 
 interface SocialLinkButtonProps {
-  link: {
-    name: string;
-    url: string;
-  };
+  link: SocialLink;
 }
+
 
 export default function SocialLinkButton({ link }: SocialLinkButtonProps) {
   const { theme } = useTheme();

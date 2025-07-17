@@ -40,13 +40,3 @@ export const getAppData = async (): Promise<AppData> => {
 };
 
 export const pages = Object.values(Pages);
-
-export const getAppHeaderText = async (): Promise<string> => {
-  const data = await getAppData();
-  return data.appHeaderText;
-};
-
-export const getSocialLinks = async (): Promise<SocialLink[]> => {
-  const data = await getAppData();
-  return data.socialLinks;
-};

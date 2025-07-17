@@ -3,11 +3,11 @@ import { selectSocialLinks } from "../../../store/selectors";
 import { useTheme } from "../../../theme";
 import SocialLinkButton from "./SocialLinkButton";
 
-export default function SocialLinksFooter() {
+export default function Footer() {
   const { theme } = useTheme();
   const socialLinks = useAppSelector(selectSocialLinks);
 
-  const socialLinksFooterStyles = {
+  const footerStyles = {
     display: "flex",
     flexWrap: "wrap" as const,
     gap: theme.spacing.sm,
@@ -21,7 +21,7 @@ export default function SocialLinksFooter() {
   };
 
   return (
-    <div style={socialLinksFooterStyles}>
+    <div style={footerStyles}>
       {socialLinks.map((link) => (
         <SocialLinkButton key={link.name} link={link} />
       ))}

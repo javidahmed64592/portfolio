@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { CustomAppBar } from "./components/navigation";
 import { HomePage, ExperiencePage, ProjectsPage } from "./components/pages";
-import SocialLinksFooter from "./components/pages/common/SocialLinksFooter";
+import Footer from "./components/pages/common/Footer";
 import { Pages } from "./data";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
 import { selectAllDataLoading } from "./store/selectors";
@@ -65,8 +65,8 @@ function App() {
         {renderPageContent()}
       </div>
 
-      {/* Social Links Footer */}
-      <SocialLinksFooter />
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

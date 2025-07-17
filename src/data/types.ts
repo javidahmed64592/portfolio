@@ -18,8 +18,6 @@ export type AppData = {
 
 // Home page types
 export type ProfileSummary = {
-  name: string;
-  title: string;
   description: string[];
 };
 

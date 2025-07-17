@@ -47,7 +47,6 @@ export default function HomePage() {
     justifyContent: "center",
     marginBottom: theme.spacing.lg,
     width: "100%",
-    maxWidth: "600px",
   };
 
   return (
@@ -68,7 +67,7 @@ export default function HomePage() {
       </div>
 
       {/* Technologies */}
-      <div style={{ width: "100%", maxWidth: "800px" }}>
+      <div style={{ width: "100%" }}>
         <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
         <div style={techIconsContainerStyles}>
           {technologies.map((tech) => (

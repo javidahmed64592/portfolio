@@ -17,7 +17,6 @@ function App() {
   const allDataLoading = useAppSelector(selectAllDataLoading);
   const { theme } = useTheme();
 
-  // Load all data on app startup
   useEffect(() => {
     dispatch(fetchAppData());
     dispatch(fetchHomePageData());

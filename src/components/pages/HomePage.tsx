@@ -8,7 +8,6 @@ export default function HomePage() {
   const profileSummary = useAppSelector(selectProfileSummary);
   const technologies = useAppSelector(selectTechnologies);
 
-  // Return early if data is not loaded yet
   if (!profileSummary) {
     return null;
   }

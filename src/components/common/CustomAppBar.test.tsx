@@ -32,9 +32,12 @@ const renderWithProviders = (
 };
 
 describe("CustomAppBar", () => {
+  const mockAppHeaderText = "My Portfolio";
+  const mockPages = [Pages.Home, Pages.Experience, Pages.Projects];
+
   const mockProps = {
-    appHeaderText: "My Portfolio",
-    pages: [Pages.Home, Pages.Experience, Pages.Projects],
+    appHeaderText: mockAppHeaderText,
+    pages: mockPages,
   };
 
   it("displays the app header text", () => {

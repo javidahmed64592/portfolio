@@ -13,12 +13,14 @@ const renderWithProviders = (component: React.ReactElement) => {
 };
 
 describe("SocialLinkButton", () => {
+  const mockLink = {
+    name: "GitHub",
+    url: "https://github.com/testuser",
+    icon: "github.svg",
+  };
+
   const mockProps = {
-    link: {
-      name: "GitHub",
-      url: "https://github.com/testuser",
-      icon: "github.svg",
-    },
+    link: mockLink,
   };
 
   it("displays the link name", () => {

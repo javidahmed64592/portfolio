@@ -13,24 +13,26 @@ const renderWithProviders = (component: React.ReactElement) => {
 };
 
 describe("Footer", () => {
+  const mockSocialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/testuser",
+      icon: "github.svg",
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/testuser",
+      icon: "linkedin.svg",
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com/testuser",
+      icon: "twitter.svg",
+    },
+  ];
+
   const mockProps = {
-    socialLinks: [
-      {
-        name: "GitHub",
-        url: "https://github.com/testuser",
-        icon: "github.svg",
-      },
-      {
-        name: "LinkedIn",
-        url: "https://linkedin.com/in/testuser",
-        icon: "linkedin.svg",
-      },
-      {
-        name: "Twitter",
-        url: "https://twitter.com/testuser",
-        icon: "twitter.svg",
-      },
-    ],
+    socialLinks: mockSocialLinks,
   };
 
   it("renders SocialLinkButton for each social link", () => {

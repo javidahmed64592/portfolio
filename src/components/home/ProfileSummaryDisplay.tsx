@@ -2,15 +2,11 @@ import { type ProfileSummary } from "../../data/types";
 import { useTheme, createTextStyles, createCardStyles } from "../../theme";
 
 interface ProfileSummaryProps {
-  profileSummary: ProfileSummary | null;
+  profileSummary: ProfileSummary;
 }
 
-export default function ProfileSummary({ profileSummary }: ProfileSummaryProps) {
+export default function ProfileSummaryDisplay({ profileSummary }: ProfileSummaryProps) {
   const { theme } = useTheme();
-
-  if (!profileSummary) {
-    return null;
-  }
 
   const profileSummaryStyles = {
     ...createCardStyles(theme, "secondary"),

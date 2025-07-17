@@ -1,12 +1,14 @@
-import { ProfileSummary, TechStack } from "../components/home";
-import { useAppSelector } from "../store/hooks";
-import { selectProfileSummary, selectTechnologies } from "../store/selectors";
+import { ProfileSummaryDisplay, TechStack } from "../components/home";
+import { ProfileSummary, Technology } from "../data";
 import { createHeadingStyles, useTheme } from "../theme";
 
-export default function HomePage() {
+interface HomePageProps {
+  profileSummary: ProfileSummary;
+  technologies: Technology[];
+}
+
+export default function HomePage({profileSummary, technologies}: HomePageProps) {
   const { theme } = useTheme();
-  const profileSummary = useAppSelector(selectProfileSummary);
-  const technologies = useAppSelector(selectTechnologies);
 
   const headerStyles = {
       ...createHeadingStyles(theme, "background"),
@@ -20,7 +22,7 @@ export default function HomePage() {
       {/* Header */}
       <h1 style={headerStyles}>Javid Ahmed (Software Developer)</h1>
 
-      <ProfileSummary profileSummary={profileSummary} />
+      <ProfileSummaryDisplay profileSummary={profileSummary} />
       <TechStack technologies={technologies} />
     </div>
   );

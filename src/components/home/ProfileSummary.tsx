@@ -1,10 +1,12 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectProfileSummary } from "../../store/selectors";
+import { type ProfileSummary } from "../../data/types";
 import { useTheme, createTextStyles, createCardStyles } from "../../theme";
 
-export default function ProfileSummary() {
+interface ProfileSummaryProps {
+  profileSummary: ProfileSummary | null;
+}
+
+export default function ProfileSummary({ profileSummary }: ProfileSummaryProps) {
   const { theme } = useTheme();
-  const profileSummary = useAppSelector(selectProfileSummary);
 
   if (!profileSummary) {
     return null;

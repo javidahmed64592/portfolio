@@ -1,11 +1,13 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectTechnologies } from "../../store/selectors";
+import { type Technology } from "../../data/types";
 import { useTheme, createHeadingStyles } from "../../theme";
 import { TechnologyButton } from "./";
 
-export default function TechStack() {
+interface TechStackProps {
+  technologies: Technology[];
+}
+
+export default function TechStack({ technologies }: TechStackProps) {
   const { theme } = useTheme();
-  const technologies = useAppSelector(selectTechnologies);
 
   const sectionTitleStyles = {
     ...createHeadingStyles(theme, "background"),

@@ -4,12 +4,15 @@ import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { pages, Pages } from "../../data";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { selectAppHeaderText } from "../../store/selectors";
+import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";
 import { useTheme } from "../../theme";
 
-export default function CustomAppBar() {
+interface CustomAppBarProps {
+  appHeaderText: string;
+}
+
+export default function CustomAppBar({ appHeaderText }: CustomAppBarProps) {
   const { theme } = useTheme();
 
   const appBarStyles = {
@@ -19,17 +22,20 @@ export default function CustomAppBar() {
   return (
       <AppBar position="static" sx={appBarStyles}>
         <Toolbar>
-          <AppBarHeader />
+          <AppBarHeader appHeaderText={appHeaderText} />
           <AppBarPages />
         </Toolbar>
       </AppBar>
   );
 }
 
-function AppBarHeader() {
+interface AppBarHeaderProps {
+  appHeaderText: string;
+}
+
+function AppBarHeader({ appHeaderText }: AppBarHeaderProps) {
   const { theme } = useTheme();
   const textVariant = "h6";
-  const headerText = useAppSelector(selectAppHeaderText);
 
   const iconStyles = {
     mr: 2,
@@ -45,7 +51,7 @@ function AppBarHeader() {
     <>
       <ComputerIcon sx={iconStyles} />
       <Typography variant={textVariant} component="div" sx={textStyles}>
-        {headerText}
+        {appHeaderText}
       </Typography>
     </>
   );

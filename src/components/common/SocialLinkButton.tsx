@@ -5,7 +5,6 @@ interface SocialLinkButtonProps {
   link: SocialLink;
 }
 
-
 export default function SocialLinkButton({ link }: SocialLinkButtonProps) {
   const { theme } = useTheme();
 

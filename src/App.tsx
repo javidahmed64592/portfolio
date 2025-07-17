@@ -3,7 +3,7 @@ import { CustomAppBar, Footer } from "./components/common";
 import { Pages } from "./data";
 import { HomePage, ExperiencePage, ProjectsPage } from "./pages";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
-import { selectAllDataLoading } from "./store/selectors";
+import { selectAllDataLoading, selectAppHeaderText, selectSocialLinks } from "./store/selectors";
 import { fetchAppData } from "./store/slices/appDataSlice";
 import { fetchExperiencePageData } from "./store/slices/experiencePageDataSlice";
 import { fetchHomePageData } from "./store/slices/homePageDataSlice";
@@ -14,6 +14,8 @@ function App() {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((state) => state.page.currentPage);
   const allDataLoading = useAppSelector(selectAllDataLoading);
+  const appHeaderText = useAppSelector(selectAppHeaderText);
+  const socialLinks = useAppSelector(selectSocialLinks);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function App() {
   return (
     <div style={appStyles}>
       {/* Custom App Bar */}
-      <CustomAppBar />
+      <CustomAppBar appHeaderText={appHeaderText} />
 
       {/* Page Content */}
       <div style={pageStyles}>
@@ -65,7 +67,7 @@ function App() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <Footer socialLinks={socialLinks} />
     </div>
   );
 }

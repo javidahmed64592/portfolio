@@ -1,8 +1,12 @@
 import { ProfileSummary, TechStack } from "../components/home";
+import { useAppSelector } from "../store/hooks";
+import { selectProfileSummary, selectTechnologies } from "../store/selectors";
 import { createHeadingStyles, useTheme } from "../theme";
 
 export default function HomePage() {
   const { theme } = useTheme();
+  const profileSummary = useAppSelector(selectProfileSummary);
+  const technologies = useAppSelector(selectTechnologies);
 
   const headerStyles = {
       ...createHeadingStyles(theme, "background"),
@@ -16,8 +20,8 @@ export default function HomePage() {
       {/* Header */}
       <h1 style={headerStyles}>Javid Ahmed (Software Developer)</h1>
 
-      <ProfileSummary />
-      <TechStack />
+      <ProfileSummary profileSummary={profileSummary} />
+      <TechStack technologies={technologies} />
     </div>
   );
 }

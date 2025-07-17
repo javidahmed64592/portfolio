@@ -1,6 +1,6 @@
-import { useAppSelector } from "../../../store/hooks";
-import { selectTechnologies } from "../../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../../theme";
+import { useAppSelector } from "../../store/hooks";
+import { selectTechnologies } from "../../store/selectors";
+import { useTheme, createHeadingStyles } from "../../theme";
 import { TechnologyButton } from "./";
 
 export default function TechStack() {

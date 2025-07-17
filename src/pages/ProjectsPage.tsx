@@ -1,7 +1,7 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectProjects } from "../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../theme";
-import { ProjectCard } from "./projects";
+import { ProjectCard } from "../components/projects";
+import { useAppSelector } from "../store/hooks";
+import { selectProjects } from "../store/selectors";
+import { useTheme, createHeadingStyles } from "../theme";
 
 export default function ProjectsPage() {
   const { theme } = useTheme();

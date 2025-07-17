@@ -1,5 +1,5 @@
-import { Technology } from "../../../data";
-import { useTheme, createCardStyles, createTextStyles } from "../../../theme";
+import { Technology } from "../../data";
+import { useTheme, createCardStyles, createTextStyles } from "../../theme";
 
 interface TechnologyButtonProps {
   technology: Technology;

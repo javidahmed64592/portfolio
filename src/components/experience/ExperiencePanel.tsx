@@ -1,5 +1,4 @@
-import React from "react";
-import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../../theme";
+import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
 
 type Project = {
   title: string;

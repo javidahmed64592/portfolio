@@ -1,6 +1,6 @@
-import { useAppSelector } from "../../../store/hooks";
-import { selectProfileSummary } from "../../../store/selectors";
-import { useTheme, createTextStyles, createCardStyles } from "../../../theme";
+import { useAppSelector } from "../../store/hooks";
+import { selectProfileSummary } from "../../store/selectors";
+import { useTheme, createTextStyles, createCardStyles } from "../../theme";
 
 export default function ProfileSummary() {
   const { theme } = useTheme();

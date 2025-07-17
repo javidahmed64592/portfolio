@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme, createHeadingStyles, createTextStyles, createCardStyles, createButtonStyles } from "../../../theme";
+import { useTheme, createHeadingStyles, createTextStyles, createCardStyles, createButtonStyles } from "../../theme";
 
 type Project = {
   title: string;

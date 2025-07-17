@@ -1,7 +1,7 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectProfessionalExperience, selectAcademicExperience } from "../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../theme";
-import { ExperiencePanel } from "./experience";
+import { ExperiencePanel } from "../components/experience";
+import { useAppSelector } from "../store/hooks";
+import { selectProfessionalExperience, selectAcademicExperience } from "../store/selectors";
+import { useTheme, createHeadingStyles } from "../theme";
 
 export default function ExperiencePage() {
   const { theme } = useTheme();

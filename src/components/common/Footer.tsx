@@ -1,6 +1,6 @@
-import { useAppSelector } from "../../../store/hooks";
-import { selectSocialLinks } from "../../../store/selectors";
-import { useTheme } from "../../../theme";
+import { useAppSelector } from "../../store/hooks";
+import { selectSocialLinks } from "../../store/selectors";
+import { useTheme } from "../../theme";
 import SocialLinkButton from "./SocialLinkButton";
 
 export default function Footer() {

@@ -3,11 +3,11 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { pages, Pages } from "../../../data";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { selectAppHeaderText } from "../../../store/selectors";
-import { setCurrentPage } from "../../../store/slices/pageSlice";
-import { useTheme } from "../../../theme";
+import { pages, Pages } from "../../data";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectAppHeaderText } from "../../store/selectors";
+import { setCurrentPage } from "../../store/slices/pageSlice";
+import { useTheme } from "../../theme";
 
 export default function CustomAppBar() {
   const { theme } = useTheme();

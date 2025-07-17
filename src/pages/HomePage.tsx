@@ -1,5 +1,5 @@
-import { createHeadingStyles, useTheme } from "../../theme";
-import { ProfileSummary, TechStack } from "./home";
+import { ProfileSummary, TechStack } from "../components/home";
+import { createHeadingStyles, useTheme } from "../theme";
 
 export default function HomePage() {
   const { theme } = useTheme();

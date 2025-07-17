@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { HomePage, ExperiencePage, ProjectsPage } from "./components/pages";
-import { CustomAppBar, Footer } from "./components/pages/common";
+import { CustomAppBar, Footer } from "./components/common";
 import { Pages } from "./data";
+import { HomePage, ExperiencePage, ProjectsPage } from "./pages";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
 import { selectAllDataLoading } from "./store/selectors";
 import { fetchAppData } from "./store/slices/appDataSlice";

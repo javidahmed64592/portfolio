@@ -1,4 +1,4 @@
-import { useTheme, createTextStyles } from "../../../theme";
+import { useTheme, createTextStyles } from "../../theme";
 
 interface SocialLinkButtonProps {
   link: {

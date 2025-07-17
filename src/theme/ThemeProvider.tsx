@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Theme, defaultTheme } from "./theme";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext } from "./";
 
 interface ThemeProviderProps {
   children: ReactNode;

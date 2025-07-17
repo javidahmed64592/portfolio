@@ -1,35 +1,12 @@
-import { useState, useEffect } from "react";
-import { getExperiencePageData, type ExperiencePageData, type ProfessionalExperience, type AcademicExperience } from "../../data/experiencePageData";
+import { useAppSelector } from "../../store/hooks";
+import { selectProfessionalExperience, selectAcademicExperience } from "../../store/selectors";
 import { useTheme, createHeadingStyles } from "../../theme";
 import { ExperiencePanel } from "./experience";
 
 export default function ExperiencePage() {
   const { theme } = useTheme();
-  const [experienceData, setExperienceData] = useState<ExperiencePageData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const data = await getExperiencePageData();
-        setExperienceData(data);
-      } catch (error) {
-        console.error("Failed to load experience data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!experienceData) {
-    return <div>Failed to load experience data</div>;
-  }
+  const professionalExperience = useAppSelector(selectProfessionalExperience);
+  const academicExperience = useAppSelector(selectAcademicExperience);
 
   const headerStyles = {
     ...createHeadingStyles(theme, "background"),
@@ -75,7 +52,7 @@ export default function ExperiencePage() {
           <div style={sectionStyles}>
             <h2 style={sectionHeaderStyles}>Professional Experience</h2>
 
-            {experienceData.professionalExperience.map((experience: ProfessionalExperience, index: number) => (
+            {professionalExperience.map((experience, index) => (
               <ExperiencePanel
                 key={index}
                 experience={experience}
@@ -88,7 +65,7 @@ export default function ExperiencePage() {
           <div style={sectionStyles}>
             <h2 style={sectionHeaderStyles}>Academic Experience</h2>
 
-            {experienceData.academicExperience.map((experience: AcademicExperience, index: number) => (
+            {academicExperience.map((experience, index) => (
               <ExperiencePanel
                 key={index}
                 experience={experience}

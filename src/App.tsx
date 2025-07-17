@@ -1,15 +1,46 @@
+import { useEffect } from "react";
 import { CustomAppBar } from "./components/navigation";
 import { HomePage, ExperiencePage, ProjectsPage } from "./components/pages";
 import SocialLinksFooter from "./components/pages/common/SocialLinksFooter";
 import { Pages } from "./data/appData";
-import { useAppSelector } from "./store/hooks";
+import { useAppSelector, useAppDispatch } from "./store/hooks";
+import { selectAllDataLoading } from "./store/selectors";
+import { fetchAppData } from "./store/slices/appDataSlice";
+import { fetchExperiencePageData } from "./store/slices/experiencePageDataSlice";
+import { fetchHomePageData } from "./store/slices/homePageDataSlice";
+import { fetchProjectsPageData } from "./store/slices/projectsPageDataSlice";
 import { useTheme, createAppStyles, createPageStyles } from "./theme";
 
 function App() {
+  const dispatch = useAppDispatch();
   const currentPage = useAppSelector((state) => state.page.currentPage);
+  const allDataLoading = useAppSelector(selectAllDataLoading);
   const { theme } = useTheme();
 
+  // Load all data on app startup
+  useEffect(() => {
+    dispatch(fetchAppData());
+    dispatch(fetchHomePageData());
+    dispatch(fetchExperiencePageData());
+    dispatch(fetchProjectsPageData());
+  }, [dispatch]);
+
   const renderPageContent = () => {
+    if (allDataLoading) {
+      return (
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          fontSize: theme.typography.fontSize.lg,
+          color: theme.colors.text.onBackground
+        }}>
+          Loading...
+        </div>
+      );
+    }
+
     switch (currentPage) {
       case Pages.Home:
         return <HomePage />;

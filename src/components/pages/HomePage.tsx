@@ -1,34 +1,16 @@
-import { useState, useEffect } from "react";
-import { getHomePageData, type HomePageData, type Technology } from "../../data/homePageData";
+import { useAppSelector } from "../../store/hooks";
+import { selectProfileSummary, selectTechnologies } from "../../store/selectors";
 import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
 import { TechnologyButton } from "./home";
 
 export default function HomePage() {
   const { theme } = useTheme();
-  const [homeData, setHomeData] = useState<HomePageData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const profileSummary = useAppSelector(selectProfileSummary);
+  const technologies = useAppSelector(selectTechnologies);
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const data = await getHomePageData();
-        setHomeData(data);
-      } catch (error) {
-        console.error("Failed to load home page data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!homeData) {
-    return <div>Failed to load home page data</div>;
+  // Return early if data is not loaded yet
+  if (!profileSummary) {
+    return null;
   }
 
   const headerStyles = {
@@ -72,15 +54,15 @@ export default function HomePage() {
   return (
     <div>
       {/* Header */}
-      <h1 style={headerStyles}>{homeData.profileSummary.name} ({homeData.profileSummary.title})</h1>
+      <h1 style={headerStyles}>{profileSummary.name} ({profileSummary.title})</h1>
 
       {/* Profile Summary */}
       <div style={profileSummaryStyles}>
         <p style={profileTextStyles}>
-          {homeData.profileSummary.description.map((paragraph: string, index: number) => (
+          {profileSummary.description.map((paragraph: string, index: number) => (
             <span key={index}>
               {paragraph}
-              {index < homeData.profileSummary.description.length - 1 && <><br /><br /></>}
+              {index < profileSummary.description.length - 1 && <><br /><br /></>}
             </span>
           ))}
         </p>
@@ -90,7 +72,7 @@ export default function HomePage() {
       <div style={{ width: "100%", maxWidth: "800px" }}>
         <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
         <div style={techIconsContainerStyles}>
-          {homeData.technologies.map((tech: Technology) => (
+          {technologies.map((tech) => (
             <TechnologyButton key={tech.name} technology={tech} />
           ))}
         </div>

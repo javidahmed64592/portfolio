@@ -3,13 +3,28 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { pages, Pages } from "../../data";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { selectAppHeaderText } from "../../store/selectors";
+import { Pages } from "../../data";
+import { useAppDispatch } from "../../store/hooks";
 import { setCurrentPage } from "../../store/slices/pageSlice";
 import { useTheme } from "../../theme";
 
-export default function CustomAppBar() {
+interface CustomAppBarProps {
+  appHeaderText: string;
+  pages: Pages[];
+}
+
+interface AppBarHeaderProps {
+  appHeaderText: string;
+}
+
+interface AppBarPagesProps {
+  pages: Pages[];
+}
+
+export default function CustomAppBar({
+  appHeaderText,
+  pages,
+}: CustomAppBarProps) {
   const { theme } = useTheme();
 
   const appBarStyles = {
@@ -17,19 +32,18 @@ export default function CustomAppBar() {
   };
 
   return (
-      <AppBar position="static" sx={appBarStyles}>
-        <Toolbar>
-          <AppBarHeader />
-          <AppBarPages />
-        </Toolbar>
-      </AppBar>
+    <AppBar position="static" sx={appBarStyles}>
+      <Toolbar>
+        <AppBarHeader appHeaderText={appHeaderText} />
+        <AppBarPages pages={pages} />
+      </Toolbar>
+    </AppBar>
   );
 }
 
-function AppBarHeader() {
+function AppBarHeader({ appHeaderText }: AppBarHeaderProps) {
   const { theme } = useTheme();
   const textVariant = "h6";
-  const headerText = useAppSelector(selectAppHeaderText);
 
   const iconStyles = {
     mr: 2,
@@ -45,13 +59,13 @@ function AppBarHeader() {
     <>
       <ComputerIcon sx={iconStyles} />
       <Typography variant={textVariant} component="div" sx={textStyles}>
-        {headerText}
+        {appHeaderText}
       </Typography>
     </>
   );
 }
 
-function AppBarPages() {
+function AppBarPages({ pages }: AppBarPagesProps) {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
 

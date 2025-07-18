@@ -1,12 +1,17 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectProfessionalExperience, selectAcademicExperience } from "../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../theme";
-import { ExperiencePanel } from "./experience";
+import { ExperiencePanel } from "../components/experience";
+import { ProfessionalExperience, AcademicExperience } from "../data";
+import { useTheme, createHeadingStyles } from "../theme";
 
-export default function ExperiencePage() {
+interface ExperiencePageProps {
+  professionalExperience: ProfessionalExperience[];
+  academicExperience: AcademicExperience[];
+}
+
+export default function ExperiencePage({
+  professionalExperience,
+  academicExperience,
+}: ExperiencePageProps) {
   const { theme } = useTheme();
-  const professionalExperience = useAppSelector(selectProfessionalExperience);
-  const academicExperience = useAppSelector(selectAcademicExperience);
 
   const headerStyles = {
     ...createHeadingStyles(theme, "background"),

@@ -1,11 +1,13 @@
-import { useAppSelector } from "../../store/hooks";
-import { selectProjects } from "../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../theme";
-import { ProjectCard } from "./projects";
+import { ProjectCard } from "../components/projects";
+import { GitHubProject } from "../data";
+import { useTheme, createHeadingStyles } from "../theme";
 
-export default function ProjectsPage() {
+interface ProjectsPageProps {
+  projects: GitHubProject[];
+}
+
+export default function ProjectsPage({ projects }: ProjectsPageProps) {
   const { theme } = useTheme();
-  const projects = useAppSelector(selectProjects);
 
   const headerStyles = {
     ...createHeadingStyles(theme, "background"),

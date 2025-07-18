@@ -25,23 +25,27 @@ const projectsPageDataSlice = createSlice({
   name: "projectsPageData",
   initialState,
   reducers: {
-    clearError: (state) => {
+    clearError: state => {
       state.error = null;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchProjectsPageData.pending, (state) => {
+      .addCase(fetchProjectsPageData.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchProjectsPageData.fulfilled, (state, action: PayloadAction<ProjectsPageData>) => {
-        state.loading = false;
-        state.data = action.payload;
-      })
+      .addCase(
+        fetchProjectsPageData.fulfilled,
+        (state, action: PayloadAction<ProjectsPageData>) => {
+          state.loading = false;
+          state.data = action.payload;
+        }
+      )
       .addCase(fetchProjectsPageData.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to fetch projects page data";
+        state.error =
+          action.error.message || "Failed to fetch projects page data";
       });
   },
 });

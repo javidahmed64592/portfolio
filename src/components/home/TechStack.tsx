@@ -1,11 +1,13 @@
-import { useAppSelector } from "../../../store/hooks";
-import { selectTechnologies } from "../../../store/selectors";
-import { useTheme, createHeadingStyles } from "../../../theme";
+import { type Technology } from "../../data/types";
+import { useTheme, createHeadingStyles } from "../../theme";
 import { TechnologyButton } from "./";
 
-export default function TechStack() {
+interface TechStackProps {
+  technologies: Technology[];
+}
+
+export default function TechStack({ technologies }: TechStackProps) {
   const { theme } = useTheme();
-  const technologies = useAppSelector(selectTechnologies);
 
   const sectionTitleStyles = {
     ...createHeadingStyles(theme, "background"),
@@ -27,7 +29,7 @@ export default function TechStack() {
     <div style={{ width: "100%" }}>
       <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
       <div style={techIconsContainerStyles}>
-        {technologies.map((tech) => (
+        {technologies.map(tech => (
           <TechnologyButton key={tech.name} technology={tech} />
         ))}
       </div>

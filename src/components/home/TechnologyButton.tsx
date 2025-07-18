@@ -1,11 +1,13 @@
-import { Technology } from "../../../data";
-import { useTheme, createCardStyles, createTextStyles } from "../../../theme";
+import { Technology } from "../../data";
+import { useTheme, createCardStyles, createTextStyles } from "../../theme";
 
 interface TechnologyButtonProps {
   technology: Technology;
 }
 
-export default function TechnologyButton({ technology }: TechnologyButtonProps) {
+export default function TechnologyButton({
+  technology,
+}: TechnologyButtonProps) {
   const { theme } = useTheme();
 
   const handleClick = () => {
@@ -37,12 +39,14 @@ export default function TechnologyButton({ technology }: TechnologyButtonProps) 
         src={technology.icon}
         alt={`${technology.name} icon`}
         style={iconStyles}
-        onError={(e) => {
+        onError={e => {
           // Hide the image if it fails to load
           e.currentTarget.style.display = "none";
         }}
       />
-      <span style={createTextStyles(theme, "secondary")}>{technology.name}</span>
+      <span style={createTextStyles(theme, "secondary")}>
+        {technology.name}
+      </span>
     </div>
   );
 }

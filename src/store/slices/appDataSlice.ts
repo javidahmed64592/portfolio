@@ -25,20 +25,23 @@ const appDataSlice = createSlice({
   name: "appData",
   initialState,
   reducers: {
-    clearError: (state) => {
+    clearError: state => {
       state.error = null;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchAppData.pending, (state) => {
+      .addCase(fetchAppData.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchAppData.fulfilled, (state, action: PayloadAction<AppData>) => {
-        state.loading = false;
-        state.data = action.payload;
-      })
+      .addCase(
+        fetchAppData.fulfilled,
+        (state, action: PayloadAction<AppData>) => {
+          state.loading = false;
+          state.data = action.payload;
+        }
+      )
       .addCase(fetchAppData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch app data";

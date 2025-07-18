@@ -1,11 +1,13 @@
-import { useAppSelector } from "../../../store/hooks";
-import { selectSocialLinks } from "../../../store/selectors";
-import { useTheme } from "../../../theme";
+import { type SocialLink } from "../../data/types";
+import { useTheme } from "../../theme";
 import SocialLinkButton from "./SocialLinkButton";
 
-export default function Footer() {
+interface FooterProps {
+  socialLinks: SocialLink[];
+}
+
+export default function Footer({ socialLinks }: FooterProps) {
   const { theme } = useTheme();
-  const socialLinks = useAppSelector(selectSocialLinks);
 
   const footerStyles = {
     display: "flex",
@@ -22,7 +24,7 @@ export default function Footer() {
 
   return (
     <div style={footerStyles}>
-      {socialLinks.map((link) => (
+      {socialLinks.map(link => (
         <SocialLinkButton key={link.name} link={link} />
       ))}
     </div>

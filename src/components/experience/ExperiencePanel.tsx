@@ -1,27 +1,25 @@
-import React from "react";
-import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../../theme";
+import {
+  type ProfessionalExperience,
+  type AcademicExperience,
+} from "../../data";
+import {
+  useTheme,
+  createHeadingStyles,
+  createTextStyles,
+  createCardStyles,
+} from "../../theme";
 
-type Project = {
-  title: string;
-  description: string;
-};
-
-type Experience = {
-  company?: string;
-  institution?: string;
-  position?: string;
-  degree?: string;
-  startDate: string;
-  endDate: string;
-  projects: Project[];
-};
+type Experience = ProfessionalExperience | AcademicExperience;
 
 interface ExperiencePanelProps {
   experience: Experience;
   type: "professional" | "academic";
 }
 
-export default function ExperiencePanel({ experience, type }: ExperiencePanelProps) {
+export default function ExperiencePanel({
+  experience,
+  type,
+}: ExperiencePanelProps) {
   const { theme } = useTheme();
 
   const experienceItemStyles = {
@@ -105,16 +103,16 @@ export default function ExperiencePanel({ experience, type }: ExperiencePanelPro
 
   const getTitle = () => {
     if (type === "professional") {
-      return experience.company || "";
+      return (experience as ProfessionalExperience).company || "";
     }
-    return experience.institution || "";
+    return (experience as AcademicExperience).institution || "";
   };
 
   const getSubtitle = () => {
     if (type === "professional") {
-      return experience.position || "";
+      return (experience as ProfessionalExperience).position || "";
     }
-    return experience.degree || "";
+    return (experience as AcademicExperience).degree || "";
   };
 
   return (

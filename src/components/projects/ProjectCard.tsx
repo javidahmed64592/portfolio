@@ -1,15 +1,15 @@
 import React from "react";
-import { useTheme, createHeadingStyles, createTextStyles, createCardStyles, createButtonStyles } from "../../../theme";
-
-type Project = {
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-};
+import { type GitHubProject } from "../../data";
+import {
+  useTheme,
+  createHeadingStyles,
+  createTextStyles,
+  createCardStyles,
+  createButtonStyles,
+} from "../../theme";
 
 interface ProjectCardProps {
-  project: Project;
+  project: GitHubProject;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -79,7 +79,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         src={project.image}
         alt={project.title}
         style={cardImageStyles}
-        onError={(e) => {
+        onError={e => {
           e.currentTarget.style.display = "none";
         }}
       />
@@ -93,7 +93,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         target="_blank"
         rel="noopener noreferrer"
         style={cardButtonStyles}
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         View Project
       </a>

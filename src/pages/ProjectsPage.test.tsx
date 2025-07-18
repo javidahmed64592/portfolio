@@ -1,30 +1,11 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import { type GitHubProject } from "../data";
-import { ThemeProvider } from "../theme/ThemeProvider";
+import { screen } from "@testing-library/react";
+import { mockGitHubProjects, renderWithTheme } from "../test-utils";
 import ProjectsPage from "./ProjectsPage";
 
-// Helper function to render ProjectsPage with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
 describe("ProjectsPage", () => {
-  const mockProjects: GitHubProject[] = [
-    {
-      title: "Portfolio Website",
-      description:
-        "A responsive portfolio website built with React and TypeScript showcasing my projects and experience.",
-      url: "https://github.com/user/portfolio",
-      image: "portfolio-screenshot.png",
-    },
-    {
-      title: "E-commerce API",
-      description:
-        "RESTful API for an e-commerce platform built with Node.js, Express, and MongoDB.",
-      url: "https://github.com/user/ecommerce-api",
-      image: "ecommerce-api-screenshot.png",
-    },
+  const mockProjects = [
+    mockGitHubProjects.portfolio(),
+    mockGitHubProjects.ecommerce(),
   ];
 
   const mockProps = {
@@ -32,32 +13,34 @@ describe("ProjectsPage", () => {
   };
 
   it("renders the main header with correct text", () => {
-    renderWithProviders(<ProjectsPage {...mockProps} />);
+    renderWithTheme(<ProjectsPage {...mockProps} />);
 
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     expect(screen.getByText("Projects")).toBeInTheDocument();
   });
 
   it("renders all project titles", () => {
-    renderWithProviders(<ProjectsPage {...mockProps} />);
+    renderWithTheme(<ProjectsPage {...mockProps} />);
 
-    expect(screen.getByText("Portfolio Website")).toBeInTheDocument();
-    expect(screen.getByText("E-commerce API")).toBeInTheDocument();
+    expect(screen.getByText("React Portfolio")).toBeInTheDocument();
+    expect(screen.getByText("E-commerce Platform")).toBeInTheDocument();
   });
 
   it("renders all project descriptions", () => {
-    renderWithProviders(<ProjectsPage {...mockProps} />);
+    renderWithTheme(<ProjectsPage {...mockProps} />);
 
     expect(
-      screen.getByText(/A responsive portfolio website built with React/)
+      screen.getByText(
+        /A modern portfolio website built with React and TypeScript/
+      )
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/RESTful API for an e-commerce platform/)
+      screen.getByText(/Full-stack e-commerce solution with Node.js backend/)
     ).toBeInTheDocument();
   });
 
   it("renders ProjectCard components for all projects", () => {
-    renderWithProviders(<ProjectsPage {...mockProps} />);
+    renderWithTheme(<ProjectsPage {...mockProps} />);
 
     // Check that all project titles are rendered (ProjectCard should render titles)
     mockProjects.forEach(project => {
@@ -66,7 +49,7 @@ describe("ProjectsPage", () => {
   });
 
   it("has correct component structure", () => {
-    const { container } = renderWithProviders(<ProjectsPage {...mockProps} />);
+    const { container } = renderWithTheme(<ProjectsPage {...mockProps} />);
 
     const mainDiv = container.firstChild as HTMLElement;
     expect(mainDiv).toBeInTheDocument();
@@ -78,7 +61,7 @@ describe("ProjectsPage", () => {
   });
 
   it("renders grid container for projects", () => {
-    const { container } = renderWithProviders(<ProjectsPage {...mockProps} />);
+    const { container } = renderWithTheme(<ProjectsPage {...mockProps} />);
 
     // The projects should be in a grid container
     const gridContainer = container.querySelector("div > div:last-child");

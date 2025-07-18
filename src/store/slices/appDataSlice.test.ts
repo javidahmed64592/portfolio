@@ -1,4 +1,4 @@
-import { AppData } from "../../data";
+import { mockAppData } from "../../test-utils";
 import appDataReducer, { fetchAppData, clearError } from "./appDataSlice";
 
 describe("appDataSlice", () => {
@@ -8,16 +8,7 @@ describe("appDataSlice", () => {
     error: null,
   };
 
-  const mockAppData: AppData = {
-    appHeaderText: "Test Portfolio",
-    socialLinks: [
-      {
-        name: "GitHub",
-        url: "https://github.com/test",
-        icon: "github.svg",
-      },
-    ],
-  };
+  const mockData = mockAppData();
 
   describe("initial state", () => {
     it("should return the initial state when no action is provided", () => {
@@ -53,7 +44,7 @@ describe("appDataSlice", () => {
     it("should handle fulfilled state", () => {
       const action = {
         type: fetchAppData.fulfilled.type,
-        payload: mockAppData,
+        payload: mockData,
       };
       const result = appDataReducer(
         { data: null, loading: true, error: null },
@@ -61,7 +52,7 @@ describe("appDataSlice", () => {
       );
       expect(result.loading).toBe(false);
       expect(result.error).toBeNull();
-      expect(result.data).toEqual(mockAppData);
+      expect(result.data).toEqual(mockData);
     });
 
     it("should handle rejected state with error message", () => {

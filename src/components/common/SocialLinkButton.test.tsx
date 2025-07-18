@@ -1,31 +1,21 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import { ThemeProvider } from "../../theme/ThemeProvider";
+import { screen } from "@testing-library/react";
+import { mockSocialLinks, renderWithTheme } from "../../test-utils";
 import SocialLinkButton from "./SocialLinkButton";
 
-// Helper function to render SocialLinkButton with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
 describe("SocialLinkButton", () => {
-  const mockLink = {
-    name: "GitHub",
-    url: "https://github.com/testuser",
-    icon: "github.svg",
-  };
+  const mockLink = mockSocialLinks.github();
 
   const mockProps = {
     link: mockLink,
   };
 
   it("displays the link name", () => {
-    renderWithProviders(<SocialLinkButton {...mockProps} />);
+    renderWithTheme(<SocialLinkButton {...mockProps} />);
     expect(screen.getByText("GitHub")).toBeInTheDocument();
   });
 
   it("renders as an anchor element with correct href", () => {
-    renderWithProviders(<SocialLinkButton {...mockProps} />);
+    renderWithTheme(<SocialLinkButton {...mockProps} />);
 
     const linkElement = screen.getByRole("link");
     expect(linkElement).toBeInTheDocument();
@@ -33,7 +23,7 @@ describe("SocialLinkButton", () => {
   });
 
   it("opens link in new tab with correct security attributes", () => {
-    renderWithProviders(<SocialLinkButton {...mockProps} />);
+    renderWithTheme(<SocialLinkButton {...mockProps} />);
 
     const linkElement = screen.getByRole("link");
     expect(linkElement).toHaveAttribute("target", "_blank");
@@ -41,11 +31,10 @@ describe("SocialLinkButton", () => {
   });
 
   it("applies correct styling", () => {
-    renderWithProviders(<SocialLinkButton {...mockProps} />);
+    renderWithTheme(<SocialLinkButton {...mockProps} />);
 
     const linkElement = screen.getByRole("link");
 
-    // Check that it has inline styles applied
     expect(linkElement).toHaveStyle({
       textDecoration: "none",
       cursor: "pointer",
@@ -54,7 +43,7 @@ describe("SocialLinkButton", () => {
   });
 
   it("maintains accessibility by providing clickable text", () => {
-    renderWithProviders(<SocialLinkButton {...mockProps} />);
+    renderWithTheme(<SocialLinkButton {...mockProps} />);
 
     const linkElement = screen.getByRole("link", { name: "GitHub" });
     expect(linkElement).toBeInTheDocument();

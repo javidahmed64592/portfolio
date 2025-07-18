@@ -1,4 +1,4 @@
-import { HomePageData } from "../../data";
+import { mockHomePageData } from "../../test-utils";
 import homePageDataReducer, {
   fetchHomePageData,
   clearError,
@@ -11,18 +11,7 @@ describe("homePageDataSlice", () => {
     error: null,
   };
 
-  const mockHomePageData: HomePageData = {
-    profileSummary: {
-      description: ["Test description line 1", "Test description line 2"],
-    },
-    technologies: [
-      {
-        name: "React",
-        url: "https://reactjs.org",
-        icon: "react.svg",
-      },
-    ],
-  };
+  const mockData = mockHomePageData();
 
   describe("initial state", () => {
     it("should return the initial state when no action is provided", () => {
@@ -58,7 +47,7 @@ describe("homePageDataSlice", () => {
     it("should handle fulfilled state", () => {
       const action = {
         type: fetchHomePageData.fulfilled.type,
-        payload: mockHomePageData,
+        payload: mockData,
       };
       const result = homePageDataReducer(
         { data: null, loading: true, error: null },
@@ -66,7 +55,7 @@ describe("homePageDataSlice", () => {
       );
       expect(result.loading).toBe(false);
       expect(result.error).toBeNull();
-      expect(result.data).toEqual(mockHomePageData);
+      expect(result.data).toEqual(mockData);
     });
 
     it("should handle rejected state with error message", () => {

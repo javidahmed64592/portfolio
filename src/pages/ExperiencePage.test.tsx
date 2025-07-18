@@ -1,69 +1,29 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import { type ProfessionalExperience, type AcademicExperience } from "../data";
-import { ThemeProvider } from "../theme/ThemeProvider";
+import { screen } from "@testing-library/react";
+import {
+  mockProfessionalExperience,
+  mockAcademicExperience,
+  renderWithTheme,
+} from "../test-utils";
 import ExperiencePage from "./ExperiencePage";
 
-// Helper function to render ExperiencePage with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
 describe("ExperiencePage", () => {
-  const mockProfessionalExperience: ProfessionalExperience[] = [
-    {
-      company: "Tech Corp",
-      position: "Senior Software Developer",
-      startDate: "2022-01",
-      endDate: "Present",
-      projects: [
-        {
-          title: "E-commerce Platform",
-          description:
-            "Built a scalable e-commerce platform using React and Node.js",
-        },
-        {
-          title: "Mobile App",
-          description: "Developed a React Native mobile application",
-        },
-      ],
-    },
-  ];
-
-  const mockAcademicExperience: AcademicExperience[] = [
-    {
-      institution: "University of Technology",
-      degree: "Master of Computer Science",
-      startDate: "2018-09",
-      endDate: "2020-05",
-      projects: [
-        {
-          title: "Machine Learning Research",
-          description:
-            "Conducted research on neural networks and deep learning algorithms",
-        },
-        {
-          title: "Thesis Project",
-          description: "Developed an AI-powered recommendation system",
-        },
-      ],
-    },
-  ];
+  const professionalExperience = [mockProfessionalExperience.senior()];
+  const academicExperience = [mockAcademicExperience.university()];
 
   const mockProps = {
-    professionalExperience: mockProfessionalExperience,
-    academicExperience: mockAcademicExperience,
+    professionalExperience,
+    academicExperience,
   };
 
   it("renders the main header with correct text", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     expect(screen.getByText("Experience")).toBeInTheDocument();
   });
 
   it("renders Professional Experience section header", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     expect(
       screen.getByRole("heading", { level: 2, name: "Professional Experience" })
@@ -71,7 +31,7 @@ describe("ExperiencePage", () => {
   });
 
   it("renders Academic Experience section header", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     expect(
       screen.getByRole("heading", { level: 2, name: "Academic Experience" })
@@ -79,49 +39,47 @@ describe("ExperiencePage", () => {
   });
 
   it("renders all professional experience entries", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for company names and positions
     expect(screen.getByText("Tech Corp")).toBeInTheDocument();
-    expect(screen.getByText("Senior Software Developer")).toBeInTheDocument();
+    expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
   });
 
   it("renders all academic experience entries", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for institution names and degrees
     expect(screen.getByText("University of Technology")).toBeInTheDocument();
-    expect(screen.getByText("Master of Computer Science")).toBeInTheDocument();
+    expect(
+      screen.getByText("Bachelor of Computer Science")
+    ).toBeInTheDocument();
   });
 
   it("renders professional experience projects", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for project titles and descriptions
-    expect(screen.getByText("E-commerce Platform")).toBeInTheDocument();
+    expect(screen.getByText("Advanced Web Application")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Built a scalable e-commerce platform using React and Node.js"
+        "Developed a complex web application using React and TypeScript with advanced features"
       )
     ).toBeInTheDocument();
   });
 
   it("renders academic experience projects", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for project titles and descriptions
-    expect(screen.getByText("Machine Learning Research")).toBeInTheDocument();
+    expect(screen.getByText("Capstone Project")).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Conducted research on neural networks and deep learning algorithms"
-      )
+      screen.getByText("Machine learning application for data analysis")
     ).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {
-    const { container } = renderWithProviders(
-      <ExperiencePage {...mockProps} />
-    );
+    const { container } = renderWithTheme(<ExperiencePage {...mockProps} />);
 
     const mainDiv = container.firstChild as HTMLElement;
     expect(mainDiv).toBeInTheDocument();
@@ -140,12 +98,12 @@ describe("ExperiencePage", () => {
   });
 
   it("renders experience dates correctly", () => {
-    renderWithProviders(<ExperiencePage {...mockProps} />);
+    renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for date ranges in professional experience
     expect(screen.getByText(/2022-01\s+-\s+Present/)).toBeInTheDocument();
 
     // Check for date ranges in academic experience
-    expect(screen.getByText(/2018-09\s+-\s+2020-05/)).toBeInTheDocument();
+    expect(screen.getByText(/2018-09\s+-\s+2022-05/)).toBeInTheDocument();
   });
 });

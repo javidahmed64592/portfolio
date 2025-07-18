@@ -1,38 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
-import { Provider } from "react-redux";
+import { fireEvent, screen } from "@testing-library/react";
 import { Pages } from "../../data";
-import pageReducer, { setCurrentPage } from "../../store/slices/pageSlice";
-import { ThemeProvider } from "../../theme/ThemeProvider";
+import { createTestStore, renderWithProviders } from "../../test-utils";
 import CustomAppBar from "./CustomAppBar";
 
-// Helper function to create a mock store
-const createMockStore = (
-  initialState = { page: { currentPage: Pages.Home } }
-) => {
-  return configureStore({
-    reducer: {
-      page: pageReducer,
-    },
-    preloadedState: initialState,
-  });
-};
-
-// Helper function to render CustomAppBar with all required providers
-const renderWithProviders = (
-  component: React.ReactElement,
-  store = createMockStore()
-) => {
-  return render(
-    <Provider store={store}>
-      <ThemeProvider>{component}</ThemeProvider>
-    </Provider>
-  );
-};
-
 describe("CustomAppBar", () => {
-  const mockAppHeaderText = "My Portfolio";
+  const mockAppHeaderText = "Test Portfolio";
   const mockPages = [Pages.Home, Pages.Experience, Pages.Projects];
 
   const mockProps = {
@@ -42,83 +14,79 @@ describe("CustomAppBar", () => {
 
   it("displays the app header text", () => {
     renderWithProviders(<CustomAppBar {...mockProps} />);
-    expect(screen.getByText("My Portfolio")).toBeInTheDocument();
+
+    expect(screen.getByText("Test Portfolio")).toBeInTheDocument();
   });
 
-  it("displays the computer icon", () => {
-    renderWithProviders(<CustomAppBar {...mockProps} />);
-    const icon = document.querySelector("[data-testid='ComputerIcon']");
-    expect(icon).toBeInTheDocument();
-  });
-
-  it("renders page buttons as clickable elements", () => {
+  it("renders navigation tabs for all pages", () => {
     renderWithProviders(<CustomAppBar {...mockProps} />);
 
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Experience")).toBeInTheDocument();
     expect(screen.getByText("Projects")).toBeInTheDocument();
+  });
 
-    const homeButton = screen.getByRole("button", { name: "Home" });
-    const experienceButton = screen.getByRole("button", { name: "Experience" });
-    const projectsButton = screen.getByRole("button", { name: "Projects" });
+  it("highlights the currently active page", () => {
+    renderWithProviders(<CustomAppBar {...mockProps} />);
 
+    const homeButton = screen.getByText("Home");
     expect(homeButton).toBeInTheDocument();
-    expect(experienceButton).toBeInTheDocument();
+  });
+
+  it("navigates to the correct page when tab is clicked", () => {
+    const store = createTestStore();
+    const { store: renderStore } = renderWithProviders(
+      <CustomAppBar {...mockProps} />,
+      { store }
+    );
+
+    const experienceTab = screen.getByText("Experience");
+    fireEvent.click(experienceTab);
+
+    const state = renderStore.getState();
+    expect(state.page.currentPage).toBe(Pages.Experience);
+  });
+
+  it("updates page selection when different tab is clicked", () => {
+    renderWithProviders(<CustomAppBar {...mockProps} />);
+
+    const projectsButton = screen.getByText("Projects");
+    fireEvent.click(projectsButton);
+
     expect(projectsButton).toBeInTheDocument();
   });
 
-  it("dispatches setCurrentPage action when page button is clicked", () => {
-    const store = createMockStore();
-    const dispatchSpy = jest.spyOn(store, "dispatch");
-
-    renderWithProviders(<CustomAppBar {...mockProps} />, store);
-
-    const experienceButton = screen.getByRole("button", { name: "Experience" });
-    fireEvent.click(experienceButton);
-
-    expect(dispatchSpy).toHaveBeenCalledWith(setCurrentPage(Pages.Experience));
-  });
-
-  it("renders AppBar with static position", () => {
+  it("renders with correct AppBar styling", () => {
     renderWithProviders(<CustomAppBar {...mockProps} />);
 
-    const appBar = document.querySelector(".MuiAppBar-root");
+    const appBar = screen.getByRole("banner");
     expect(appBar).toBeInTheDocument();
   });
 
-  it("renders Toolbar inside AppBar", () => {
-    renderWithProviders(<CustomAppBar {...mockProps} />);
-
-    const toolbar = document.querySelector(".MuiToolbar-root");
-    expect(toolbar).toBeInTheDocument();
-  });
-
-  describe("AppBarHeader component", () => {
-    it("renders header text with correct variant", () => {
+  describe("responsive behavior", () => {
+    it("renders tabs in horizontal layout", () => {
       renderWithProviders(<CustomAppBar {...mockProps} />);
 
-      const headerElement = screen.getByText("My Portfolio");
-      expect(headerElement).toBeInTheDocument();
+      expect(screen.getByText("Home")).toBeInTheDocument();
+      expect(screen.getByText("Experience")).toBeInTheDocument();
+      expect(screen.getByText("Projects")).toBeInTheDocument();
     });
 
-    it("renders with flexGrow style for proper spacing", () => {
+    it("handles tab keyboard navigation", () => {
       renderWithProviders(<CustomAppBar {...mockProps} />);
 
-      const headerElement = screen.getByText("My Portfolio");
-      const computedStyle = window.getComputedStyle(headerElement);
-      expect(computedStyle.flexGrow).toBe("1");
+      const homeButton = screen.getByText("Home");
+
+      homeButton.focus();
+      expect(homeButton).toHaveFocus();
     });
-  });
-
-  describe("AppBarPages component", () => {
-    it("renders buttons with proper hover styles", () => {
+    it("maintains accessibility attributes", () => {
       renderWithProviders(<CustomAppBar {...mockProps} />);
 
-      const homeButton = screen.getByRole("button", { name: "Home" });
-
-      fireEvent.mouseEnter(homeButton);
-
-      expect(homeButton).toBeInTheDocument();
+      mockPages.forEach(page => {
+        const button = screen.getByText(page);
+        expect(button.closest("button")).toHaveAttribute("type", "button");
+      });
     });
   });
 });

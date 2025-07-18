@@ -1,48 +1,22 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import { type ProfileSummary, type Technology } from "../data";
-import { ThemeProvider } from "../theme/ThemeProvider";
+import { screen } from "@testing-library/react";
+import {
+  mockProfileSummary,
+  createMockTechnologies,
+  renderWithTheme,
+} from "../test-utils";
 import HomePage from "./HomePage";
 
-// Helper function to render HomePage with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
 describe("HomePage", () => {
-  const mockProfileSummary: ProfileSummary = {
-    description: [
-      "I am a passionate software developer with experience in modern web technologies.",
-      "I enjoy building user-friendly applications and solving complex problems.",
-      "Always eager to learn new technologies and improve my skills.",
-    ],
-  };
-
-  const mockTechnologies: Technology[] = [
-    {
-      name: "React",
-      url: "https://reactjs.org/",
-      icon: "react-icon.svg",
-    },
-    {
-      name: "TypeScript",
-      url: "https://www.typescriptlang.org/",
-      icon: "typescript-icon.svg",
-    },
-    {
-      name: "Node.js",
-      url: "https://nodejs.org/",
-      icon: "nodejs-icon.svg",
-    },
-  ];
+  const profileSummary = mockProfileSummary();
+  const technologies = createMockTechnologies(3);
 
   const mockProps = {
-    profileSummary: mockProfileSummary,
-    technologies: mockTechnologies,
+    profileSummary,
+    technologies,
   };
 
   it("renders the main header with correct text", () => {
-    renderWithProviders(<HomePage {...mockProps} />);
+    renderWithTheme(<HomePage {...mockProps} />);
 
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     expect(
@@ -51,7 +25,7 @@ describe("HomePage", () => {
   });
 
   it("renders ProfileSummaryDisplay component", () => {
-    renderWithProviders(<HomePage {...mockProps} />);
+    renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if profile summary content is rendered
     expect(
@@ -66,7 +40,7 @@ describe("HomePage", () => {
   });
 
   it("renders TechStack component", () => {
-    renderWithProviders(<HomePage {...mockProps} />);
+    renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if technologies are rendered by looking for technology names
     expect(screen.getByText("React")).toBeInTheDocument();
@@ -75,7 +49,7 @@ describe("HomePage", () => {
   });
 
   it("has correct component structure", () => {
-    const { container } = renderWithProviders(<HomePage {...mockProps} />);
+    const { container } = renderWithTheme(<HomePage {...mockProps} />);
 
     const mainDiv = container.firstChild as HTMLElement;
     expect(mainDiv).toBeInTheDocument();

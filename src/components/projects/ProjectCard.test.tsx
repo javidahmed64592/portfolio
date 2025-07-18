@@ -1,45 +1,32 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
-import { type GitHubProject } from "../../data";
-import { ThemeProvider } from "../../theme/ThemeProvider";
+import { fireEvent, screen } from "@testing-library/react";
+import {
+  mockGitHubProjects,
+  renderWithTheme,
+  mockWindowOpen,
+} from "../../test-utils";
 import ProjectCard from "./ProjectCard";
 
-// Helper function to render ProjectCard with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
-// Mock window.open
-const mockWindowOpen = jest.fn();
-Object.defineProperty(window, "open", {
-  value: mockWindowOpen,
-  writable: true,
-});
-
 describe("ProjectCard", () => {
-  const mockProject: GitHubProject = {
-    title: "React Portfolio",
-    description: "A modern portfolio website built with React and TypeScript",
-    url: "https://github.com/user/react-portfolio",
-    image: "https://example.com/portfolio-image.jpg",
-  };
+  const mockProject = mockGitHubProjects.portfolio();
 
   const mockProps = {
     project: mockProject,
   };
 
+  let windowOpenMock: jest.MockedFunction<typeof window.open>;
+
   beforeEach(() => {
-    mockWindowOpen.mockClear();
+    windowOpenMock = mockWindowOpen();
   });
 
   it("displays project title", () => {
-    renderWithProviders(<ProjectCard {...mockProps} />);
+    renderWithTheme(<ProjectCard {...mockProps} />);
 
     expect(screen.getByText("React Portfolio")).toBeInTheDocument();
   });
 
   it("displays project description", () => {
-    renderWithProviders(<ProjectCard {...mockProps} />);
+    renderWithTheme(<ProjectCard {...mockProps} />);
 
     expect(
       screen.getByText(
@@ -49,7 +36,7 @@ describe("ProjectCard", () => {
   });
 
   it("renders project image with correct attributes", () => {
-    renderWithProviders(<ProjectCard {...mockProps} />);
+    renderWithTheme(<ProjectCard {...mockProps} />);
 
     const image = screen.getByAltText("React Portfolio");
     expect(image).toBeInTheDocument();
@@ -61,13 +48,13 @@ describe("ProjectCard", () => {
   });
 
   it("renders view project link with correct attributes", () => {
-    renderWithProviders(<ProjectCard {...mockProps} />);
+    renderWithTheme(<ProjectCard {...mockProps} />);
 
     const link = screen.getByRole("link", { name: "View Project" });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute(
       "href",
-      "https://github.com/user/react-portfolio"
+      "https://github.com/testuser/react-portfolio"
     );
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
@@ -75,30 +62,30 @@ describe("ProjectCard", () => {
 
   describe("Interactions", () => {
     it("opens project URL when card is clicked", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const card = screen.getByText("React Portfolio").closest("div");
       fireEvent.click(card!);
 
-      expect(mockWindowOpen).toHaveBeenCalledWith(
-        "https://github.com/user/react-portfolio",
+      expect(windowOpenMock).toHaveBeenCalledWith(
+        "https://github.com/testuser/react-portfolio",
         "_blank",
         "noopener,noreferrer"
       );
     });
 
     it("does not open project URL when link is clicked", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const link = screen.getByRole("link", { name: "View Project" });
       fireEvent.click(link);
 
       // Link should handle navigation itself, not trigger card click
-      expect(mockWindowOpen).not.toHaveBeenCalled();
+      expect(windowOpenMock).not.toHaveBeenCalled();
     });
 
     it("applies hover effects on mouse enter", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const card = screen
         .getByText("React Portfolio")
@@ -110,7 +97,7 @@ describe("ProjectCard", () => {
     });
 
     it("removes hover effects on mouse leave", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const card = screen
         .getByText("React Portfolio")
@@ -129,7 +116,7 @@ describe("ProjectCard", () => {
 
   describe("Component Structure", () => {
     it("renders with correct heading hierarchy", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const titleHeading = screen.getByRole("heading", {
         level: 3,
@@ -139,7 +126,7 @@ describe("ProjectCard", () => {
     });
 
     it("renders main container as clickable element", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const card = screen.getByText("React Portfolio").closest("div");
       expect(card).toBeInTheDocument();
@@ -147,7 +134,7 @@ describe("ProjectCard", () => {
     });
 
     it("applies correct styling structure", () => {
-      const { container } = renderWithProviders(<ProjectCard {...mockProps} />);
+      const { container } = renderWithTheme(<ProjectCard {...mockProps} />);
 
       const card = container.firstChild as HTMLElement;
       expect(card).toHaveStyle({
@@ -160,7 +147,7 @@ describe("ProjectCard", () => {
 
   describe("Image Handling", () => {
     it("hides image on error", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const image = screen.getByAltText("React Portfolio") as HTMLImageElement;
       fireEvent.error(image);
@@ -169,7 +156,7 @@ describe("ProjectCard", () => {
     });
 
     it("renders image with correct styles", () => {
-      renderWithProviders(<ProjectCard {...mockProps} />);
+      renderWithTheme(<ProjectCard {...mockProps} />);
 
       const image = screen.getByAltText("React Portfolio");
       expect(image).toHaveStyle({

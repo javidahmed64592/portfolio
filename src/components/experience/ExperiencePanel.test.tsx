@@ -1,130 +1,95 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
+import { screen } from "@testing-library/react";
 import {
-  type ProfessionalExperience,
-  type AcademicExperience,
-} from "../../data";
-import { ThemeProvider } from "../../theme/ThemeProvider";
+  mockProfessionalExperience,
+  mockAcademicExperience,
+  renderWithTheme,
+} from "../../test-utils";
 import ExperiencePanel from "./ExperiencePanel";
 
-// Helper function to render ExperiencePanel with theme provider
-const renderWithProviders = (component: React.ReactElement) => {
-  return render(<ThemeProvider>{component}</ThemeProvider>);
-};
-
 describe("ExperiencePanel", () => {
-  const mockProfessionalExperience: ProfessionalExperience = {
-    company: "Tech Corp",
-    position: "Senior Software Engineer",
-    startDate: "Jan 2022",
-    endDate: "Present",
-    projects: [
-      {
-        title: "Project Alpha",
-        description: "Developed a web application using React and TypeScript",
-      },
-      {
-        title: "Project Beta",
-        description: "Built a mobile app with React Native and Node.js backend",
-      },
-    ],
-  };
-
-  const mockAcademicExperience: AcademicExperience = {
-    institution: "University of Technology",
-    degree: "Bachelor of Computer Science",
-    startDate: "Sep 2018",
-    endDate: "May 2022",
-    projects: [
-      {
-        title: "Capstone Project",
-        description: "Machine learning application for data analysis",
-      },
-    ],
-  };
-
-  const mockProfessionalExperienceNoProjects: ProfessionalExperience = {
-    company: "StartUp Inc",
-    position: "Junior Developer",
-    startDate: "Jun 2021",
-    endDate: "Dec 2021",
-    projects: [],
-  };
+  const professionalExperience = mockProfessionalExperience.senior();
+  const academicExperience = mockAcademicExperience.university();
+  const professionalExperienceNoProjects =
+    mockProfessionalExperience.noProjects();
 
   describe("Professional Experience", () => {
     const mockProps = {
-      experience: mockProfessionalExperience,
+      experience: professionalExperience,
       type: "professional" as const,
     };
 
-    it("displays company and position", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+    it("displays company name", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
       expect(screen.getByText("Tech Corp")).toBeInTheDocument();
+    });
+
+    it("displays position", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
+
       expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
     });
 
     it("displays date range", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Jan 2022 - Present")).toBeInTheDocument();
+      expect(screen.getByText("2022-01 - Present")).toBeInTheDocument();
     });
 
-    it("renders projects section when projects exist", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+    it("displays projects when available", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Projects")).toBeInTheDocument();
-      expect(screen.getByText("Project Alpha")).toBeInTheDocument();
+      expect(screen.getByText("Advanced Web Application")).toBeInTheDocument();
       expect(
         screen.getByText(
-          "Developed a web application using React and TypeScript"
-        )
-      ).toBeInTheDocument();
-      expect(screen.getByText("Project Beta")).toBeInTheDocument();
-      expect(
-        screen.getByText(
-          "Built a mobile app with React Native and Node.js backend"
+          "Developed a complex web application using React and TypeScript with advanced features"
         )
       ).toBeInTheDocument();
     });
 
-    it("does not render projects section when no projects exist", () => {
+    it("handles experience with no projects", () => {
       const mockPropsNoProjects = {
-        experience: mockProfessionalExperienceNoProjects,
+        experience: professionalExperienceNoProjects,
         type: "professional" as const,
       };
 
-      renderWithProviders(<ExperiencePanel {...mockPropsNoProjects} />);
+      renderWithTheme(<ExperiencePanel {...mockPropsNoProjects} />);
 
+      expect(screen.getByText("Test Company")).toBeInTheDocument();
+      expect(screen.getByText("Software Engineer")).toBeInTheDocument();
       expect(screen.queryByText("Projects")).not.toBeInTheDocument();
     });
   });
 
   describe("Academic Experience", () => {
     const mockProps = {
-      experience: mockAcademicExperience,
+      experience: academicExperience,
       type: "academic" as const,
     };
 
-    it("displays institution and degree", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+    it("displays institution name", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
       expect(screen.getByText("University of Technology")).toBeInTheDocument();
+    });
+
+    it("displays degree", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
+
       expect(
         screen.getByText("Bachelor of Computer Science")
       ).toBeInTheDocument();
     });
 
     it("displays date range", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Sep 2018 - May 2022")).toBeInTheDocument();
+      expect(screen.getByText("2018-09 - 2022-05")).toBeInTheDocument();
     });
 
-    it("renders academic projects", () => {
-      renderWithProviders(<ExperiencePanel {...mockProps} />);
+    it("displays academic projects", () => {
+      renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Projects")).toBeInTheDocument();
       expect(screen.getByText("Capstone Project")).toBeInTheDocument();
       expect(
         screen.getByText("Machine learning application for data analysis")

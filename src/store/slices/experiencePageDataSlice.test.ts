@@ -1,4 +1,4 @@
-import { ExperiencePageData } from "../../data";
+import { mockExperiencePageData } from "../../test-utils";
 import experiencePageDataReducer, {
   fetchExperiencePageData,
   clearError,
@@ -11,36 +11,7 @@ describe("experiencePageDataSlice", () => {
     error: null,
   };
 
-  const mockExperiencePageData: ExperiencePageData = {
-    professionalExperience: [
-      {
-        company: "Test Company",
-        position: "Software Engineer",
-        startDate: "2023-01",
-        endDate: "Present",
-        projects: [
-          {
-            title: "Test Project",
-            description: "Test project description",
-          },
-        ],
-      },
-    ],
-    academicExperience: [
-      {
-        institution: "Test University",
-        degree: "Computer Science",
-        startDate: "2019-09",
-        endDate: "2023-05",
-        projects: [
-          {
-            title: "Academic Project",
-            description: "Academic project description",
-          },
-        ],
-      },
-    ],
-  };
+  const mockData = mockExperiencePageData();
 
   describe("initial state", () => {
     it("should return the initial state when no action is provided", () => {
@@ -76,7 +47,7 @@ describe("experiencePageDataSlice", () => {
     it("should handle fulfilled state", () => {
       const action = {
         type: fetchExperiencePageData.fulfilled.type,
-        payload: mockExperiencePageData,
+        payload: mockData,
       };
       const result = experiencePageDataReducer(
         { data: null, loading: true, error: null },
@@ -84,7 +55,7 @@ describe("experiencePageDataSlice", () => {
       );
       expect(result.loading).toBe(false);
       expect(result.error).toBeNull();
-      expect(result.data).toEqual(mockExperiencePageData);
+      expect(result.data).toEqual(mockData);
     });
 
     it("should handle rejected state with error message", () => {

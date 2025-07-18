@@ -1,4 +1,4 @@
-import { ProjectsPageData } from "../../data";
+import { mockProjectsPageData } from "../../test-utils";
 import projectsPageDataReducer, {
   fetchProjectsPageData,
   clearError,
@@ -11,16 +11,7 @@ describe("projectsPageDataSlice", () => {
     error: null,
   };
 
-  const mockProjectsPageData: ProjectsPageData = {
-    projects: [
-      {
-        title: "Test Project",
-        description: "Test project description",
-        url: "https://github.com/test/project",
-        image: "project.png",
-      },
-    ],
-  };
+  const mockData = mockProjectsPageData();
 
   describe("initial state", () => {
     it("should return the initial state when no action is provided", () => {
@@ -56,7 +47,7 @@ describe("projectsPageDataSlice", () => {
     it("should handle fulfilled state", () => {
       const action = {
         type: fetchProjectsPageData.fulfilled.type,
-        payload: mockProjectsPageData,
+        payload: mockData,
       };
       const result = projectsPageDataReducer(
         { data: null, loading: true, error: null },
@@ -64,7 +55,7 @@ describe("projectsPageDataSlice", () => {
       );
       expect(result.loading).toBe(false);
       expect(result.error).toBeNull();
-      expect(result.data).toEqual(mockProjectsPageData);
+      expect(result.data).toEqual(mockData);
     });
 
     it("should handle rejected state with error message", () => {

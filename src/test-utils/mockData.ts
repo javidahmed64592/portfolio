@@ -109,14 +109,6 @@ export const mockProfessionalExperience = {
     projects: [mockProjects.project_1()],
   }),
 
-  experience_2: (): ProfessionalExperience => ({
-    company: "Professional Company 2",
-    position: "Professional Position 2",
-    startDate: "01/01/2019",
-    endDate: "12/31/2021",
-    projects: [mockProjects.project_2()],
-  }),
-
   noProjects: (): ProfessionalExperience => ({
     company: "No Projects Company",
     position: "No Projects Position",
@@ -181,10 +173,7 @@ export const mockHomePageData = (): HomePageData => ({
 });
 
 export const mockExperiencePageData = (): ExperiencePageData => ({
-  professionalExperience: [
-    mockProfessionalExperience.experience_1(),
-    mockProfessionalExperience.experience_2(),
-  ],
+  professionalExperience: [mockProfessionalExperience.experience_1()],
   academicExperience: [mockAcademicExperience.university()],
 });
 

@@ -5,11 +5,7 @@ import Footer from "./Footer";
 
 // Helper function to render Footer with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("Footer", () => {
@@ -52,7 +48,10 @@ describe("Footer", () => {
     expect(twitterLink).toBeInTheDocument();
 
     expect(githubLink).toHaveAttribute("href", "https://github.com/testuser");
-    expect(linkedinLink).toHaveAttribute("href", "https://linkedin.com/in/testuser");
+    expect(linkedinLink).toHaveAttribute(
+      "href",
+      "https://linkedin.com/in/testuser"
+    );
     expect(twitterLink).toHaveAttribute("href", "https://twitter.com/testuser");
   });
 

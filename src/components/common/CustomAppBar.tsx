@@ -21,7 +21,10 @@ interface AppBarPagesProps {
   pages: Pages[];
 }
 
-export default function CustomAppBar({ appHeaderText, pages }: CustomAppBarProps) {
+export default function CustomAppBar({
+  appHeaderText,
+  pages,
+}: CustomAppBarProps) {
   const { theme } = useTheme();
 
   const appBarStyles = {
@@ -29,12 +32,12 @@ export default function CustomAppBar({ appHeaderText, pages }: CustomAppBarProps
   };
 
   return (
-      <AppBar position="static" sx={appBarStyles}>
-        <Toolbar>
-          <AppBarHeader appHeaderText={appHeaderText} />
-          <AppBarPages pages={pages} />
-        </Toolbar>
-      </AppBar>
+    <AppBar position="static" sx={appBarStyles}>
+      <Toolbar>
+        <AppBarHeader appHeaderText={appHeaderText} />
+        <AppBarPages pages={pages} />
+      </Toolbar>
+    </AppBar>
   );
 }
 

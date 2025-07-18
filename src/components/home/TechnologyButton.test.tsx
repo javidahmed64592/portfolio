@@ -6,11 +6,7 @@ import TechnologyButton from "./TechnologyButton";
 
 // Helper function to render TechnologyButton with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 // Mock window.open
@@ -24,7 +20,7 @@ describe("TechnologyButton", () => {
   const mockTechnology: Technology = {
     name: "React",
     url: "https://reactjs.org",
-    icon: "https://example.com/react-icon.svg"
+    icon: "https://example.com/react-icon.svg",
   };
 
   const mockProps = {
@@ -81,7 +77,9 @@ describe("TechnologyButton", () => {
   });
 
   it("applies correct styling structure", () => {
-    const { container } = renderWithProviders(<TechnologyButton {...mockProps} />);
+    const { container } = renderWithProviders(
+      <TechnologyButton {...mockProps} />
+    );
 
     const button = container.firstChild as HTMLElement;
     expect(button).toHaveStyle({

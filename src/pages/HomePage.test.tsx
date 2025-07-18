@@ -6,11 +6,7 @@ import HomePage from "./HomePage";
 
 // Helper function to render HomePage with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("HomePage", () => {
@@ -18,26 +14,26 @@ describe("HomePage", () => {
     description: [
       "I am a passionate software developer with experience in modern web technologies.",
       "I enjoy building user-friendly applications and solving complex problems.",
-      "Always eager to learn new technologies and improve my skills."
-    ]
+      "Always eager to learn new technologies and improve my skills.",
+    ],
   };
 
   const mockTechnologies: Technology[] = [
     {
       name: "React",
       url: "https://reactjs.org/",
-      icon: "react-icon.svg"
+      icon: "react-icon.svg",
     },
     {
       name: "TypeScript",
       url: "https://www.typescriptlang.org/",
-      icon: "typescript-icon.svg"
+      icon: "typescript-icon.svg",
     },
     {
       name: "Node.js",
       url: "https://nodejs.org/",
-      icon: "nodejs-icon.svg"
-    }
+      icon: "nodejs-icon.svg",
+    },
   ];
 
   const mockProps = {
@@ -49,16 +45,24 @@ describe("HomePage", () => {
     renderWithProviders(<HomePage {...mockProps} />);
 
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-    expect(screen.getByText("Javid Ahmed (Software Developer)")).toBeInTheDocument();
+    expect(
+      screen.getByText("Javid Ahmed (Software Developer)")
+    ).toBeInTheDocument();
   });
 
   it("renders ProfileSummaryDisplay component", () => {
     renderWithProviders(<HomePage {...mockProps} />);
 
     // Check if profile summary content is rendered
-    expect(screen.getByText(/I am a passionate software developer/)).toBeInTheDocument();
-    expect(screen.getByText(/I enjoy building user-friendly applications/)).toBeInTheDocument();
-    expect(screen.getByText(/Always eager to learn new technologies/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/I am a passionate software developer/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/I enjoy building user-friendly applications/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Always eager to learn new technologies/)
+    ).toBeInTheDocument();
   });
 
   it("renders TechStack component", () => {

@@ -24,7 +24,7 @@ export default function Footer({ socialLinks }: FooterProps) {
 
   return (
     <div style={footerStyles}>
-      {socialLinks.map((link) => (
+      {socialLinks.map(link => (
         <SocialLinkButton key={link.name} link={link} />
       ))}
     </div>

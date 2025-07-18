@@ -8,12 +8,12 @@ export const selectAppDataError = (state: RootState) => state.appData.error;
 
 export const selectAppHeaderText = createSelector(
   [selectAppData],
-  (appData) => appData?.appHeaderText || "Portfolio"
+  appData => appData?.appHeaderText || "Portfolio"
 );
 
 export const selectSocialLinks = createSelector(
   [selectAppData],
-  (appData) => appData?.socialLinks || []
+  appData => appData?.socialLinks || []
 );
 
 // Home Page Data Selectors
@@ -25,12 +25,12 @@ export const selectHomePageDataError = (state: RootState) =>
 
 export const selectProfileSummary = createSelector(
   [selectHomePageData],
-  (homePageData) => homePageData?.profileSummary || { description: [] }
+  homePageData => homePageData?.profileSummary || { description: [] }
 );
 
 export const selectTechnologies = createSelector(
   [selectHomePageData],
-  (homePageData) => homePageData?.technologies || []
+  homePageData => homePageData?.technologies || []
 );
 
 // Experience Page Data Selectors
@@ -43,12 +43,12 @@ export const selectExperiencePageDataError = (state: RootState) =>
 
 export const selectProfessionalExperience = createSelector(
   [selectExperiencePageData],
-  (experiencePageData) => experiencePageData?.professionalExperience || []
+  experiencePageData => experiencePageData?.professionalExperience || []
 );
 
 export const selectAcademicExperience = createSelector(
   [selectExperiencePageData],
-  (experiencePageData) => experiencePageData?.academicExperience || []
+  experiencePageData => experiencePageData?.academicExperience || []
 );
 
 // Projects Page Data Selectors
@@ -61,7 +61,7 @@ export const selectProjectsPageDataError = (state: RootState) =>
 
 export const selectProjects = createSelector(
   [selectProjectsPageData],
-  (projectsPageData) => projectsPageData?.projects || []
+  projectsPageData => projectsPageData?.projects || []
 );
 
 // Combined loading state for all data

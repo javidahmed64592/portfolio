@@ -6,11 +6,7 @@ import TechStack from "./TechStack";
 
 // Helper function to render TechStack with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("TechStack", () => {
@@ -18,18 +14,18 @@ describe("TechStack", () => {
     {
       name: "React",
       url: "https://reactjs.org",
-      icon: "https://example.com/react-icon.svg"
+      icon: "https://example.com/react-icon.svg",
     },
     {
       name: "TypeScript",
       url: "https://typescriptlang.org",
-      icon: "https://example.com/typescript-icon.svg"
+      icon: "https://example.com/typescript-icon.svg",
     },
     {
       name: "Node.js",
       url: "https://nodejs.org",
-      icon: "https://example.com/nodejs-icon.svg"
-    }
+      icon: "https://example.com/nodejs-icon.svg",
+    },
   ];
 
   const mockProps = {
@@ -45,7 +41,10 @@ describe("TechStack", () => {
   it("renders section title as h2 heading", () => {
     renderWithProviders(<TechStack {...mockProps} />);
 
-    const heading = screen.getByRole("heading", { level: 2, name: "Technologies & Skills" });
+    const heading = screen.getByRole("heading", {
+      level: 2,
+      name: "Technologies & Skills",
+    });
     expect(heading).toBeInTheDocument();
   });
 

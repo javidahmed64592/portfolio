@@ -8,7 +8,9 @@ import { ThemeProvider } from "../../theme/ThemeProvider";
 import CustomAppBar from "./CustomAppBar";
 
 // Helper function to create a mock store
-const createMockStore = (initialState = { page: { currentPage: Pages.Home } }) => {
+const createMockStore = (
+  initialState = { page: { currentPage: Pages.Home } }
+) => {
   return configureStore({
     reducer: {
       page: pageReducer,
@@ -24,9 +26,7 @@ const renderWithProviders = (
 ) => {
   return render(
     <Provider store={store}>
-      <ThemeProvider>
-        {component}
-      </ThemeProvider>
+      <ThemeProvider>{component}</ThemeProvider>
     </Provider>
   );
 };
@@ -47,7 +47,7 @@ describe("CustomAppBar", () => {
 
   it("displays the computer icon", () => {
     renderWithProviders(<CustomAppBar {...mockProps} />);
-    const icon = document.querySelector("[data-testid=\"ComputerIcon\"]");
+    const icon = document.querySelector("[data-testid='ComputerIcon']");
     expect(icon).toBeInTheDocument();
   });
 

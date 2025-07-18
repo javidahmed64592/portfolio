@@ -118,28 +118,28 @@ describe("theme", () => {
     });
 
     it("should have numeric font weight values", () => {
-      Object.values(defaultTheme.typography.fontWeight).forEach((weight) => {
+      Object.values(defaultTheme.typography.fontWeight).forEach(weight => {
         expect(typeof weight).toBe("number");
         expect(weight).toBeGreaterThan(0);
       });
     });
 
     it("should have string pixel values for spacing", () => {
-      Object.values(defaultTheme.spacing).forEach((spacing) => {
+      Object.values(defaultTheme.spacing).forEach(spacing => {
         expect(typeof spacing).toBe("string");
         expect(spacing).toMatch(/^\d+px$/);
       });
     });
 
     it("should have string pixel values for font sizes", () => {
-      Object.values(defaultTheme.typography.fontSize).forEach((fontSize) => {
+      Object.values(defaultTheme.typography.fontSize).forEach(fontSize => {
         expect(typeof fontSize).toBe("string");
         expect(fontSize).toMatch(/^\d+px$/);
       });
     });
 
     it("should have string pixel values for breakpoints", () => {
-      Object.values(defaultTheme.breakpoints).forEach((breakpoint) => {
+      Object.values(defaultTheme.breakpoints).forEach(breakpoint => {
         expect(typeof breakpoint).toBe("string");
         expect(breakpoint).toMatch(/^\d+px$/);
       });
@@ -155,7 +155,7 @@ describe("theme", () => {
       expect(defaultTheme.colors.accent).toMatch(hexColorRegex);
       expect(defaultTheme.colors.border).toMatch(hexColorRegex);
 
-      Object.values(defaultTheme.colors.text).forEach((textColor) => {
+      Object.values(defaultTheme.colors.text).forEach(textColor => {
         expect(textColor).toMatch(hexColorRegex);
       });
     });

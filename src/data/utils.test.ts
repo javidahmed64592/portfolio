@@ -75,7 +75,7 @@ describe("Utils", () => {
         expect(fetch).toHaveBeenCalledWith("/assets/data/appData.json");
         expect(result).toEqual({
           appHeaderText: mockData.appHeaderText,
-          socialLinks: mockData.socialLinks.map((link) => ({
+          socialLinks: mockData.socialLinks.map(link => ({
             ...link,
             icon: iconPath(link.icon),
           })),
@@ -120,7 +120,7 @@ describe("Utils", () => {
         expect(fetch).toHaveBeenCalledWith("/assets/data/homePageData.json");
         expect(result).toEqual({
           profileSummary: mockData.profileSummary,
-          technologies: mockData.technologies.map((tech) => ({
+          technologies: mockData.technologies.map(tech => ({
             ...tech,
             icon: iconPath(tech.icon),
           })),
@@ -222,7 +222,7 @@ describe("Utils", () => {
           "/assets/data/projectsPageData.json"
         );
         expect(result).toEqual({
-          projects: mockData.projects.map((project) => ({
+          projects: mockData.projects.map(project => ({
             ...project,
             image: imagePath(project.image),
           })),

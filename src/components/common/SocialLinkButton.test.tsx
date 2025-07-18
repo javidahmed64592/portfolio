@@ -5,11 +5,7 @@ import SocialLinkButton from "./SocialLinkButton";
 
 // Helper function to render SocialLinkButton with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("SocialLinkButton", () => {

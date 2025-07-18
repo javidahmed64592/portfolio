@@ -24,7 +24,10 @@ export const createPageStyles = (theme: Theme): CSSProperties => {
   };
 };
 
-export const createHeadingStyles = (theme: Theme, variant: "primary" | "secondary" | "tertiary" | "background" = "primary"): CSSProperties => {
+export const createHeadingStyles = (
+  theme: Theme,
+  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
       case "primary":
@@ -47,7 +50,10 @@ export const createHeadingStyles = (theme: Theme, variant: "primary" | "secondar
   };
 };
 
-export const createTextStyles = (theme: Theme, variant: "primary" | "secondary" | "tertiary" | "background" = "primary"): CSSProperties => {
+export const createTextStyles = (
+  theme: Theme,
+  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
       case "primary":
@@ -68,7 +74,10 @@ export const createTextStyles = (theme: Theme, variant: "primary" | "secondary" 
   };
 };
 
-export const createButtonStyles = (theme: Theme, variant: "primary" | "secondary" | "tertiary" = "primary"): CSSProperties => {
+export const createButtonStyles = (
+  theme: Theme,
+  variant: "primary" | "secondary" | "tertiary" = "primary"
+): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
       case "primary":
@@ -104,7 +113,10 @@ export const createButtonStyles = (theme: Theme, variant: "primary" | "secondary
   };
 };
 
-export const createCardStyles = (theme: Theme, variant: "primary" | "secondary" | "tertiary" = "secondary"): CSSProperties => {
+export const createCardStyles = (
+  theme: Theme,
+  variant: "primary" | "secondary" | "tertiary" = "secondary"
+): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
       case "primary":

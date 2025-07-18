@@ -34,9 +34,15 @@ describe("ThemeProvider", () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId("primary-color")).toHaveTextContent(defaultTheme.colors.primary);
-    expect(screen.getByTestId("font-family")).toHaveTextContent(defaultTheme.typography.fontFamily);
-    expect(screen.getByTestId("spacing-md")).toHaveTextContent(defaultTheme.spacing.md);
+    expect(screen.getByTestId("primary-color")).toHaveTextContent(
+      defaultTheme.colors.primary
+    );
+    expect(screen.getByTestId("font-family")).toHaveTextContent(
+      defaultTheme.typography.fontFamily
+    );
+    expect(screen.getByTestId("spacing-md")).toHaveTextContent(
+      defaultTheme.spacing.md
+    );
   });
 
   it("should provide custom theme when theme prop is passed", () => {
@@ -62,8 +68,12 @@ describe("ThemeProvider", () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId("primary-color")).toHaveTextContent("#custom-primary");
-    expect(screen.getByTestId("font-family")).toHaveTextContent("Custom Font Family");
+    expect(screen.getByTestId("primary-color")).toHaveTextContent(
+      "#custom-primary"
+    );
+    expect(screen.getByTestId("font-family")).toHaveTextContent(
+      "Custom Font Family"
+    );
     expect(screen.getByTestId("spacing-md")).toHaveTextContent("20px");
   });
 
@@ -78,7 +88,9 @@ describe("ThemeProvider", () => {
 
     expect(screen.getByTestId("child1")).toBeInTheDocument();
     expect(screen.getByTestId("child2")).toBeInTheDocument();
-    expect(screen.getByTestId("primary-color")).toHaveTextContent(defaultTheme.colors.primary);
+    expect(screen.getByTestId("primary-color")).toHaveTextContent(
+      defaultTheme.colors.primary
+    );
   });
 
   it("should handle nested providers correctly", () => {
@@ -117,8 +129,12 @@ describe("ThemeProvider", () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId("outer-primary")).toHaveTextContent("#outer-primary");
-    expect(screen.getByTestId("inner-primary")).toHaveTextContent("#inner-primary");
+    expect(screen.getByTestId("outer-primary")).toHaveTextContent(
+      "#outer-primary"
+    );
+    expect(screen.getByTestId("inner-primary")).toHaveTextContent(
+      "#inner-primary"
+    );
   });
 
   it("should preserve theme reference when theme prop doesn't change", () => {

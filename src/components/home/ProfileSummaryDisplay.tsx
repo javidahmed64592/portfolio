@@ -5,7 +5,9 @@ interface ProfileSummaryProps {
   profileSummary: ProfileSummary;
 }
 
-export default function ProfileSummaryDisplay({ profileSummary }: ProfileSummaryProps) {
+export default function ProfileSummaryDisplay({
+  profileSummary,
+}: ProfileSummaryProps) {
   const { theme } = useTheme();
 
   const profileSummaryStyles = {
@@ -24,14 +26,19 @@ export default function ProfileSummaryDisplay({ profileSummary }: ProfileSummary
 
   return (
     <div style={profileSummaryStyles}>
-    <p style={profileTextStyles}>
+      <p style={profileTextStyles}>
         {profileSummary.description.map((paragraph: string, index: number) => (
-        <span key={index}>
+          <span key={index}>
             {paragraph}
-            {index < profileSummary.description.length - 1 && <><br /><br /></>}
-        </span>
+            {index < profileSummary.description.length - 1 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}
+          </span>
         ))}
-    </p>
+      </p>
     </div>
   );
 }

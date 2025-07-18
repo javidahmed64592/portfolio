@@ -7,7 +7,10 @@ interface ExperiencePageProps {
   academicExperience: AcademicExperience[];
 }
 
-export default function ExperiencePage({ professionalExperience, academicExperience }: ExperiencePageProps) {
+export default function ExperiencePage({
+  professionalExperience,
+  academicExperience,
+}: ExperiencePageProps) {
   const { theme } = useTheme();
 
   const headerStyles = {

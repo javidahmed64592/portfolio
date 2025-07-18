@@ -1,16 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { type ProfessionalExperience, type AcademicExperience } from "../../data";
+import {
+  type ProfessionalExperience,
+  type AcademicExperience,
+} from "../../data";
 import { ThemeProvider } from "../../theme/ThemeProvider";
 import ExperiencePanel from "./ExperiencePanel";
 
 // Helper function to render ExperiencePanel with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("ExperiencePanel", () => {
@@ -22,13 +21,13 @@ describe("ExperiencePanel", () => {
     projects: [
       {
         title: "Project Alpha",
-        description: "Developed a web application using React and TypeScript"
+        description: "Developed a web application using React and TypeScript",
       },
       {
         title: "Project Beta",
-        description: "Built a mobile app with React Native and Node.js backend"
-      }
-    ]
+        description: "Built a mobile app with React Native and Node.js backend",
+      },
+    ],
   };
 
   const mockAcademicExperience: AcademicExperience = {
@@ -39,9 +38,9 @@ describe("ExperiencePanel", () => {
     projects: [
       {
         title: "Capstone Project",
-        description: "Machine learning application for data analysis"
-      }
-    ]
+        description: "Machine learning application for data analysis",
+      },
+    ],
   };
 
   const mockProfessionalExperienceNoProjects: ProfessionalExperience = {
@@ -49,7 +48,7 @@ describe("ExperiencePanel", () => {
     position: "Junior Developer",
     startDate: "Jun 2021",
     endDate: "Dec 2021",
-    projects: []
+    projects: [],
   };
 
   describe("Professional Experience", () => {
@@ -76,9 +75,17 @@ describe("ExperiencePanel", () => {
 
       expect(screen.getByText("Projects")).toBeInTheDocument();
       expect(screen.getByText("Project Alpha")).toBeInTheDocument();
-      expect(screen.getByText("Developed a web application using React and TypeScript")).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          "Developed a web application using React and TypeScript"
+        )
+      ).toBeInTheDocument();
       expect(screen.getByText("Project Beta")).toBeInTheDocument();
-      expect(screen.getByText("Built a mobile app with React Native and Node.js backend")).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          "Built a mobile app with React Native and Node.js backend"
+        )
+      ).toBeInTheDocument();
     });
 
     it("does not render projects section when no projects exist", () => {
@@ -103,7 +110,9 @@ describe("ExperiencePanel", () => {
       renderWithProviders(<ExperiencePanel {...mockProps} />);
 
       expect(screen.getByText("University of Technology")).toBeInTheDocument();
-      expect(screen.getByText("Bachelor of Computer Science")).toBeInTheDocument();
+      expect(
+        screen.getByText("Bachelor of Computer Science")
+      ).toBeInTheDocument();
     });
 
     it("displays date range", () => {
@@ -117,7 +126,9 @@ describe("ExperiencePanel", () => {
 
       expect(screen.getByText("Projects")).toBeInTheDocument();
       expect(screen.getByText("Capstone Project")).toBeInTheDocument();
-      expect(screen.getByText("Machine learning application for data analysis")).toBeInTheDocument();
+      expect(
+        screen.getByText("Machine learning application for data analysis")
+      ).toBeInTheDocument();
     });
   });
 });

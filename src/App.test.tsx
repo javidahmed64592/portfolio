@@ -28,9 +28,7 @@ const renderWithProviders = (component: React.ReactElement) => {
   const store = createTestStore();
   return render(
     <Provider store={store}>
-      <ThemeProvider>
-        {component}
-      </ThemeProvider>
+      <ThemeProvider>{component}</ThemeProvider>
     </Provider>
   );
 };

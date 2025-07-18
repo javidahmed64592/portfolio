@@ -6,11 +6,7 @@ import ExperiencePage from "./ExperiencePage";
 
 // Helper function to render ExperiencePage with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("ExperiencePage", () => {
@@ -23,14 +19,15 @@ describe("ExperiencePage", () => {
       projects: [
         {
           title: "E-commerce Platform",
-          description: "Built a scalable e-commerce platform using React and Node.js"
+          description:
+            "Built a scalable e-commerce platform using React and Node.js",
         },
         {
           title: "Mobile App",
-          description: "Developed a React Native mobile application"
-        }
-      ]
-    }
+          description: "Developed a React Native mobile application",
+        },
+      ],
+    },
   ];
 
   const mockAcademicExperience: AcademicExperience[] = [
@@ -42,14 +39,15 @@ describe("ExperiencePage", () => {
       projects: [
         {
           title: "Machine Learning Research",
-          description: "Conducted research on neural networks and deep learning algorithms"
+          description:
+            "Conducted research on neural networks and deep learning algorithms",
         },
         {
           title: "Thesis Project",
-          description: "Developed an AI-powered recommendation system"
-        }
-      ]
-    }
+          description: "Developed an AI-powered recommendation system",
+        },
+      ],
+    },
   ];
 
   const mockProps = {
@@ -67,13 +65,17 @@ describe("ExperiencePage", () => {
   it("renders Professional Experience section header", () => {
     renderWithProviders(<ExperiencePage {...mockProps} />);
 
-    expect(screen.getByRole("heading", { level: 2, name: "Professional Experience" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Professional Experience" })
+    ).toBeInTheDocument();
   });
 
   it("renders Academic Experience section header", () => {
     renderWithProviders(<ExperiencePage {...mockProps} />);
 
-    expect(screen.getByRole("heading", { level: 2, name: "Academic Experience" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Academic Experience" })
+    ).toBeInTheDocument();
   });
 
   it("renders all professional experience entries", () => {
@@ -97,7 +99,11 @@ describe("ExperiencePage", () => {
 
     // Check for project titles and descriptions
     expect(screen.getByText("E-commerce Platform")).toBeInTheDocument();
-    expect(screen.getByText("Built a scalable e-commerce platform using React and Node.js")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Built a scalable e-commerce platform using React and Node.js"
+      )
+    ).toBeInTheDocument();
   });
 
   it("renders academic experience projects", () => {
@@ -105,11 +111,17 @@ describe("ExperiencePage", () => {
 
     // Check for project titles and descriptions
     expect(screen.getByText("Machine Learning Research")).toBeInTheDocument();
-    expect(screen.getByText("Conducted research on neural networks and deep learning algorithms")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Conducted research on neural networks and deep learning algorithms"
+      )
+    ).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {
-    const { container } = renderWithProviders(<ExperiencePage {...mockProps} />);
+    const { container } = renderWithProviders(
+      <ExperiencePage {...mockProps} />
+    );
 
     const mainDiv = container.firstChild as HTMLElement;
     expect(mainDiv).toBeInTheDocument();

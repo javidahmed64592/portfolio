@@ -6,11 +6,7 @@ import ProfileSummaryDisplay from "./ProfileSummaryDisplay";
 
 // Helper function to render ProfileSummaryDisplay with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("ProfileSummaryDisplay", () => {
@@ -18,8 +14,8 @@ describe("ProfileSummaryDisplay", () => {
     description: [
       "I am a passionate software developer with experience in modern web technologies.",
       "I enjoy building user-friendly applications and solving complex problems.",
-      "Always eager to learn new technologies and improve my skills."
-    ]
+      "Always eager to learn new technologies and improve my skills.",
+    ],
   };
 
   const mockProps = {
@@ -29,9 +25,15 @@ describe("ProfileSummaryDisplay", () => {
   it("displays all profile description paragraphs", () => {
     renderWithProviders(<ProfileSummaryDisplay {...mockProps} />);
 
-    expect(screen.getByText(/I am a passionate software developer/)).toBeInTheDocument();
-    expect(screen.getByText(/I enjoy building user-friendly applications/)).toBeInTheDocument();
-    expect(screen.getByText(/Always eager to learn new technologies/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/I am a passionate software developer/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/I enjoy building user-friendly applications/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Always eager to learn new technologies/)
+    ).toBeInTheDocument();
   });
 
   it("renders profile summary in a paragraph element", () => {
@@ -42,7 +44,9 @@ describe("ProfileSummaryDisplay", () => {
   });
 
   it("renders with correct styling structure", () => {
-    const { container } = renderWithProviders(<ProfileSummaryDisplay {...mockProps} />);
+    const { container } = renderWithProviders(
+      <ProfileSummaryDisplay {...mockProps} />
+    );
 
     const mainDiv = container.firstChild as HTMLElement;
     expect(mainDiv).toBeInTheDocument();

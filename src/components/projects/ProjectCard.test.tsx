@@ -6,11 +6,7 @@ import ProjectCard from "./ProjectCard";
 
 // Helper function to render ProjectCard with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 // Mock window.open
@@ -25,7 +21,7 @@ describe("ProjectCard", () => {
     title: "React Portfolio",
     description: "A modern portfolio website built with React and TypeScript",
     url: "https://github.com/user/react-portfolio",
-    image: "https://example.com/portfolio-image.jpg"
+    image: "https://example.com/portfolio-image.jpg",
   };
 
   const mockProps = {
@@ -45,7 +41,11 @@ describe("ProjectCard", () => {
   it("displays project description", () => {
     renderWithProviders(<ProjectCard {...mockProps} />);
 
-    expect(screen.getByText("A modern portfolio website built with React and TypeScript")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "A modern portfolio website built with React and TypeScript"
+      )
+    ).toBeInTheDocument();
   });
 
   it("renders project image with correct attributes", () => {
@@ -53,7 +53,10 @@ describe("ProjectCard", () => {
 
     const image = screen.getByAltText("React Portfolio");
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", "https://example.com/portfolio-image.jpg");
+    expect(image).toHaveAttribute(
+      "src",
+      "https://example.com/portfolio-image.jpg"
+    );
     expect(image).toHaveAttribute("alt", "React Portfolio");
   });
 
@@ -62,7 +65,10 @@ describe("ProjectCard", () => {
 
     const link = screen.getByRole("link", { name: "View Project" });
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute("href", "https://github.com/user/react-portfolio");
+    expect(link).toHaveAttribute(
+      "href",
+      "https://github.com/user/react-portfolio"
+    );
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
@@ -94,7 +100,9 @@ describe("ProjectCard", () => {
     it("applies hover effects on mouse enter", () => {
       renderWithProviders(<ProjectCard {...mockProps} />);
 
-      const card = screen.getByText("React Portfolio").closest("div") as HTMLElement;
+      const card = screen
+        .getByText("React Portfolio")
+        .closest("div") as HTMLElement;
       fireEvent.mouseEnter(card);
 
       expect(card.style.transform).toBe("translateY(-4px)");
@@ -104,7 +112,9 @@ describe("ProjectCard", () => {
     it("removes hover effects on mouse leave", () => {
       renderWithProviders(<ProjectCard {...mockProps} />);
 
-      const card = screen.getByText("React Portfolio").closest("div") as HTMLElement;
+      const card = screen
+        .getByText("React Portfolio")
+        .closest("div") as HTMLElement;
 
       // First hover to apply effects
       fireEvent.mouseEnter(card);
@@ -121,7 +131,10 @@ describe("ProjectCard", () => {
     it("renders with correct heading hierarchy", () => {
       renderWithProviders(<ProjectCard {...mockProps} />);
 
-      const titleHeading = screen.getByRole("heading", { level: 3, name: "React Portfolio" });
+      const titleHeading = screen.getByRole("heading", {
+        level: 3,
+        name: "React Portfolio",
+      });
       expect(titleHeading).toBeInTheDocument();
     });
 

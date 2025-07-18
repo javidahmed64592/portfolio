@@ -7,15 +7,18 @@ interface HomePageProps {
   technologies: Technology[];
 }
 
-export default function HomePage({profileSummary, technologies}: HomePageProps) {
+export default function HomePage({
+  profileSummary,
+  technologies,
+}: HomePageProps) {
   const { theme } = useTheme();
 
   const headerStyles = {
-      ...createHeadingStyles(theme, "background"),
-      alignSelf: "flex-start",
-      fontSize: theme.typography.fontSize.xxl,
-      marginBottom: theme.spacing.md,
-    };
+    ...createHeadingStyles(theme, "background"),
+    alignSelf: "flex-start",
+    fontSize: theme.typography.fontSize.xxl,
+    marginBottom: theme.spacing.md,
+  };
 
   return (
     <div>

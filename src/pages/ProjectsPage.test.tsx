@@ -6,26 +6,24 @@ import ProjectsPage from "./ProjectsPage";
 
 // Helper function to render ProjectsPage with theme provider
 const renderWithProviders = (component: React.ReactElement) => {
-  return render(
-    <ThemeProvider>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider>{component}</ThemeProvider>);
 };
 
 describe("ProjectsPage", () => {
   const mockProjects: GitHubProject[] = [
     {
       title: "Portfolio Website",
-      description: "A responsive portfolio website built with React and TypeScript showcasing my projects and experience.",
+      description:
+        "A responsive portfolio website built with React and TypeScript showcasing my projects and experience.",
       url: "https://github.com/user/portfolio",
-      image: "portfolio-screenshot.png"
+      image: "portfolio-screenshot.png",
     },
     {
       title: "E-commerce API",
-      description: "RESTful API for an e-commerce platform built with Node.js, Express, and MongoDB.",
+      description:
+        "RESTful API for an e-commerce platform built with Node.js, Express, and MongoDB.",
       url: "https://github.com/user/ecommerce-api",
-      image: "ecommerce-api-screenshot.png"
+      image: "ecommerce-api-screenshot.png",
     },
   ];
 
@@ -50,8 +48,12 @@ describe("ProjectsPage", () => {
   it("renders all project descriptions", () => {
     renderWithProviders(<ProjectsPage {...mockProps} />);
 
-    expect(screen.getByText(/A responsive portfolio website built with React/)).toBeInTheDocument();
-    expect(screen.getByText(/RESTful API for an e-commerce platform/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/A responsive portfolio website built with React/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/RESTful API for an e-commerce platform/)
+    ).toBeInTheDocument();
   });
 
   it("renders ProjectCard components for all projects", () => {

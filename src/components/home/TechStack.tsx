@@ -29,7 +29,7 @@ export default function TechStack({ technologies }: TechStackProps) {
     <div style={{ width: "100%" }}>
       <h2 style={sectionTitleStyles}>Technologies & Skills</h2>
       <div style={techIconsContainerStyles}>
-        {technologies.map((tech) => (
+        {technologies.map(tech => (
           <TechnologyButton key={tech.name} technology={tech} />
         ))}
       </div>

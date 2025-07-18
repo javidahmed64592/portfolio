@@ -1,5 +1,13 @@
-import { type ProfessionalExperience, type AcademicExperience } from "../../data";
-import { useTheme, createHeadingStyles, createTextStyles, createCardStyles } from "../../theme";
+import {
+  type ProfessionalExperience,
+  type AcademicExperience,
+} from "../../data";
+import {
+  useTheme,
+  createHeadingStyles,
+  createTextStyles,
+  createCardStyles,
+} from "../../theme";
 
 type Experience = ProfessionalExperience | AcademicExperience;
 
@@ -8,7 +16,10 @@ interface ExperiencePanelProps {
   type: "professional" | "academic";
 }
 
-export default function ExperiencePanel({ experience, type }: ExperiencePanelProps) {
+export default function ExperiencePanel({
+  experience,
+  type,
+}: ExperiencePanelProps) {
   const { theme } = useTheme();
 
   const experienceItemStyles = {

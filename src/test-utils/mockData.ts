@@ -183,70 +183,6 @@ export const mockProjectsPageData = (): ProjectsPageData => ({
   projects: [mockGitHubProjects.portfolio(), mockGitHubProjects.ecommerce()],
 });
 
-// Configurable builders for custom scenarios
-export const createMockAppData = (
-  overrides: Partial<AppData> = {}
-): AppData => ({
-  ...mockAppData(),
-  ...overrides,
-});
-
-export const createMockHomePageData = (
-  overrides: Partial<HomePageData> = {}
-): HomePageData => ({
-  ...mockHomePageData(),
-  ...overrides,
-});
-
-export const createMockExperiencePageData = (
-  overrides: Partial<ExperiencePageData> = {}
-): ExperiencePageData => ({
-  ...mockExperiencePageData(),
-  ...overrides,
-});
-
-export const createMockProjectsPageData = (
-  overrides: Partial<ProjectsPageData> = {}
-): ProjectsPageData => ({
-  ...mockProjectsPageData(),
-  ...overrides,
-});
-
-export const createMockTechnology = (
-  overrides: Partial<Technology> = {}
-): Technology => ({
-  ...mockTechnologies.react(),
-  ...overrides,
-});
-
-export const createMockSocialLink = (
-  overrides: Partial<SocialLink> = {}
-): SocialLink => ({
-  ...mockSocialLinks.github(),
-  ...overrides,
-});
-
-export const createMockGitHubProject = (
-  overrides: Partial<GitHubProject> = {}
-): GitHubProject => ({
-  ...mockGitHubProjects.portfolio(),
-  ...overrides,
-});
-
-export const createMockProfessionalExperience = (
-  overrides: Partial<ProfessionalExperience> = {}
-): ProfessionalExperience => ({
-  ...mockProfessionalExperience.senior(),
-  ...overrides,
-});
-
-export const createMockAcademicExperience = (
-  overrides: Partial<AcademicExperience> = {}
-): AcademicExperience => ({
-  ...mockAcademicExperience.university(),
-  ...overrides,
-});
-
 // Array builders for common scenarios
 export const createMockTechnologies = (count: number = 3): Technology[] => {
   const technologies = [
@@ -265,16 +201,4 @@ export const createMockSocialLinks = (count: number = 2): SocialLink[] => {
     mockSocialLinks.twitter(),
   ];
   return links.slice(0, count);
-};
-
-export const createMockProjects = (count: number = 2): Project[] => {
-  const projects = [
-    mockProjects.detailed(),
-    mockProjects.basic(),
-    {
-      title: "Mobile Application",
-      description: "Cross-platform mobile app with React Native",
-    },
-  ];
-  return projects.slice(0, count);
 };

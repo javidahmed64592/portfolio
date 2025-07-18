@@ -1,48 +1,65 @@
 <!-- omit from toc -->
 # Portfolio Web App
+A portfolio web application built with React, TypeScript, and Material-UI, showcasing professional experience, technical skills, and personal projects.
+Built with Redux Toolkit for state management, the app dynamically loads content from JSON data files and includes comprehensive testing with Jest and React Testing Library.
+The application is deployed via GitHub Pages and demonstrates proficiency in modern web development practices including TypeScript, responsive design, and CI/CD workflows.
 
-TODO: Write brief summary about web application. It uses TypeScript and is served using Github pages, and will be used to showcase my Github projects.
+## Tech Stack
+
+- **Frontend**: React, TypeScript, Material-UI
+- **State Management**: Redux Toolkit
+- **Testing**: Jest, React Testing Library
+- **Code Quality**: ESLint, Prettier
+- **Deployment**: GitHub Pages, GitHub Actions CI/CD
 
 <!-- omit from toc -->
 ## Table of Contents
-- [React Scripts](#react-scripts)
-  - [`npm start`](#npm-start)
-  - [`npm test`](#npm-test)
-  - [`npm run build`](#npm-run-build)
+- [Tech Stack](#tech-stack)
+- [Development](#development)
+  - [Running the Application](#running-the-application)
+  - [Building the Application](#building-the-application)
+  - [Deploying the Application](#deploying-the-application)
 - [Code Checking](#code-checking)
 - [License](#license)
 
-## React Scripts
+## Development
 
-In the project directory, you can run:
+### Running the Application
+Run the app in the development mode:
 
-### `npm start`
+```sh
+npm start
+```
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Building the Application
+Build the app for production to the `build` folder:
 
-### `npm test`
+```sh
+npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It bundles React in production mode and optimizes the build for the best performance.
 
-### `npm run build`
+### Deploying the Application
+The application is automatically deployed to GitHub Pages via GitHub Actions workflow.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Automatic Trigger**: Deployment runs automatically on every push to the `main` branch
+1. **Manual Trigger**: Can also be triggered manually via the GitHub Actions tab
+1. **Build Process**:
+   - Sets up Node.js environment with latest version
+   - Installs dependencies with `npm ci`
+   - Builds the production bundle with `npm run build`
+   - Uploads the `build` folder as a Pages artifact
+1. **Deployment**: Deploys the artifact to GitHub Pages with proper permissions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The live application is available at: [https://javidahmed64592.github.io/portfolio](https://javidahmed64592.github.io/portfolio)
 
 ## Code Checking
 
 - **Run tests:** `npm test`
-- **Run linting:** `npm run lint`
+- **Run linting:** `npm run lint:fix`
 
 ## License
 

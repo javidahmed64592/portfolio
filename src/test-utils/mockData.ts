@@ -94,9 +94,9 @@ export const mockGitHubProjects = {
 // Complex data builders
 export const mockProfileSummary = (): ProfileSummary => ({
   description: [
-    "I am a passionate software developer with experience in modern web technologies.",
-    "I enjoy building user-friendly applications and solving complex problems.",
-    "Always eager to learn new technologies and improve my skills.",
+    "Profile summary line 1.",
+    "Profile summary line 2.",
+    "Profile summary line 3.",
   ],
 });
 

@@ -28,15 +28,9 @@ describe("HomePage", () => {
     renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if profile summary content is rendered
-    expect(
-      screen.getByText(/I am a passionate software developer/)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/I enjoy building user-friendly applications/)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Always eager to learn new technologies/)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 1./)).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 2./)).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 3./)).toBeInTheDocument();
   });
 
   it("renders TechStack component", () => {

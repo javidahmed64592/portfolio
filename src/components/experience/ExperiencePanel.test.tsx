@@ -8,7 +8,7 @@ import ExperiencePanel from "./ExperiencePanel";
 
 describe("ExperiencePanel", () => {
   const professionalExperience = mockProfessionalExperience.experience_1();
-  const academicExperience = mockAcademicExperience.university();
+  const academicExperience = mockAcademicExperience.experience_1();
   const professionalExperienceNoProjects =
     mockProfessionalExperience.noProjects();
 
@@ -66,30 +66,26 @@ describe("ExperiencePanel", () => {
     it("displays institution name", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("University of Technology")).toBeInTheDocument();
+      expect(screen.getByText("Academic Institution 1")).toBeInTheDocument();
     });
 
     it("displays degree", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(
-        screen.getByText("Bachelor of Computer Science")
-      ).toBeInTheDocument();
+      expect(screen.getByText("Academic Degree 1")).toBeInTheDocument();
     });
 
     it("displays date range", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("2018-09 - 2022-05")).toBeInTheDocument();
+      expect(screen.getByText("01/01/2018 - 01/01/2022")).toBeInTheDocument();
     });
 
     it("displays academic projects", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Capstone Project")).toBeInTheDocument();
-      expect(
-        screen.getByText("Machine learning application for data analysis")
-      ).toBeInTheDocument();
+      expect(screen.getByText("Project 2")).toBeInTheDocument();
+      expect(screen.getByText("Project 2 description")).toBeInTheDocument();
     });
   });
 });

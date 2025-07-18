@@ -119,25 +119,12 @@ export const mockProfessionalExperience = {
 };
 
 export const mockAcademicExperience = {
-  university: (): AcademicExperience => ({
-    institution: "University of Technology",
-    degree: "Bachelor of Computer Science",
-    startDate: "2018-09",
-    endDate: "2022-05",
-    projects: [
-      {
-        title: "Capstone Project",
-        description: "Machine learning application for data analysis",
-      },
-    ],
-  }),
-
-  college: (): AcademicExperience => ({
-    institution: "Tech College",
-    degree: "Associate Degree in Software Development",
-    startDate: "2016-09",
-    endDate: "2018-05",
-    projects: [mockProjects.project_1()],
+  experience_1: (): AcademicExperience => ({
+    institution: "Academic Institution 1",
+    degree: "Academic Degree 1",
+    startDate: "01/01/2018",
+    endDate: "01/01/2022",
+    projects: [mockProjects.project_2()],
   }),
 };
 
@@ -174,7 +161,7 @@ export const mockHomePageData = (): HomePageData => ({
 
 export const mockExperiencePageData = (): ExperiencePageData => ({
   professionalExperience: [mockProfessionalExperience.experience_1()],
-  academicExperience: [mockAcademicExperience.university()],
+  academicExperience: [mockAcademicExperience.experience_1()],
 });
 
 export const mockProjectsPageData = (): ProjectsPageData => ({

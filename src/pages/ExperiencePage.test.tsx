@@ -8,7 +8,7 @@ import ExperiencePage from "./ExperiencePage";
 
 describe("ExperiencePage", () => {
   const professionalExperience = [mockProfessionalExperience.experience_1()];
-  const academicExperience = [mockAcademicExperience.university()];
+  const academicExperience = [mockAcademicExperience.experience_1()];
 
   const mockProps = {
     professionalExperience,
@@ -50,10 +50,8 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for institution names and degrees
-    expect(screen.getByText("University of Technology")).toBeInTheDocument();
-    expect(
-      screen.getByText("Bachelor of Computer Science")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Academic Institution 1")).toBeInTheDocument();
+    expect(screen.getByText("Academic Degree 1")).toBeInTheDocument();
   });
 
   it("renders professional experience projects", () => {
@@ -68,10 +66,8 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for project titles and descriptions
-    expect(screen.getByText("Capstone Project")).toBeInTheDocument();
-    expect(
-      screen.getByText("Machine learning application for data analysis")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Project 2")).toBeInTheDocument();
+    expect(screen.getByText("Project 2 description")).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {
@@ -100,6 +96,8 @@ describe("ExperiencePage", () => {
     expect(screen.getByText(/01\/01\/2020\s+-\s+Present/)).toBeInTheDocument();
 
     // Check for date ranges in academic experience
-    expect(screen.getByText(/2018-09\s+-\s+2022-05/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/01\/01\/2018\s+-\s+01\/01\/2022/)
+    ).toBeInTheDocument();
   });
 });

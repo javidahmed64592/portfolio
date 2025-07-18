@@ -39,12 +39,8 @@ describe("ExperiencePanel", () => {
     it("displays projects when available", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Advanced Web Application")).toBeInTheDocument();
-      expect(
-        screen.getByText(
-          "Developed a complex web application using React and TypeScript with advanced features"
-        )
-      ).toBeInTheDocument();
+      expect(screen.getByText("Project 1")).toBeInTheDocument();
+      expect(screen.getByText("Project 1 description")).toBeInTheDocument();
     });
 
     it("handles experience with no projects", () => {

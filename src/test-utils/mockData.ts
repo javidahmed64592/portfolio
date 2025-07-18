@@ -64,15 +64,14 @@ export const mockSocialLinks = {
 };
 
 export const mockProjects = {
-  basic: (): Project => ({
-    title: "Test Project",
-    description: "A test project description",
+  project_1: (): Project => ({
+    title: "Project 1",
+    description: "Project 1 description",
   }),
 
-  detailed: (): Project => ({
-    title: "Advanced Web Application",
-    description:
-      "Developed a complex web application using React and TypeScript with advanced features",
+  project_2: (): Project => ({
+    title: "Project 2",
+    description: "Project 2 description",
   }),
 };
 
@@ -108,7 +107,7 @@ export const mockProfessionalExperience = {
     startDate: "2022-01",
     endDate: "Present",
     projects: [
-      mockProjects.detailed(),
+      mockProjects.project_1(),
       {
         title: "Project Beta",
         description: "Built a mobile app with React Native and Node.js backend",
@@ -121,7 +120,7 @@ export const mockProfessionalExperience = {
     position: "Junior Developer",
     startDate: "2021-06",
     endDate: "2021-12",
-    projects: [mockProjects.basic()],
+    projects: [mockProjects.project_2()],
   }),
 
   noProjects: (): ProfessionalExperience => ({
@@ -152,7 +151,7 @@ export const mockAcademicExperience = {
     degree: "Associate Degree in Software Development",
     startDate: "2016-09",
     endDate: "2018-05",
-    projects: [mockProjects.basic()],
+    projects: [mockProjects.project_1()],
   }),
 };
 

@@ -7,8 +7,8 @@ import {
 import ExperiencePage from "./ExperiencePage";
 
 describe("ExperiencePage", () => {
-  const professionalExperience = [mockProfessionalExperience.senior()];
-  const academicExperience = [mockAcademicExperience.university()];
+  const professionalExperience = [mockProfessionalExperience.experience_1()];
+  const academicExperience = [mockAcademicExperience.experience_1()];
 
   const mockProps = {
     professionalExperience,
@@ -42,40 +42,32 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for company names and positions
-    expect(screen.getByText("Tech Corp")).toBeInTheDocument();
-    expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
+    expect(screen.getByText("Professional Company 1")).toBeInTheDocument();
+    expect(screen.getByText("Professional Position 1")).toBeInTheDocument();
   });
 
   it("renders all academic experience entries", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for institution names and degrees
-    expect(screen.getByText("University of Technology")).toBeInTheDocument();
-    expect(
-      screen.getByText("Bachelor of Computer Science")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Academic Institution 1")).toBeInTheDocument();
+    expect(screen.getByText("Academic Degree 1")).toBeInTheDocument();
   });
 
   it("renders professional experience projects", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for project titles and descriptions
-    expect(screen.getByText("Advanced Web Application")).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        "Developed a complex web application using React and TypeScript with advanced features"
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText("Project 1")).toBeInTheDocument();
+    expect(screen.getByText("Project 1 description")).toBeInTheDocument();
   });
 
   it("renders academic experience projects", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for project titles and descriptions
-    expect(screen.getByText("Capstone Project")).toBeInTheDocument();
-    expect(
-      screen.getByText("Machine learning application for data analysis")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Project 2")).toBeInTheDocument();
+    expect(screen.getByText("Project 2 description")).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {
@@ -101,9 +93,11 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for date ranges in professional experience
-    expect(screen.getByText(/2022-01\s+-\s+Present/)).toBeInTheDocument();
+    expect(screen.getByText(/01\/01\/2020\s+-\s+Present/)).toBeInTheDocument();
 
     // Check for date ranges in academic experience
-    expect(screen.getByText(/2018-09\s+-\s+2022-05/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/01\/01\/2018\s+-\s+01\/01\/2022/)
+    ).toBeInTheDocument();
   });
 });

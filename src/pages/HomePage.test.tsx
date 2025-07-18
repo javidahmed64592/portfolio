@@ -28,24 +28,18 @@ describe("HomePage", () => {
     renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if profile summary content is rendered
-    expect(
-      screen.getByText(/I am a passionate software developer/)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/I enjoy building user-friendly applications/)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Always eager to learn new technologies/)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 1./)).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 2./)).toBeInTheDocument();
+    expect(screen.getByText(/Profile summary line 3./)).toBeInTheDocument();
   });
 
   it("renders TechStack component", () => {
     renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if technologies are rendered by looking for technology names
-    expect(screen.getByText("React")).toBeInTheDocument();
-    expect(screen.getByText("TypeScript")).toBeInTheDocument();
-    expect(screen.getByText("Node.js")).toBeInTheDocument();
+    expect(screen.getByText("Technology 1")).toBeInTheDocument();
+    expect(screen.getByText("Technology 2")).toBeInTheDocument();
+    expect(screen.getByText("Technology 3")).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {

@@ -30,9 +30,9 @@ describe("App Component", () => {
       expect(screen.getByText("Test Portfolio")).toBeInTheDocument();
       expect(screen.getByText("Home")).toBeInTheDocument();
       expect(screen.getByText("Experience")).toBeInTheDocument();
-      expect(screen.getByText("Projects")).toBeInTheDocument();
-      expect(screen.getByText("GitHub")).toBeInTheDocument();
-      expect(screen.getByText("LinkedIn")).toBeInTheDocument();
+      expect(screen.getByText("Link 1")).toBeInTheDocument();
+      expect(screen.getByText("Link 2")).toBeInTheDocument();
+      expect(screen.getByText("Link 3")).toBeInTheDocument();
     });
   });
 
@@ -87,18 +87,18 @@ describe("App Component", () => {
       renderWithProviders(<App />, { store });
 
       // Check social links
-      expect(screen.getByText("GitHub")).toBeInTheDocument();
-      expect(screen.getByText("LinkedIn")).toBeInTheDocument();
+      expect(screen.getByText("Link 1")).toBeInTheDocument();
+      expect(screen.getByText("Link 2")).toBeInTheDocument();
+      expect(screen.getByText("Link 3")).toBeInTheDocument();
 
       // Verify they are links
-      const githubLink = screen.getByText("GitHub").closest("a");
-      const linkedinLink = screen.getByText("LinkedIn").closest("a");
+      const link1 = screen.getByText("Link 1").closest("a");
+      const link2 = screen.getByText("Link 2").closest("a");
+      const link3 = screen.getByText("Link 3").closest("a");
 
-      expect(githubLink).toHaveAttribute("href", "https://github.com/testuser");
-      expect(linkedinLink).toHaveAttribute(
-        "href",
-        "https://linkedin.com/in/testuser"
-      );
+      expect(link1).toHaveAttribute("href", "https://link1.com");
+      expect(link2).toHaveAttribute("href", "https://link2.com");
+      expect(link3).toHaveAttribute("href", "https://link3.com");
     });
   });
 

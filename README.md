@@ -1,3 +1,11 @@
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://javidahmed64592.github.io/portfolio)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/javidahmed64592/portfolio/deploy.yml?branch=main&logo=github)](https://github.com/javidahmed64592/portfolio/actions)
+[![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4+-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Material-UI](https://img.shields.io/badge/Material--UI-7+-007FFF?logo=mui)](https://mui.com/)
+[![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-2+-764ABC?logo=redux)](https://redux-toolkit.js.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 <!-- omit from toc -->
 # Portfolio Web App
 A portfolio web application built with React, TypeScript, and Material-UI, showcasing professional experience, technical skills, and personal projects.

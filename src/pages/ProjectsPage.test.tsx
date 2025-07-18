@@ -4,8 +4,8 @@ import ProjectsPage from "./ProjectsPage";
 
 describe("ProjectsPage", () => {
   const mockProjects = [
-    mockGitHubProjects.portfolio(),
-    mockGitHubProjects.ecommerce(),
+    mockGitHubProjects.project_1(),
+    mockGitHubProjects.project_2(),
   ];
 
   const mockProps = {
@@ -22,20 +22,18 @@ describe("ProjectsPage", () => {
   it("renders all project titles", () => {
     renderWithTheme(<ProjectsPage {...mockProps} />);
 
-    expect(screen.getByText("React Portfolio")).toBeInTheDocument();
-    expect(screen.getByText("E-commerce Platform")).toBeInTheDocument();
+    expect(screen.getByText("GitHub Project 1")).toBeInTheDocument();
+    expect(screen.getByText("GitHub Project 2")).toBeInTheDocument();
   });
 
   it("renders all project descriptions", () => {
     renderWithTheme(<ProjectsPage {...mockProps} />);
 
     expect(
-      screen.getByText(
-        /A modern portfolio website built with React and TypeScript/
-      )
+      screen.getByText(/GitHub Project 1 description/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Full-stack e-commerce solution with Node.js backend/)
+      screen.getByText(/GitHub Project 2 description/)
     ).toBeInTheDocument();
   });
 

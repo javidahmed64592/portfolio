@@ -76,18 +76,18 @@ export const mockProjects = {
 };
 
 export const mockGitHubProjects = {
-  portfolio: (): GitHubProject => ({
-    title: "React Portfolio",
-    description: "A modern portfolio website built with React and TypeScript",
-    url: "https://github.com/testuser/react-portfolio",
-    image: "https://example.com/portfolio-image.jpg",
+  project_1: (): GitHubProject => ({
+    title: "GitHub Project 1",
+    description: "GitHub Project 1 description",
+    url: "https://project1.com",
+    image: "project1.jpg",
   }),
 
-  ecommerce: (): GitHubProject => ({
-    title: "E-commerce Platform",
-    description: "Full-stack e-commerce solution with Node.js backend",
-    url: "https://github.com/testuser/ecommerce-platform",
-    image: "https://example.com/ecommerce-image.jpg",
+  project_2: (): GitHubProject => ({
+    title: "GitHub Project 2",
+    description: "GitHub Project 2 description",
+    url: "https://project2.com",
+    image: "project2.jpg",
   }),
 };
 
@@ -195,5 +195,5 @@ export const mockExperiencePageData = (): ExperiencePageData => ({
 });
 
 export const mockProjectsPageData = (): ProjectsPageData => ({
-  projects: [mockGitHubProjects.portfolio(), mockGitHubProjects.ecommerce()],
+  projects: [mockGitHubProjects.project_1(), mockGitHubProjects.project_2()],
 });

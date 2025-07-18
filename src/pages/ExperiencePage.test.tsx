@@ -7,7 +7,7 @@ import {
 import ExperiencePage from "./ExperiencePage";
 
 describe("ExperiencePage", () => {
-  const professionalExperience = [mockProfessionalExperience.senior()];
+  const professionalExperience = [mockProfessionalExperience.experience_1()];
   const academicExperience = [mockAcademicExperience.university()];
 
   const mockProps = {
@@ -42,8 +42,8 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for company names and positions
-    expect(screen.getByText("Tech Corp")).toBeInTheDocument();
-    expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
+    expect(screen.getByText("Professional Company 1")).toBeInTheDocument();
+    expect(screen.getByText("Professional Position 1")).toBeInTheDocument();
   });
 
   it("renders all academic experience entries", () => {
@@ -97,7 +97,7 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     // Check for date ranges in professional experience
-    expect(screen.getByText(/2022-01\s+-\s+Present/)).toBeInTheDocument();
+    expect(screen.getByText(/01\/01\/2020\s+-\s+Present/)).toBeInTheDocument();
 
     // Check for date ranges in academic experience
     expect(screen.getByText(/2018-09\s+-\s+2022-05/)).toBeInTheDocument();

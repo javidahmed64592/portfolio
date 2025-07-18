@@ -7,7 +7,7 @@ import {
 import ExperiencePanel from "./ExperiencePanel";
 
 describe("ExperiencePanel", () => {
-  const professionalExperience = mockProfessionalExperience.senior();
+  const professionalExperience = mockProfessionalExperience.experience_1();
   const academicExperience = mockAcademicExperience.university();
   const professionalExperienceNoProjects =
     mockProfessionalExperience.noProjects();
@@ -21,19 +21,19 @@ describe("ExperiencePanel", () => {
     it("displays company name", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Tech Corp")).toBeInTheDocument();
+      expect(screen.getByText("Professional Company 1")).toBeInTheDocument();
     });
 
     it("displays position", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("Senior Software Engineer")).toBeInTheDocument();
+      expect(screen.getByText("Professional Position 1")).toBeInTheDocument();
     });
 
     it("displays date range", () => {
       renderWithTheme(<ExperiencePanel {...mockProps} />);
 
-      expect(screen.getByText("2022-01 - Present")).toBeInTheDocument();
+      expect(screen.getByText("01/01/2020 - Present")).toBeInTheDocument();
     });
 
     it("displays projects when available", () => {
@@ -51,8 +51,8 @@ describe("ExperiencePanel", () => {
 
       renderWithTheme(<ExperiencePanel {...mockPropsNoProjects} />);
 
-      expect(screen.getByText("Test Company")).toBeInTheDocument();
-      expect(screen.getByText("Software Engineer")).toBeInTheDocument();
+      expect(screen.getByText("No Projects Company")).toBeInTheDocument();
+      expect(screen.getByText("No Projects Position")).toBeInTheDocument();
       expect(screen.queryByText("Projects")).not.toBeInTheDocument();
     });
   });

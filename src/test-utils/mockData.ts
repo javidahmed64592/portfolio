@@ -101,32 +101,26 @@ export const mockProfileSummary = (): ProfileSummary => ({
 });
 
 export const mockProfessionalExperience = {
-  senior: (): ProfessionalExperience => ({
-    company: "Tech Corp",
-    position: "Senior Software Engineer",
-    startDate: "2022-01",
+  experience_1: (): ProfessionalExperience => ({
+    company: "Professional Company 1",
+    position: "Professional Position 1",
+    startDate: "01/01/2020",
     endDate: "Present",
-    projects: [
-      mockProjects.project_1(),
-      {
-        title: "Project Beta",
-        description: "Built a mobile app with React Native and Node.js backend",
-      },
-    ],
+    projects: [mockProjects.project_1()],
   }),
 
-  junior: (): ProfessionalExperience => ({
-    company: "StartUp Inc",
-    position: "Junior Developer",
-    startDate: "2021-06",
-    endDate: "2021-12",
+  experience_2: (): ProfessionalExperience => ({
+    company: "Professional Company 2",
+    position: "Professional Position 2",
+    startDate: "01/01/2019",
+    endDate: "12/31/2021",
     projects: [mockProjects.project_2()],
   }),
 
   noProjects: (): ProfessionalExperience => ({
-    company: "Test Company",
-    position: "Software Engineer",
-    startDate: "2023-01",
+    company: "No Projects Company",
+    position: "No Projects Position",
+    startDate: "01/01/2020",
     endDate: "Present",
     projects: [],
   }),
@@ -188,8 +182,8 @@ export const mockHomePageData = (): HomePageData => ({
 
 export const mockExperiencePageData = (): ExperiencePageData => ({
   professionalExperience: [
-    mockProfessionalExperience.senior(),
-    mockProfessionalExperience.junior(),
+    mockProfessionalExperience.experience_1(),
+    mockProfessionalExperience.experience_2(),
   ],
   academicExperience: [mockAcademicExperience.university()],
 });

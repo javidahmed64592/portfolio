@@ -12,24 +12,21 @@ describe("Footer", () => {
   it("renders SocialLinkButton for each social link", () => {
     renderWithTheme(<Footer {...mockProps} />);
 
-    expect(screen.getByText("GitHub")).toBeInTheDocument();
-    expect(screen.getByText("LinkedIn")).toBeInTheDocument();
-    expect(screen.getByText("Twitter")).toBeInTheDocument();
+    expect(screen.getByText("Link 1")).toBeInTheDocument();
+    expect(screen.getByText("Link 2")).toBeInTheDocument();
+    expect(screen.getByText("Link 3")).toBeInTheDocument();
 
-    const githubLink = screen.getByText("GitHub").closest("a");
-    const linkedinLink = screen.getByText("LinkedIn").closest("a");
-    const twitterLink = screen.getByText("Twitter").closest("a");
+    const link1 = screen.getByText("Link 1").closest("a");
+    const link2 = screen.getByText("Link 2").closest("a");
+    const link3 = screen.getByText("Link 3").closest("a");
 
-    expect(githubLink).toBeInTheDocument();
-    expect(linkedinLink).toBeInTheDocument();
-    expect(twitterLink).toBeInTheDocument();
+    expect(link1).toBeInTheDocument();
+    expect(link2).toBeInTheDocument();
+    expect(link3).toBeInTheDocument();
 
-    expect(githubLink).toHaveAttribute("href", "https://github.com/testuser");
-    expect(linkedinLink).toHaveAttribute(
-      "href",
-      "https://linkedin.com/in/testuser"
-    );
-    expect(twitterLink).toHaveAttribute("href", "https://twitter.com/testuser");
+    expect(link1).toHaveAttribute("href", "https://link1.com");
+    expect(link2).toHaveAttribute("href", "https://link2.com");
+    expect(link3).toHaveAttribute("href", "https://link3.com");
   });
 
   it("renders footer with correct styling structure", () => {

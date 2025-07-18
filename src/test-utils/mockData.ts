@@ -17,49 +17,49 @@ import {
  */
 
 // Base mock data builders
-export const mockSocialLinks = {
-  github: (): SocialLink => ({
-    name: "GitHub",
-    url: "https://github.com/testuser",
-    icon: "github.svg",
+export const mockTechnologies = {
+  tech_1: (): Technology => ({
+    name: "Technology 1",
+    url: "https://tech1.com",
+    icon: "tech1.svg",
   }),
 
-  linkedin: (): SocialLink => ({
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/testuser",
-    icon: "linkedin.svg",
+  tech_2: (): Technology => ({
+    name: "Technology 2",
+    url: "https://tech2.com",
+    icon: "tech2.svg",
   }),
 
-  twitter: (): SocialLink => ({
-    name: "Twitter",
-    url: "https://twitter.com/testuser",
-    icon: "twitter.svg",
+  tech_3: (): Technology => ({
+    name: "Technology 3",
+    url: "https://tech3.com",
+    icon: "tech3.svg",
+  }),
+
+  tech_4: (): Technology => ({
+    name: "Technology 4",
+    url: "https://tech4.com",
+    icon: "tech4.svg",
   }),
 };
 
-export const mockTechnologies = {
-  react: (): Technology => ({
-    name: "React",
-    url: "https://reactjs.org",
-    icon: "https://example.com/react-icon.svg",
+export const mockSocialLinks = {
+  link_1: (): SocialLink => ({
+    name: "Link 1",
+    url: "https://link1.com",
+    icon: "link1.svg",
   }),
 
-  typescript: (): Technology => ({
-    name: "TypeScript",
-    url: "https://typescriptlang.org",
-    icon: "https://example.com/typescript-icon.svg",
+  link_2: (): SocialLink => ({
+    name: "Link 2",
+    url: "https://link2.com",
+    icon: "link2.svg",
   }),
 
-  nodejs: (): Technology => ({
-    name: "Node.js",
-    url: "https://nodejs.org",
-    icon: "https://example.com/nodejs-icon.svg",
-  }),
-
-  javascript: (): Technology => ({
-    name: "JavaScript",
-    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    icon: "https://example.com/javascript-icon.svg",
+  link_3: (): SocialLink => ({
+    name: "Link 3",
+    url: "https://link3.com",
+    icon: "link3.svg",
   }),
 };
 
@@ -156,19 +156,35 @@ export const mockAcademicExperience = {
   }),
 };
 
+// Array builders for common scenarios
+export const createMockTechnologies = (count: number = 3): Technology[] => {
+  const technologies = [
+    mockTechnologies.tech_1(),
+    mockTechnologies.tech_2(),
+    mockTechnologies.tech_3(),
+    mockTechnologies.tech_4(),
+  ];
+  return technologies.slice(0, count);
+};
+
+export const createMockSocialLinks = (count: number = 2): SocialLink[] => {
+  const links = [
+    mockSocialLinks.link_1(),
+    mockSocialLinks.link_2(),
+    mockSocialLinks.link_3(),
+  ];
+  return links.slice(0, count);
+};
+
 // Full page data builders
 export const mockAppData = (): AppData => ({
   appHeaderText: "Test Portfolio",
-  socialLinks: [mockSocialLinks.github(), mockSocialLinks.linkedin()],
+  socialLinks: createMockSocialLinks(3),
 });
 
 export const mockHomePageData = (): HomePageData => ({
   profileSummary: mockProfileSummary(),
-  technologies: [
-    mockTechnologies.react(),
-    mockTechnologies.typescript(),
-    mockTechnologies.nodejs(),
-  ],
+  technologies: createMockTechnologies(4),
 });
 
 export const mockExperiencePageData = (): ExperiencePageData => ({
@@ -182,23 +198,3 @@ export const mockExperiencePageData = (): ExperiencePageData => ({
 export const mockProjectsPageData = (): ProjectsPageData => ({
   projects: [mockGitHubProjects.portfolio(), mockGitHubProjects.ecommerce()],
 });
-
-// Array builders for common scenarios
-export const createMockTechnologies = (count: number = 3): Technology[] => {
-  const technologies = [
-    mockTechnologies.react(),
-    mockTechnologies.typescript(),
-    mockTechnologies.nodejs(),
-    mockTechnologies.javascript(),
-  ];
-  return technologies.slice(0, count);
-};
-
-export const createMockSocialLinks = (count: number = 2): SocialLink[] => {
-  const links = [
-    mockSocialLinks.github(),
-    mockSocialLinks.linkedin(),
-    mockSocialLinks.twitter(),
-  ];
-  return links.slice(0, count);
-};

@@ -8,7 +8,7 @@ import {
 import TechnologyButton from "./TechnologyButton";
 
 describe("TechnologyButton", () => {
-  const mockTechnology = mockTechnologies.react();
+  const mockTechnology = mockTechnologies.tech_1();
 
   const mockProps = {
     technology: mockTechnology,
@@ -22,26 +22,26 @@ describe("TechnologyButton", () => {
   it("displays technology name", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
-    expect(screen.getByText("React")).toBeInTheDocument();
+    expect(screen.getByText("Technology 1")).toBeInTheDocument();
   });
 
   it("renders technology icon with correct attributes", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
-    const icon = screen.getByAltText("React icon");
+    const icon = screen.getByAltText("Technology 1 icon");
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveAttribute("src", "https://example.com/react-icon.svg");
-    expect(icon).toHaveAttribute("alt", "React icon");
+    expect(icon).toHaveAttribute("src", "tech1.svg");
+    expect(icon).toHaveAttribute("alt", "Technology 1 icon");
   });
 
   it("opens technology URL when clicked", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
-    const button = screen.getByText("React").closest("div");
+    const button = screen.getByText("Technology 1").closest("div");
     fireEvent.click(button!);
 
     expect(getWindowOpenMock()).toHaveBeenCalledWith(
-      "https://reactjs.org",
+      "https://tech1.com",
       "_blank",
       "noopener,noreferrer"
     );
@@ -50,7 +50,7 @@ describe("TechnologyButton", () => {
   it("renders as clickable element", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
-    const button = screen.getByText("React").closest("div");
+    const button = screen.getByText("Technology 1").closest("div");
     expect(button).toBeInTheDocument();
     expect(button).toHaveStyle({ cursor: "pointer" });
   });
@@ -58,7 +58,7 @@ describe("TechnologyButton", () => {
   it("hides icon on error", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
-    const icon = screen.getByAltText("React icon") as HTMLImageElement;
+    const icon = screen.getByAltText("Technology 1 icon") as HTMLImageElement;
     fireEvent.error(icon);
 
     expect(icon.style.display).toBe("none");

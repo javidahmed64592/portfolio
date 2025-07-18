@@ -43,9 +43,9 @@ describe("HomePage", () => {
     renderWithTheme(<HomePage {...mockProps} />);
 
     // Check if technologies are rendered by looking for technology names
-    expect(screen.getByText("React")).toBeInTheDocument();
-    expect(screen.getByText("TypeScript")).toBeInTheDocument();
-    expect(screen.getByText("Node.js")).toBeInTheDocument();
+    expect(screen.getByText("Technology 1")).toBeInTheDocument();
+    expect(screen.getByText("Technology 2")).toBeInTheDocument();
+    expect(screen.getByText("Technology 3")).toBeInTheDocument();
   });
 
   it("has correct component structure", () => {

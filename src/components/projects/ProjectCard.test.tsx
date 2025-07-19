@@ -33,15 +33,6 @@ describe("ProjectCard", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders project image with correct attributes", () => {
-    renderWithTheme(<ProjectCard {...mockProps} />);
-
-    const image = screen.getByAltText("GitHub Project 1");
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", "project1.jpg");
-    expect(image).toHaveAttribute("alt", "GitHub Project 1");
-  });
-
   it("renders view project link with correct attributes", () => {
     renderWithTheme(<ProjectCard {...mockProps} />);
 
@@ -133,29 +124,6 @@ describe("ProjectCard", () => {
         display: "flex",
         flexDirection: "column",
         height: "100%",
-      });
-    });
-  });
-
-  describe("Image Handling", () => {
-    it("hides image on error", () => {
-      renderWithTheme(<ProjectCard {...mockProps} />);
-
-      const image = screen.getByAltText("GitHub Project 1") as HTMLImageElement;
-      fireEvent.error(image);
-
-      expect(image.style.display).toBe("none");
-    });
-
-    it("renders image with correct styles", () => {
-      renderWithTheme(<ProjectCard {...mockProps} />);
-
-      const image = screen.getByAltText("GitHub Project 1");
-      expect(image).toHaveStyle({
-        width: "100%",
-        height: "200px",
-        objectFit: "cover",
-        borderRadius: "4px",
       });
     });
   });

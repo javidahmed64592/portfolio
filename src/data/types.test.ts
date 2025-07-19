@@ -291,26 +291,22 @@ describe("Types", () => {
       const createGitHubProject = (
         title: string,
         description: string,
-        url: string,
-        image: string
+        url: string
       ): GitHubProject => ({
         title,
         description,
         url,
-        image,
       });
 
       const result = createGitHubProject(
         "Portfolio",
         "My portfolio site",
-        "https://github.com/user/portfolio",
-        "portfolio.png"
+        "https://github.com/user/portfolio"
       );
       expect(result).toEqual({
         title: "Portfolio",
         description: "My portfolio site",
         url: "https://github.com/user/portfolio",
-        image: "portfolio.png",
       });
     });
   });
@@ -328,13 +324,11 @@ describe("Types", () => {
           title: "Project 1",
           description: "Description 1",
           url: "https://github.com/user/project1",
-          image: "project1.png",
         },
         {
           title: "Project 2",
           description: "Description 2",
           url: "https://github.com/user/project2",
-          image: "project2.png",
         },
       ]);
       expect(result).toEqual({
@@ -343,13 +337,11 @@ describe("Types", () => {
             title: "Project 1",
             description: "Description 1",
             url: "https://github.com/user/project1",
-            image: "project1.png",
           },
           {
             title: "Project 2",
             description: "Description 2",
             url: "https://github.com/user/project2",
-            image: "project2.png",
           },
         ],
       });

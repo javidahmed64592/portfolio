@@ -24,15 +24,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     cursor: "pointer",
   };
 
-  const cardImageStyles = {
-    width: "100%",
-    height: "200px",
-    objectFit: "cover" as const,
-    borderRadius: "4px",
-    marginBottom: theme.spacing.md,
-    backgroundColor: theme.colors.tertiary,
-  };
-
   const cardTitleStyles = {
     ...createHeadingStyles(theme, "secondary"),
     fontSize: theme.typography.fontSize.lg,
@@ -75,15 +66,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onMouseEnter={handleCardHover}
       onMouseLeave={handleCardLeave}
     >
-      <img
-        src={project.image}
-        alt={project.title}
-        style={cardImageStyles}
-        onError={e => {
-          e.currentTarget.style.display = "none";
-        }}
-      />
-
       <h3 style={cardTitleStyles}>{project.title}</h3>
 
       <p style={cardDescriptionStyles}>{project.description}</p>

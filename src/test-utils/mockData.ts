@@ -80,14 +80,12 @@ export const mockGitHubProjects = {
     title: "GitHub Project 1",
     description: "GitHub Project 1 description",
     url: "https://project1.com",
-    image: "project1.jpg",
   }),
 
   project_2: (): GitHubProject => ({
     title: "GitHub Project 2",
     description: "GitHub Project 2 description",
     url: "https://project2.com",
-    image: "project2.jpg",
   }),
 };
 

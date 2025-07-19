@@ -1,22 +1,29 @@
 {
   "projects": [
     {
-      "title": "Project 1",
+      "title": "Neural Network Python Library",
       "description": "Project details to be added.",
-      "url": "https://github.com/username/portfolio",
-      "image": "portfolio.png"
+      "url": "https://github.com/javidahmed64592/neural-network"
     },
     {
-      "title": "Project 2",
+      "title": "Genetic Algorithm Python Library",
       "description": "Project details to be added.",
-      "url": "https://github.com/username/project2",
-      "image": "project2.png"
+      "url": "https://github.com/javidahmed64592/genetic-algorithm"
     },
     {
-      "title": "Project 3",
+      "title": "Neuroevolution Simulation",
       "description": "Project details to be added.",
-      "url": "https://github.com/username/project3",
-      "image": "project3.png"
+      "url": "https://github.com/javidahmed64592/neuroevolution-flappy-bird-v2"
+    },
+    {
+      "title": "Raspberry Pi AI Agent",
+      "description": "Project details to be added.",
+      "url": "https://github.com/javidahmed64592/rpi-ai"
+    },
+    {
+      "title": "Steganography Web Application",
+      "description": "Project details to be added.",
+      "url": "https://github.com/javidahmed64592/steganographer"
     }
   ]
 }

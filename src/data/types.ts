@@ -64,7 +64,6 @@ export type GitHubProject = {
   title: string;
   description: string;
   url: string;
-  image: string;
 };
 
 export type ProjectsPageData = {

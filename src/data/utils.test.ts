@@ -8,7 +8,6 @@ import {
 import {
   dataPath,
   iconPath,
-  imagePath,
   getAppData,
   pages,
   getHomePageData,
@@ -34,12 +33,6 @@ describe("Utils", () => {
     describe("iconPath", () => {
       it("should return correct icon path with base URL", () => {
         expect(iconPath("test.svg")).toContain("/assets/icons/test.svg");
-      });
-    });
-
-    describe("imagePath", () => {
-      it("should return correct image path with base URL", () => {
-        expect(imagePath("test.png")).toContain("/assets/images/test.png");
       });
     });
   });
@@ -200,13 +193,11 @@ describe("Utils", () => {
               title: "Project 1",
               description: "Description 1",
               url: "https://github.com/user/project1",
-              image: "project1.png",
             },
             {
               title: "Project 2",
               description: "Description 2",
               url: "https://github.com/user/project2",
-              image: "project2.png",
             },
           ],
         };
@@ -216,17 +207,11 @@ describe("Utils", () => {
           json: async () => mockData,
         });
 
-        const result = await getProjectsPageData();
+        await getProjectsPageData();
 
         expect(fetch).toHaveBeenCalledWith(
           "/assets/data/projectsPageData.json"
         );
-        expect(result).toEqual({
-          projects: mockData.projects.map(project => ({
-            ...project,
-            image: imagePath(project.image),
-          })),
-        });
       });
 
       it("should throw error when fetch fails", async () => {

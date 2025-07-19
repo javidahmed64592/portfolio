@@ -12,15 +12,19 @@ export const createAppStyles = (theme: Theme): CSSProperties => ({
 
 export const createPageStyles = (theme: Theme): CSSProperties => {
   return {
-    flex: 1,
+    position: "absolute",
+    top: "64px",
+    bottom: "60px",
+    left: 0,
+    right: 0,
     backgroundColor: theme.colors.background,
-    padding: theme.spacing.lg,
+    padding: theme.spacing.md,
     color: theme.colors.text.onBackground,
     display: "flex",
     flexDirection: "column",
     fontSize: theme.typography.fontSize.lg,
     overflowY: "auto",
-    minHeight: 0,
+    overflowX: "hidden",
   };
 };
 
@@ -41,7 +45,7 @@ export const createHeadingStyles = (
 
   return {
     margin: 0,
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.sm, // Reduced from md
     fontSize: theme.typography.fontSize.xl,
     fontWeight: theme.typography.fontWeight.bold,
     color: getTextColor(),
@@ -137,3 +141,21 @@ export const createCardStyles = (
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
 };
+
+export const createFooterStyles = (theme: Theme): CSSProperties => ({
+  display: "flex",
+  flexWrap: "wrap" as const,
+  gap: theme.spacing.sm,
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  position: "fixed",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  paddingTop: theme.spacing.sm,
+  paddingBottom: theme.spacing.sm,
+  borderTop: `1px solid ${theme.colors.border}`,
+  backgroundColor: theme.colors.background,
+  zIndex: 1000,
+});

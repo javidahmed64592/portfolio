@@ -1,5 +1,5 @@
 import { type SocialLink } from "../../data/types";
-import { useTheme } from "../../theme";
+import { useTheme, createFooterStyles } from "../../theme";
 import SocialLinkButton from "./SocialLinkButton";
 
 interface FooterProps {
@@ -9,18 +9,7 @@ interface FooterProps {
 export default function Footer({ socialLinks }: FooterProps) {
   const { theme } = useTheme();
 
-  const footerStyles = {
-    display: "flex",
-    flexWrap: "wrap" as const,
-    gap: theme.spacing.sm,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    marginTop: "auto",
-    paddingTop: theme.spacing.sm,
-    paddingBottom: theme.spacing.sm,
-    borderTop: `1px solid ${theme.colors.border}`,
-  };
+  const footerStyles = createFooterStyles(theme);
 
   return (
     <div style={footerStyles}>

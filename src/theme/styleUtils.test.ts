@@ -5,6 +5,7 @@ import {
   createTextStyles,
   createButtonStyles,
   createCardStyles,
+  createFooterStyles,
 } from "./styleUtils";
 import { Theme, defaultTheme } from "./theme";
 
@@ -85,15 +86,19 @@ describe("styleUtils", () => {
       const styles = createPageStyles(mockTheme);
 
       expect(styles).toEqual({
-        flex: 1,
+        position: "absolute",
+        top: "64px",
+        bottom: "60px",
+        left: 0,
+        right: 0,
         backgroundColor: mockTheme.colors.background,
-        padding: mockTheme.spacing.lg,
+        padding: mockTheme.spacing.md,
         color: mockTheme.colors.text.onBackground,
         display: "flex",
         flexDirection: "column",
         fontSize: mockTheme.typography.fontSize.lg,
         overflowY: "auto",
-        minHeight: 0,
+        overflowX: "hidden",
       });
     });
 
@@ -101,7 +106,7 @@ describe("styleUtils", () => {
       const styles = createPageStyles(defaultTheme);
 
       expect(styles.backgroundColor).toBe(defaultTheme.colors.background);
-      expect(styles.padding).toBe(defaultTheme.spacing.lg);
+      expect(styles.padding).toBe(defaultTheme.spacing.md);
       expect(styles.fontSize).toBe(defaultTheme.typography.fontSize.lg);
     });
   });
@@ -112,7 +117,7 @@ describe("styleUtils", () => {
 
       expect(styles).toEqual({
         margin: 0,
-        marginBottom: mockTheme.spacing.md,
+        marginBottom: mockTheme.spacing.sm,
         fontSize: mockTheme.typography.fontSize.xl,
         fontWeight: mockTheme.typography.fontWeight.bold,
         color: mockTheme.colors.text.onPrimary,
@@ -136,7 +141,7 @@ describe("styleUtils", () => {
 
       expect(styles.fontSize).toBe(mockTheme.typography.fontSize.xl);
       expect(styles.fontWeight).toBe(mockTheme.typography.fontWeight.bold);
-      expect(styles.marginBottom).toBe(mockTheme.spacing.md);
+      expect(styles.marginBottom).toBe(mockTheme.spacing.sm);
     });
   });
 
@@ -235,6 +240,30 @@ describe("styleUtils", () => {
       expect(styles.border).toBe(`1px solid ${mockTheme.colors.border}`);
       expect(styles.borderRadius).toBe("8px");
       expect(styles.boxShadow).toBe("0 2px 4px rgba(0, 0, 0, 0.1)");
+    });
+  });
+
+  describe("createFooterStyles", () => {
+    it("should return correct footer styles with theme values", () => {
+      const styles = createFooterStyles(mockTheme);
+
+      expect(styles).toEqual({
+        display: "flex",
+        flexWrap: "wrap",
+        gap: mockTheme.spacing.sm,
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        paddingTop: mockTheme.spacing.sm,
+        paddingBottom: mockTheme.spacing.sm,
+        borderTop: `1px solid ${mockTheme.colors.border}`,
+        backgroundColor: mockTheme.colors.background,
+        zIndex: 1000,
+      });
     });
   });
 });

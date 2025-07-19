@@ -32,7 +32,7 @@ export default function CustomAppBar({
   };
 
   return (
-    <AppBar position="static" sx={appBarStyles}>
+    <AppBar position="fixed" sx={appBarStyles}>
       <Toolbar>
         <AppBarHeader appHeaderText={appHeaderText} />
         <AppBarPages pages={pages} />

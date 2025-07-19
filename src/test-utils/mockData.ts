@@ -21,25 +21,21 @@ export const mockTechnologies = {
   tech_1: (): Technology => ({
     name: "Technology 1",
     url: "https://tech1.com",
-    icon: "tech1.svg",
   }),
 
   tech_2: (): Technology => ({
     name: "Technology 2",
     url: "https://tech2.com",
-    icon: "tech2.svg",
   }),
 
   tech_3: (): Technology => ({
     name: "Technology 3",
     url: "https://tech3.com",
-    icon: "tech3.svg",
   }),
 
   tech_4: (): Technology => ({
     name: "Technology 4",
     url: "https://tech4.com",
-    icon: "tech4.svg",
   }),
 };
 
@@ -80,14 +76,12 @@ export const mockGitHubProjects = {
     title: "GitHub Project 1",
     description: "GitHub Project 1 description",
     url: "https://project1.com",
-    image: "project1.jpg",
   }),
 
   project_2: (): GitHubProject => ({
     title: "GitHub Project 2",
     description: "GitHub Project 2 description",
     url: "https://project2.com",
-    image: "project2.jpg",
   }),
 };
 

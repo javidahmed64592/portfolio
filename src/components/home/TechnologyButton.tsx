@@ -27,23 +27,8 @@ export default function TechnologyButton({
     gap: theme.spacing.xs,
   };
 
-  const iconStyles = {
-    width: "32px",
-    height: "32px",
-    objectFit: "contain" as const,
-  };
-
   return (
     <div style={techIconStyles} onClick={handleClick}>
-      <img
-        src={technology.icon}
-        alt={`${technology.name} icon`}
-        style={iconStyles}
-        onError={e => {
-          // Hide the image if it fails to load
-          e.currentTarget.style.display = "none";
-        }}
-      />
       <span style={createTextStyles(theme, "secondary")}>
         {technology.name}
       </span>

@@ -1,11 +1,9 @@
 import {
   AppData,
   ExperiencePageData,
-  GitHubProject,
   HomePageData,
   ProjectsPageData,
   SocialLink,
-  Technology,
   Pages,
 } from "./types";
 
@@ -14,11 +12,9 @@ const baseUrl = process.env.PUBLIC_URL || "";
 const assetsDir = `${baseUrl}/assets`;
 const dataDir = `${assetsDir}/data`;
 const iconDir = `${assetsDir}/icons`;
-const imageDir = `${assetsDir}/images`;
 
 export const dataPath = (data: string) => `${dataDir}/${data}`;
 export const iconPath = (icon: string) => `${iconDir}/${icon}`;
-export const imagePath = (image: string) => `${imageDir}/${image}`;
 
 async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
@@ -49,15 +45,7 @@ export const getHomePageData = async (): Promise<HomePageData> => {
   const rawData = (await fetchJson(
     dataPath("homePageData.json")
   )) as HomePageData;
-
-  // Process the data to add full paths for icons
-  return {
-    ...rawData,
-    technologies: rawData.technologies.map((tech: Technology) => ({
-      ...tech,
-      icon: iconPath(tech.icon),
-    })),
-  };
+  return rawData;
 };
 
 // Experience page data
@@ -73,13 +61,5 @@ export const getProjectsPageData = async (): Promise<ProjectsPageData> => {
   const rawData = (await fetchJson(
     dataPath("projectsPageData.json")
   )) as ProjectsPageData;
-
-  // Process the data to add full paths for images
-  return {
-    ...rawData,
-    projects: rawData.projects.map((project: GitHubProject) => ({
-      ...project,
-      image: imagePath(project.image),
-    })),
-  };
+  return rawData;
 };

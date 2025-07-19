@@ -24,7 +24,6 @@ export type ProfileSummary = {
 export type Technology = {
   name: string;
   url: string;
-  icon: string;
 };
 
 export type HomePageData = {
@@ -64,7 +63,6 @@ export type GitHubProject = {
   title: string;
   description: string;
   url: string;
-  image: string;
 };
 
 export type ProjectsPageData = {

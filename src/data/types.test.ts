@@ -1,17 +1,17 @@
 import {
-  Pages,
-  SocialLink,
-  AppData,
-  ProfileSummary,
-  Technology,
-  HomePageData,
-  Project,
-  ProfessionalExperience,
-  AcademicExperience,
-  ExperiencePageData,
-  GitHubProject,
-  ProjectsPageData,
-} from "./types";
+  mockAcademicExperience,
+  mockAppData,
+  mockExperiencePageData,
+  mockGitHubProjects,
+  mockHomePageData,
+  mockProfessionalExperience,
+  mockProfileSummary,
+  mockProjects,
+  mockProjectsPageData,
+  mockSocialLinks,
+  mockTechnologies,
+} from "../test-utils";
+import { Pages } from "./types";
 
 describe("Types", () => {
   describe("Pages enum", () => {
@@ -24,52 +24,24 @@ describe("Types", () => {
 
   describe("SocialLink type", () => {
     it("should have correct structure", () => {
-      const createSocialLink = (
-        name: string,
-        url: string,
-        icon: string
-      ): SocialLink => ({
-        name,
-        url,
-        icon,
-      });
-
-      const result = createSocialLink(
-        "LinkedIn",
-        "https://linkedin.com",
-        "linkedin.svg"
-      );
+      const result = mockSocialLinks.link_1();
       expect(result).toEqual({
-        name: "LinkedIn",
-        url: "https://linkedin.com",
-        icon: "linkedin.svg",
+        name: "Link 1",
+        url: "https://link1.com",
+        icon: "link1.svg",
       });
     });
   });
 
   describe("AppData type", () => {
     it("should have correct structure", () => {
-      const createAppData = (
-        appHeaderText: string,
-        socialLinks: SocialLink[]
-      ): AppData => ({
-        appHeaderText,
-        socialLinks,
-      });
-
-      const result = createAppData("My Portfolio", [
-        { name: "GitHub", url: "https://github.com", icon: "github.svg" },
-        { name: "LinkedIn", url: "https://linkedin.com", icon: "linkedin.svg" },
-      ]);
+      const result = mockAppData();
       expect(result).toEqual({
-        appHeaderText: "My Portfolio",
+        appHeaderText: "Test Portfolio",
         socialLinks: [
-          { name: "GitHub", url: "https://github.com", icon: "github.svg" },
-          {
-            name: "LinkedIn",
-            url: "https://linkedin.com",
-            icon: "linkedin.svg",
-          },
+          { name: "Link 1", url: "https://link1.com", icon: "link1.svg" },
+          { name: "Link 2", url: "https://link2.com", icon: "link2.svg" },
+          { name: "Link 3", url: "https://link3.com", icon: "link3.svg" },
         ],
       });
     });
@@ -77,70 +49,44 @@ describe("Types", () => {
 
   describe("ProfileSummary type", () => {
     it("should have correct structure", () => {
-      const createProfileSummary = (description: string[]): ProfileSummary => ({
-        description,
-      });
-
-      const result = createProfileSummary(["Line 1", "Line 2", "Line 3"]);
+      const result = mockProfileSummary();
 
       expect(result).toEqual({
-        description: ["Line 1", "Line 2", "Line 3"],
+        description: [
+          "Profile summary line 1.",
+          "Profile summary line 2.",
+          "Profile summary line 3.",
+        ],
       });
     });
   });
 
   describe("Technology type", () => {
     it("should have correct structure", () => {
-      const createTechnology = (
-        name: string,
-        url: string,
-        icon: string
-      ): Technology => ({
-        name,
-        url,
-        icon,
-      });
-
-      const result = createTechnology(
-        "TypeScript",
-        "https://typescript.org",
-        "typescript.svg"
-      );
+      const result = mockTechnologies.tech_1();
       expect(result).toEqual({
-        name: "TypeScript",
-        url: "https://typescript.org",
-        icon: "typescript.svg",
+        name: "Technology 1",
+        url: "https://tech1.com",
       });
     });
   });
 
   describe("HomePageData type", () => {
     it("should have correct structure", () => {
-      const createHomePageData = (
-        profileSummary: ProfileSummary,
-        technologies: Technology[]
-      ): HomePageData => ({
-        profileSummary,
-        technologies,
-      });
-
-      const result = createHomePageData({ description: ["I'm a developer"] }, [
-        { name: "React", url: "https://reactjs.org", icon: "react.svg" },
-        {
-          name: "TypeScript",
-          url: "https://typescript.org",
-          icon: "typescript.svg",
-        },
-      ]);
+      const result = mockHomePageData();
       expect(result).toEqual({
-        profileSummary: { description: ["I'm a developer"] },
+        profileSummary: {
+          description: [
+            "Profile summary line 1.",
+            "Profile summary line 2.",
+            "Profile summary line 3.",
+          ],
+        },
         technologies: [
-          { name: "React", url: "https://reactjs.org", icon: "react.svg" },
-          {
-            name: "TypeScript",
-            url: "https://typescript.org",
-            icon: "typescript.svg",
-          },
+          { name: "Technology 1", url: "https://tech1.com" },
+          { name: "Technology 2", url: "https://tech2.com" },
+          { name: "Technology 3", url: "https://tech3.com" },
+          { name: "Technology 4", url: "https://tech4.com" },
         ],
       });
     });
@@ -148,53 +94,24 @@ describe("Types", () => {
 
   describe("Project type", () => {
     it("should have correct structure", () => {
-      const createProject = (title: string, description: string): Project => ({
-        title,
-        description,
-      });
-
-      const result = createProject("My App", "A great application");
+      const result = mockProjects.project_1();
       expect(result).toEqual({
-        title: "My App",
-        description: "A great application",
+        title: "Project 1",
+        description: "Project 1 description",
       });
     });
   });
 
   describe("ProfessionalExperience type", () => {
     it("should have correct structure", () => {
-      const createProfessionalExperience = (
-        company: string,
-        position: string,
-        startDate: string,
-        endDate: string,
-        projects: Project[]
-      ): ProfessionalExperience => ({
-        company,
-        position,
-        startDate,
-        endDate,
-        projects,
-      });
-
-      const result = createProfessionalExperience(
-        "Tech Corp",
-        "Software Developer",
-        "2022-01-01",
-        "2023-12-31",
-        [
-          { title: "Project 1", description: "Description 1" },
-          { title: "Project 2", description: "Description 2" },
-        ]
-      );
+      const result = mockProfessionalExperience.experience_1();
       expect(result).toEqual({
-        company: "Tech Corp",
-        position: "Software Developer",
-        startDate: "2022-01-01",
-        endDate: "2023-12-31",
+        company: "Professional Company 1",
+        position: "Professional Position 1",
+        startDate: "01/01/2020",
+        endDate: "Present",
         projects: [
-          { title: "Project 1", description: "Description 1" },
-          { title: "Project 2", description: "Description 2" },
+          { title: "Project 1", description: "Project 1 description" },
         ],
       });
     });
@@ -202,84 +119,43 @@ describe("Types", () => {
 
   describe("AcademicExperience type", () => {
     it("should have correct structure", () => {
-      const createAcademicExperience = (
-        institution: string,
-        degree: string,
-        startDate: string,
-        endDate: string,
-        projects: Project[]
-      ): AcademicExperience => ({
-        institution,
-        degree,
-        startDate,
-        endDate,
-        projects,
-      });
-
-      const result = createAcademicExperience(
-        "University of Tech",
-        "Computer Science",
-        "2018-09-01",
-        "2022-06-30",
-        [{ title: "Thesis Project", description: "My thesis work" }]
-      );
+      const result = mockAcademicExperience.experience_1();
       expect(result).toEqual({
-        institution: "University of Tech",
-        degree: "Computer Science",
-        startDate: "2018-09-01",
-        endDate: "2022-06-30",
-        projects: [{ title: "Thesis Project", description: "My thesis work" }],
+        institution: "Academic Institution 1",
+        degree: "Academic Degree 1",
+        startDate: "01/01/2018",
+        endDate: "01/01/2022",
+        projects: [
+          { title: "Project 2", description: "Project 2 description" },
+        ],
       });
     });
   });
 
   describe("ExperiencePageData type", () => {
     it("should have correct structure", () => {
-      const createExperiencePageData = (
-        professionalExperience: ProfessionalExperience[],
-        academicExperience: AcademicExperience[]
-      ): ExperiencePageData => ({
-        professionalExperience,
-        academicExperience,
-      });
-
-      const result = createExperiencePageData(
-        [
-          {
-            company: "Tech Corp",
-            position: "Developer",
-            startDate: "2022-01-01",
-            endDate: "2023-12-31",
-            projects: [],
-          },
-        ],
-        [
-          {
-            institution: "University",
-            degree: "CS",
-            startDate: "2018-09-01",
-            endDate: "2022-06-30",
-            projects: [],
-          },
-        ]
-      );
+      const result = mockExperiencePageData();
       expect(result).toEqual({
         professionalExperience: [
           {
-            company: "Tech Corp",
-            position: "Developer",
-            startDate: "2022-01-01",
-            endDate: "2023-12-31",
-            projects: [],
+            company: "Professional Company 1",
+            position: "Professional Position 1",
+            startDate: "01/01/2020",
+            endDate: "Present",
+            projects: [
+              { title: "Project 1", description: "Project 1 description" },
+            ],
           },
         ],
         academicExperience: [
           {
-            institution: "University",
-            degree: "CS",
-            startDate: "2018-09-01",
-            endDate: "2022-06-30",
-            projects: [],
+            institution: "Academic Institution 1",
+            degree: "Academic Degree 1",
+            startDate: "01/01/2018",
+            endDate: "01/01/2022",
+            projects: [
+              { title: "Project 2", description: "Project 2 description" },
+            ],
           },
         ],
       });
@@ -288,68 +164,29 @@ describe("Types", () => {
 
   describe("GitHubProject type", () => {
     it("should have correct structure", () => {
-      const createGitHubProject = (
-        title: string,
-        description: string,
-        url: string,
-        image: string
-      ): GitHubProject => ({
-        title,
-        description,
-        url,
-        image,
-      });
-
-      const result = createGitHubProject(
-        "Portfolio",
-        "My portfolio site",
-        "https://github.com/user/portfolio",
-        "portfolio.png"
-      );
+      const result = mockGitHubProjects.project_1();
       expect(result).toEqual({
-        title: "Portfolio",
-        description: "My portfolio site",
-        url: "https://github.com/user/portfolio",
-        image: "portfolio.png",
+        title: "GitHub Project 1",
+        description: "GitHub Project 1 description",
+        url: "https://project1.com",
       });
     });
   });
 
   describe("ProjectsPageData type", () => {
     it("should have correct structure", () => {
-      const createProjectsPageData = (
-        projects: GitHubProject[]
-      ): ProjectsPageData => ({
-        projects,
-      });
-
-      const result = createProjectsPageData([
-        {
-          title: "Project 1",
-          description: "Description 1",
-          url: "https://github.com/user/project1",
-          image: "project1.png",
-        },
-        {
-          title: "Project 2",
-          description: "Description 2",
-          url: "https://github.com/user/project2",
-          image: "project2.png",
-        },
-      ]);
+      const result = mockProjectsPageData();
       expect(result).toEqual({
         projects: [
           {
-            title: "Project 1",
-            description: "Description 1",
-            url: "https://github.com/user/project1",
-            image: "project1.png",
+            title: "GitHub Project 1",
+            description: "GitHub Project 1 description",
+            url: "https://project1.com",
           },
           {
-            title: "Project 2",
-            description: "Description 2",
-            url: "https://github.com/user/project2",
-            image: "project2.png",
+            title: "GitHub Project 2",
+            description: "GitHub Project 2 description",
+            url: "https://project2.com",
           },
         ],
       });

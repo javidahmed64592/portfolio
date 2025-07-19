@@ -25,15 +25,6 @@ describe("TechnologyButton", () => {
     expect(screen.getByText("Technology 1")).toBeInTheDocument();
   });
 
-  it("renders technology icon with correct attributes", () => {
-    renderWithTheme(<TechnologyButton {...mockProps} />);
-
-    const icon = screen.getByAltText("Technology 1 icon");
-    expect(icon).toBeInTheDocument();
-    expect(icon).toHaveAttribute("src", "tech1.svg");
-    expect(icon).toHaveAttribute("alt", "Technology 1 icon");
-  });
-
   it("opens technology URL when clicked", () => {
     renderWithTheme(<TechnologyButton {...mockProps} />);
 
@@ -53,15 +44,6 @@ describe("TechnologyButton", () => {
     const button = screen.getByText("Technology 1").closest("div");
     expect(button).toBeInTheDocument();
     expect(button).toHaveStyle({ cursor: "pointer" });
-  });
-
-  it("hides icon on error", () => {
-    renderWithTheme(<TechnologyButton {...mockProps} />);
-
-    const icon = screen.getByAltText("Technology 1 icon") as HTMLImageElement;
-    fireEvent.error(icon);
-
-    expect(icon.style.display).toBe("none");
   });
 
   it("applies correct styling structure", () => {

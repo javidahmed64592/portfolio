@@ -9,63 +9,51 @@
   "technologies": [
     {
       "name": "Python",
-      "url": "https://www.python.org/",
-      "icon": "python.svg"
+      "url": "https://www.python.org/"
     },
     {
       "name": "React",
-      "url": "https://reactjs.org/",
-      "icon": "react.svg"
+      "url": "https://reactjs.org/"
     },
     {
       "name": "TypeScript",
-      "url": "https://www.typescriptlang.org/",
-      "icon": "typescript.svg"
+      "url": "https://www.typescriptlang.org/"
     },
     {
       "name": "Electron",
-      "url": "https://www.electronjs.org/",
-      "icon": "electron.svg"
+      "url": "https://www.electronjs.org/"
     },
     {
       "name": "Flutter",
-      "url": "https://flutter.dev/",
-      "icon": "flutter.svg"
+      "url": "https://flutter.dev/"
     },
     {
       "name": "Dart",
-      "url": "https://dart.dev/",
-      "icon": "dart.svg"
+      "url": "https://dart.dev/"
     },
     {
       "name": "C#",
-      "url": "https://docs.microsoft.com/en-us/dotnet/csharp/",
-      "icon": "csharp.svg"
+      "url": "https://docs.microsoft.com/en-us/dotnet/csharp/"
     },
     {
       "name": "Unity",
-      "url": "https://unity.com/",
-      "icon": "unity.svg"
+      "url": "https://unity.com/"
     },
     {
       "name": "Protobuf",
-      "url": "https://protobuf.dev/",
-      "icon": "protobuf.svg"
+      "url": "https://protobuf.dev/"
     },
     {
       "name": "GitHub",
-      "url": "https://github.com/",
-      "icon": "github.svg"
+      "url": "https://github.com/"
     },
     {
       "name": "Gitlab",
-      "url": "https://gitlab.com/",
-      "icon": "gitlab.svg"
+      "url": "https://gitlab.com/"
     },
     {
       "name": "DevOps",
-      "url": "https://azure.microsoft.com/en-us/products/devops/",
-      "icon": "devops.svg"
+      "url": "https://azure.microsoft.com/en-us/products/devops/"
     }
   ]
 }

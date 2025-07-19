@@ -21,25 +21,21 @@ export const mockTechnologies = {
   tech_1: (): Technology => ({
     name: "Technology 1",
     url: "https://tech1.com",
-    icon: "tech1.svg",
   }),
 
   tech_2: (): Technology => ({
     name: "Technology 2",
     url: "https://tech2.com",
-    icon: "tech2.svg",
   }),
 
   tech_3: (): Technology => ({
     name: "Technology 3",
     url: "https://tech3.com",
-    icon: "tech3.svg",
   }),
 
   tech_4: (): Technology => ({
     name: "Technology 4",
     url: "https://tech4.com",
-    icon: "tech4.svg",
   }),
 };
 

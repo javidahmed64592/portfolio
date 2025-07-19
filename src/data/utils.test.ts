@@ -94,11 +94,10 @@ describe("Utils", () => {
             description: ["Line 1", "Line 2"],
           },
           technologies: [
-            { name: "React", url: "https://react.dev", icon: "react.svg" },
+            { name: "React", url: "https://react.dev" },
             {
               name: "TypeScript",
               url: "https://typescript.org",
-              icon: "typescript.svg",
             },
           ],
         };
@@ -113,10 +112,7 @@ describe("Utils", () => {
         expect(fetch).toHaveBeenCalledWith("/assets/data/homePageData.json");
         expect(result).toEqual({
           profileSummary: mockData.profileSummary,
-          technologies: mockData.technologies.map(tech => ({
-            ...tech,
-            icon: iconPath(tech.icon),
-          })),
+          technologies: mockData.technologies,
         });
       });
 

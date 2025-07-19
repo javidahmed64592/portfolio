@@ -91,25 +91,15 @@ describe("Types", () => {
 
   describe("Technology type", () => {
     it("should have correct structure", () => {
-      const createTechnology = (
-        name: string,
-        url: string,
-        icon: string
-      ): Technology => ({
+      const createTechnology = (name: string, url: string): Technology => ({
         name,
         url,
-        icon,
       });
 
-      const result = createTechnology(
-        "TypeScript",
-        "https://typescript.org",
-        "typescript.svg"
-      );
+      const result = createTechnology("TypeScript", "https://typescript.org");
       expect(result).toEqual({
         name: "TypeScript",
         url: "https://typescript.org",
-        icon: "typescript.svg",
       });
     });
   });
@@ -125,21 +115,19 @@ describe("Types", () => {
       });
 
       const result = createHomePageData({ description: ["I'm a developer"] }, [
-        { name: "React", url: "https://reactjs.org", icon: "react.svg" },
+        { name: "React", url: "https://reactjs.org" },
         {
           name: "TypeScript",
           url: "https://typescript.org",
-          icon: "typescript.svg",
         },
       ]);
       expect(result).toEqual({
         profileSummary: { description: ["I'm a developer"] },
         technologies: [
-          { name: "React", url: "https://reactjs.org", icon: "react.svg" },
+          { name: "React", url: "https://reactjs.org" },
           {
             name: "TypeScript",
             url: "https://typescript.org",
-            icon: "typescript.svg",
           },
         ],
       });

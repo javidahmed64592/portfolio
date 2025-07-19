@@ -24,7 +24,6 @@ export type ProfileSummary = {
 export type Technology = {
   name: string;
   url: string;
-  icon: string;
 };
 
 export type HomePageData = {

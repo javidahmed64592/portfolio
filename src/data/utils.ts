@@ -4,7 +4,6 @@ import {
   HomePageData,
   ProjectsPageData,
   SocialLink,
-  Technology,
   Pages,
 } from "./types";
 
@@ -46,15 +45,7 @@ export const getHomePageData = async (): Promise<HomePageData> => {
   const rawData = (await fetchJson(
     dataPath("homePageData.json")
   )) as HomePageData;
-
-  // Process the data to add full paths for icons
-  return {
-    ...rawData,
-    technologies: rawData.technologies.map((tech: Technology) => ({
-      ...tech,
-      icon: iconPath(tech.icon),
-    })),
-  };
+  return rawData;
 };
 
 // Experience page data

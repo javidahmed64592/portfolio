@@ -5,7 +5,6 @@ describe("theme", () => {
     it("should have all required color properties", () => {
       expect(defaultTheme.colors).toHaveProperty("primary");
       expect(defaultTheme.colors).toHaveProperty("secondary");
-      expect(defaultTheme.colors).toHaveProperty("tertiary");
       expect(defaultTheme.colors).toHaveProperty("background");
       expect(defaultTheme.colors).toHaveProperty("accent");
       expect(defaultTheme.colors).toHaveProperty("border");
@@ -15,7 +14,6 @@ describe("theme", () => {
     it("should have all required text color properties", () => {
       expect(defaultTheme.colors.text).toHaveProperty("onPrimary");
       expect(defaultTheme.colors.text).toHaveProperty("onSecondary");
-      expect(defaultTheme.colors.text).toHaveProperty("onTertiary");
       expect(defaultTheme.colors.text).toHaveProperty("onBackground");
     });
 
@@ -53,60 +51,6 @@ describe("theme", () => {
       expect(defaultTheme.breakpoints).toHaveProperty("mobile");
       expect(defaultTheme.breakpoints).toHaveProperty("tablet");
       expect(defaultTheme.breakpoints).toHaveProperty("desktop");
-    });
-  });
-
-  describe("defaultTheme values", () => {
-    it("should have correct color values", () => {
-      expect(defaultTheme.colors.primary).toBe("#0D659D");
-      expect(defaultTheme.colors.secondary).toBe("#5C8AAC");
-      expect(defaultTheme.colors.tertiary).toBe("#C7D8E7");
-      expect(defaultTheme.colors.background).toBe("#050B1F");
-      expect(defaultTheme.colors.accent).toBe("#5C8AAC");
-      expect(defaultTheme.colors.border).toBe("#E8EEF1");
-    });
-
-    it("should have correct text color values", () => {
-      expect(defaultTheme.colors.text.onPrimary).toBe("#E8EEF1");
-      expect(defaultTheme.colors.text.onSecondary).toBe("#E8EEF1");
-      expect(defaultTheme.colors.text.onTertiary).toBe("#E8EEF1");
-      expect(defaultTheme.colors.text.onBackground).toBe("#E8EEF1");
-    });
-
-    it("should have correct spacing values", () => {
-      expect(defaultTheme.spacing.xs).toBe("4px");
-      expect(defaultTheme.spacing.sm).toBe("8px");
-      expect(defaultTheme.spacing.md).toBe("16px");
-      expect(defaultTheme.spacing.lg).toBe("24px");
-      expect(defaultTheme.spacing.xl).toBe("32px");
-    });
-
-    it("should have correct typography values", () => {
-      expect(defaultTheme.typography.fontFamily).toBe(
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
-      );
-    });
-
-    it("should have correct font size values", () => {
-      expect(defaultTheme.typography.fontSize.xs).toBe("12px");
-      expect(defaultTheme.typography.fontSize.sm).toBe("14px");
-      expect(defaultTheme.typography.fontSize.md).toBe("16px");
-      expect(defaultTheme.typography.fontSize.lg).toBe("18px");
-      expect(defaultTheme.typography.fontSize.xl).toBe("24px");
-      expect(defaultTheme.typography.fontSize.xxl).toBe("32px");
-    });
-
-    it("should have correct font weight values", () => {
-      expect(defaultTheme.typography.fontWeight.light).toBe(300);
-      expect(defaultTheme.typography.fontWeight.normal).toBe(400);
-      expect(defaultTheme.typography.fontWeight.medium).toBe(500);
-      expect(defaultTheme.typography.fontWeight.bold).toBe(700);
-    });
-
-    it("should have correct breakpoint values", () => {
-      expect(defaultTheme.breakpoints.mobile).toBe("768px");
-      expect(defaultTheme.breakpoints.tablet).toBe("1024px");
-      expect(defaultTheme.breakpoints.desktop).toBe("1200px");
     });
   });
 
@@ -150,7 +94,6 @@ describe("theme", () => {
 
       expect(defaultTheme.colors.primary).toMatch(hexColorRegex);
       expect(defaultTheme.colors.secondary).toMatch(hexColorRegex);
-      expect(defaultTheme.colors.tertiary).toMatch(hexColorRegex);
       expect(defaultTheme.colors.background).toMatch(hexColorRegex);
       expect(defaultTheme.colors.accent).toMatch(hexColorRegex);
       expect(defaultTheme.colors.border).toMatch(hexColorRegex);

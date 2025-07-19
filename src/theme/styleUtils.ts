@@ -12,21 +12,25 @@ export const createAppStyles = (theme: Theme): CSSProperties => ({
 
 export const createPageStyles = (theme: Theme): CSSProperties => {
   return {
-    flex: 1,
+    position: "absolute",
+    top: "57px",
+    bottom: "55px",
+    left: 0,
+    right: 0,
     backgroundColor: theme.colors.background,
-    padding: theme.spacing.lg,
+    padding: theme.spacing.md,
     color: theme.colors.text.onBackground,
     display: "flex",
     flexDirection: "column",
     fontSize: theme.typography.fontSize.lg,
     overflowY: "auto",
-    minHeight: 0,
+    overflowX: "hidden",
   };
 };
 
 export const createHeadingStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+  variant: "primary" | "secondary" | "background" = "primary"
 ): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
@@ -34,8 +38,6 @@ export const createHeadingStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
       case "background":
         return theme.colors.text.onBackground;
     }
@@ -43,7 +45,7 @@ export const createHeadingStyles = (
 
   return {
     margin: 0,
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.sm, // Reduced from md
     fontSize: theme.typography.fontSize.xl,
     fontWeight: theme.typography.fontWeight.bold,
     color: getTextColor(),
@@ -52,7 +54,7 @@ export const createHeadingStyles = (
 
 export const createTextStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+  variant: "primary" | "secondary" | "background" = "primary"
 ): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
@@ -60,8 +62,6 @@ export const createTextStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
       case "background":
         return theme.colors.text.onBackground;
     }
@@ -76,7 +76,7 @@ export const createTextStyles = (
 
 export const createButtonStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" = "primary"
+  variant: "primary" | "secondary" = "primary"
 ): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
@@ -84,8 +84,6 @@ export const createButtonStyles = (
         return theme.colors.primary;
       case "secondary":
         return theme.colors.secondary;
-      case "tertiary":
-        return theme.colors.tertiary;
     }
   };
 
@@ -95,8 +93,6 @@ export const createButtonStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
     }
   };
 
@@ -115,7 +111,7 @@ export const createButtonStyles = (
 
 export const createCardStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" = "secondary"
+  variant: "primary" | "secondary" = "secondary"
 ): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
@@ -123,8 +119,6 @@ export const createCardStyles = (
         return theme.colors.primary;
       case "secondary":
         return theme.colors.secondary;
-      case "tertiary":
-        return theme.colors.tertiary;
     }
   };
 
@@ -134,8 +128,6 @@ export const createCardStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
     }
   };
 
@@ -149,3 +141,21 @@ export const createCardStyles = (
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
 };
+
+export const createFooterStyles = (theme: Theme): CSSProperties => ({
+  display: "flex",
+  flexWrap: "wrap" as const,
+  gap: theme.spacing.sm,
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  position: "fixed",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  paddingTop: theme.spacing.sm,
+  paddingBottom: theme.spacing.sm,
+  borderTop: `1px solid ${theme.colors.border}`,
+  backgroundColor: theme.colors.background,
+  zIndex: 1000,
+});

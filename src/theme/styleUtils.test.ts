@@ -5,6 +5,7 @@ import {
   createTextStyles,
   createButtonStyles,
   createCardStyles,
+  createFooterStyles,
 } from "./styleUtils";
 import { Theme, defaultTheme } from "./theme";
 
@@ -16,12 +17,10 @@ describe("styleUtils", () => {
       colors: {
         primary: "#primary",
         secondary: "#secondary",
-        tertiary: "#tertiary",
         background: "#background",
         text: {
           onPrimary: "#onPrimary",
           onSecondary: "#onSecondary",
-          onTertiary: "#onTertiary",
           onBackground: "#onBackground",
         },
         accent: "#accent",
@@ -87,15 +86,19 @@ describe("styleUtils", () => {
       const styles = createPageStyles(mockTheme);
 
       expect(styles).toEqual({
-        flex: 1,
+        position: "absolute",
+        top: "57px",
+        bottom: "55px",
+        left: 0,
+        right: 0,
         backgroundColor: mockTheme.colors.background,
-        padding: mockTheme.spacing.lg,
+        padding: mockTheme.spacing.md,
         color: mockTheme.colors.text.onBackground,
         display: "flex",
         flexDirection: "column",
         fontSize: mockTheme.typography.fontSize.lg,
         overflowY: "auto",
-        minHeight: 0,
+        overflowX: "hidden",
       });
     });
 
@@ -103,7 +106,7 @@ describe("styleUtils", () => {
       const styles = createPageStyles(defaultTheme);
 
       expect(styles.backgroundColor).toBe(defaultTheme.colors.background);
-      expect(styles.padding).toBe(defaultTheme.spacing.lg);
+      expect(styles.padding).toBe(defaultTheme.spacing.md);
       expect(styles.fontSize).toBe(defaultTheme.typography.fontSize.lg);
     });
   });
@@ -114,7 +117,7 @@ describe("styleUtils", () => {
 
       expect(styles).toEqual({
         margin: 0,
-        marginBottom: mockTheme.spacing.md,
+        marginBottom: mockTheme.spacing.sm,
         fontSize: mockTheme.typography.fontSize.xl,
         fontWeight: mockTheme.typography.fontWeight.bold,
         color: mockTheme.colors.text.onPrimary,
@@ -125,12 +128,6 @@ describe("styleUtils", () => {
       const styles = createHeadingStyles(mockTheme, "secondary");
 
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
-    });
-
-    it("should return correct heading styles with tertiary variant", () => {
-      const styles = createHeadingStyles(mockTheme, "tertiary");
-
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
     });
 
     it("should return correct heading styles with background variant", () => {
@@ -144,7 +141,7 @@ describe("styleUtils", () => {
 
       expect(styles.fontSize).toBe(mockTheme.typography.fontSize.xl);
       expect(styles.fontWeight).toBe(mockTheme.typography.fontWeight.bold);
-      expect(styles.marginBottom).toBe(mockTheme.spacing.md);
+      expect(styles.marginBottom).toBe(mockTheme.spacing.sm);
     });
   });
 
@@ -163,12 +160,6 @@ describe("styleUtils", () => {
       const styles = createTextStyles(mockTheme, "secondary");
 
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
-    });
-
-    it("should return correct text styles with tertiary variant", () => {
-      const styles = createTextStyles(mockTheme, "tertiary");
-
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
     });
 
     it("should return correct text styles with background variant", () => {
@@ -208,13 +199,6 @@ describe("styleUtils", () => {
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
     });
 
-    it("should return correct button styles with tertiary variant", () => {
-      const styles = createButtonStyles(mockTheme, "tertiary");
-
-      expect(styles.backgroundColor).toBe(mockTheme.colors.tertiary);
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
-    });
-
     it("should use correct spacing and typography", () => {
       const styles = createButtonStyles(mockTheme);
 
@@ -248,13 +232,6 @@ describe("styleUtils", () => {
       expect(styles.color).toBe(mockTheme.colors.text.onPrimary);
     });
 
-    it("should return correct card styles with tertiary variant", () => {
-      const styles = createCardStyles(mockTheme, "tertiary");
-
-      expect(styles.backgroundColor).toBe(mockTheme.colors.tertiary);
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
-    });
-
     it("should use correct spacing and border styles", () => {
       const styles = createCardStyles(mockTheme);
 
@@ -263,6 +240,30 @@ describe("styleUtils", () => {
       expect(styles.border).toBe(`1px solid ${mockTheme.colors.border}`);
       expect(styles.borderRadius).toBe("8px");
       expect(styles.boxShadow).toBe("0 2px 4px rgba(0, 0, 0, 0.1)");
+    });
+  });
+
+  describe("createFooterStyles", () => {
+    it("should return correct footer styles with theme values", () => {
+      const styles = createFooterStyles(mockTheme);
+
+      expect(styles).toEqual({
+        display: "flex",
+        flexWrap: "wrap",
+        gap: mockTheme.spacing.sm,
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        paddingTop: mockTheme.spacing.sm,
+        paddingBottom: mockTheme.spacing.sm,
+        borderTop: `1px solid ${mockTheme.colors.border}`,
+        backgroundColor: mockTheme.colors.background,
+        zIndex: 1000,
+      });
     });
   });
 });

@@ -29,7 +29,7 @@ export default function ExperiencePage({
 
   const sectionsContainerStyles = {
     display: "flex",
-    gap: theme.spacing.xl,
+    gap: theme.spacing.lg,
     alignItems: "flex-start",
     flexWrap: "wrap" as const,
   };
@@ -37,7 +37,7 @@ export default function ExperiencePage({
   const sectionStyles = {
     flex: 1,
     minWidth: "400px",
-    marginBottom: theme.spacing.xl,
+    marginBottom: theme.spacing.md,
   };
 
   return (

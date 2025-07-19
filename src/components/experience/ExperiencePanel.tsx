@@ -24,8 +24,8 @@ export default function ExperiencePanel({
 
   const experienceItemStyles = {
     ...createCardStyles(theme, "primary"),
-    marginBottom: theme.spacing.lg,
-    padding: theme.spacing.lg,
+    marginBottom: theme.spacing.md,
+    padding: theme.spacing.md,
     backgroundColor: theme.colors.primary,
     border: `2px solid ${theme.colors.accent}`,
     borderRadius: "12px",
@@ -36,7 +36,7 @@ export default function ExperiencePanel({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.sm,
     flexWrap: "wrap" as const,
     gap: theme.spacing.sm,
   };
@@ -65,19 +65,19 @@ export default function ExperiencePanel({
   };
 
   const projectsContainerStyles = {
-    marginTop: theme.spacing.md,
+    marginTop: theme.spacing.sm,
   };
 
   const projectsHeaderStyles = {
     ...createHeadingStyles(theme, "primary"),
     fontSize: theme.typography.fontSize.md,
-    marginBottom: theme.spacing.sm,
+    marginBottom: theme.spacing.xs,
     color: theme.colors.text.onPrimary,
   };
 
   const projectItemStyles = {
     ...createCardStyles(theme, "secondary"),
-    marginBottom: theme.spacing.sm,
+    marginBottom: theme.spacing.xs,
     padding: theme.spacing.md,
     backgroundColor: theme.colors.secondary,
     border: `1px solid ${theme.colors.border}`,

@@ -7,11 +7,19 @@
       "endDate": "Present",
       "projects": [
         {
-          "title": "Project 1",
+          "title": "WindSightIQ™",
           "description": "Project details to be added."
         },
         {
-          "title": "Project 2",
+          "title": "Cryo-electron Microscopy Application",
+          "description": "Project details to be added."
+        },
+        {
+          "title": "Protein Visualisation Application",
+          "description": "Project details to be added."
+        },
+        {
+          "title": "Genomics Database Management",
           "description": "Project details to be added."
         }
       ]
@@ -25,11 +33,15 @@
       "endDate": "27/06/2022",
       "projects": [
         {
-          "title": "Project 1",
+          "title": "Nanoparticles Image Classification",
           "description": "Project details to be added."
         },
         {
-          "title": "Project 2",
+          "title": "Electromagnetic Levitation",
+          "description": "Project details to be added."
+        },
+        {
+          "title": "Self-Swinging Stickman using Reinforcement Learning",
           "description": "Project details to be added."
         }
       ]

@@ -15,18 +15,11 @@ describe("ExperiencePage", () => {
     academicExperience,
   };
 
-  it("renders the main header with correct text", () => {
-    renderWithTheme(<ExperiencePage {...mockProps} />);
-
-    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-    expect(screen.getByText("Experience")).toBeInTheDocument();
-  });
-
   it("renders Professional Experience section header", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Professional Experience" })
+      screen.getByRole("heading", { level: 1, name: "Professional Experience" })
     ).toBeInTheDocument();
   });
 
@@ -34,7 +27,7 @@ describe("ExperiencePage", () => {
     renderWithTheme(<ExperiencePage {...mockProps} />);
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Academic Experience" })
+      screen.getByRole("heading", { level: 1, name: "Academic Experience" })
     ).toBeInTheDocument();
   });
 
@@ -77,15 +70,11 @@ describe("ExperiencePage", () => {
     expect(mainDiv).toBeInTheDocument();
     expect(mainDiv.tagName).toBe("DIV");
 
-    // Check that main header is an h1 element
-    const header = screen.getByRole("heading", { level: 1 });
-    expect(header.tagName).toBe("H1");
-
-    // Check that section headers are h2 elements
-    const sectionHeaders = screen.getAllByRole("heading", { level: 2 });
+    // Check that section headers are h1 elements
+    const sectionHeaders = screen.getAllByRole("heading", { level: 1 });
     expect(sectionHeaders).toHaveLength(2);
     sectionHeaders.forEach(header => {
-      expect(header.tagName).toBe("H2");
+      expect(header.tagName).toBe("H1");
     });
   });
 

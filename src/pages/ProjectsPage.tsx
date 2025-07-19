@@ -13,7 +13,9 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
     ...createHeadingStyles(theme, "background"),
     alignSelf: "flex-start",
     fontSize: theme.typography.fontSize.xxl,
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.lg,
+    borderBottom: `2px solid ${theme.colors.primary}`,
+    paddingBottom: theme.spacing.sm,
   };
 
   const gridContainerStyles = {
@@ -21,7 +23,6 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     gap: theme.spacing.lg,
     width: "100%",
-    maxWidth: "1200px",
     margin: "0 auto",
   };
 

@@ -17,7 +17,9 @@ export default function ExperiencePage({
     ...createHeadingStyles(theme, "background"),
     alignSelf: "flex-start",
     fontSize: theme.typography.fontSize.xxl,
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.lg,
+    borderBottom: `2px solid ${theme.colors.primary}`,
+    paddingBottom: theme.spacing.sm,
   };
 
   const mainContainerStyles = {
@@ -38,24 +40,13 @@ export default function ExperiencePage({
     marginBottom: theme.spacing.xl,
   };
 
-  const sectionHeaderStyles = {
-    ...createHeadingStyles(theme, "background"),
-    fontSize: theme.typography.fontSize.xl,
-    marginBottom: theme.spacing.lg,
-    borderBottom: `2px solid ${theme.colors.primary}`,
-    paddingBottom: theme.spacing.sm,
-  };
-
   return (
     <div>
-      {/* Header */}
-      <h1 style={headerStyles}>Experience</h1>
-
       <div style={mainContainerStyles}>
         <div style={sectionsContainerStyles}>
           {/* Professional Experience Section */}
           <div style={sectionStyles}>
-            <h2 style={sectionHeaderStyles}>Professional Experience</h2>
+            <h1 style={headerStyles}>Professional Experience</h1>
 
             {professionalExperience.map((experience, index) => (
               <ExperiencePanel
@@ -68,7 +59,7 @@ export default function ExperiencePage({
 
           {/* Academic Experience Section */}
           <div style={sectionStyles}>
-            <h2 style={sectionHeaderStyles}>Academic Experience</h2>
+            <h1 style={headerStyles}>Academic Experience</h1>
 
             {academicExperience.map((experience, index) => (
               <ExperiencePanel

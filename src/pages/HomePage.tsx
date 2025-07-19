@@ -17,7 +17,9 @@ export default function HomePage({
     ...createHeadingStyles(theme, "background"),
     alignSelf: "flex-start",
     fontSize: theme.typography.fontSize.xxl,
-    marginBottom: theme.spacing.md,
+    marginBottom: theme.spacing.lg,
+    borderBottom: `2px solid ${theme.colors.primary}`,
+    paddingBottom: theme.spacing.sm,
   };
 
   return (

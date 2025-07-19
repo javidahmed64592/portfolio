@@ -19,7 +19,7 @@ export default function ProfileSummaryDisplay({
   };
 
   const profileTextStyles = {
-    ...createTextStyles(theme, "tertiary"),
+    ...createTextStyles(theme, "secondary"),
     lineHeight: 1.6,
     fontSize: theme.typography.fontSize.md,
   };

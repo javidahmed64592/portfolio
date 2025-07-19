@@ -16,12 +16,10 @@ describe("styleUtils", () => {
       colors: {
         primary: "#primary",
         secondary: "#secondary",
-        tertiary: "#tertiary",
         background: "#background",
         text: {
           onPrimary: "#onPrimary",
           onSecondary: "#onSecondary",
-          onTertiary: "#onTertiary",
           onBackground: "#onBackground",
         },
         accent: "#accent",
@@ -127,12 +125,6 @@ describe("styleUtils", () => {
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
     });
 
-    it("should return correct heading styles with tertiary variant", () => {
-      const styles = createHeadingStyles(mockTheme, "tertiary");
-
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
-    });
-
     it("should return correct heading styles with background variant", () => {
       const styles = createHeadingStyles(mockTheme, "background");
 
@@ -163,12 +155,6 @@ describe("styleUtils", () => {
       const styles = createTextStyles(mockTheme, "secondary");
 
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
-    });
-
-    it("should return correct text styles with tertiary variant", () => {
-      const styles = createTextStyles(mockTheme, "tertiary");
-
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
     });
 
     it("should return correct text styles with background variant", () => {
@@ -208,13 +194,6 @@ describe("styleUtils", () => {
       expect(styles.color).toBe(mockTheme.colors.text.onSecondary);
     });
 
-    it("should return correct button styles with tertiary variant", () => {
-      const styles = createButtonStyles(mockTheme, "tertiary");
-
-      expect(styles.backgroundColor).toBe(mockTheme.colors.tertiary);
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
-    });
-
     it("should use correct spacing and typography", () => {
       const styles = createButtonStyles(mockTheme);
 
@@ -246,13 +225,6 @@ describe("styleUtils", () => {
 
       expect(styles.backgroundColor).toBe(mockTheme.colors.primary);
       expect(styles.color).toBe(mockTheme.colors.text.onPrimary);
-    });
-
-    it("should return correct card styles with tertiary variant", () => {
-      const styles = createCardStyles(mockTheme, "tertiary");
-
-      expect(styles.backgroundColor).toBe(mockTheme.colors.tertiary);
-      expect(styles.color).toBe(mockTheme.colors.text.onTertiary);
     });
 
     it("should use correct spacing and border styles", () => {

@@ -26,7 +26,7 @@ export const createPageStyles = (theme: Theme): CSSProperties => {
 
 export const createHeadingStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+  variant: "primary" | "secondary" | "background" = "primary"
 ): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
@@ -34,8 +34,6 @@ export const createHeadingStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
       case "background":
         return theme.colors.text.onBackground;
     }
@@ -52,7 +50,7 @@ export const createHeadingStyles = (
 
 export const createTextStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" | "background" = "primary"
+  variant: "primary" | "secondary" | "background" = "primary"
 ): CSSProperties => {
   const getTextColor = () => {
     switch (variant) {
@@ -60,8 +58,6 @@ export const createTextStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
       case "background":
         return theme.colors.text.onBackground;
     }
@@ -76,7 +72,7 @@ export const createTextStyles = (
 
 export const createButtonStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" = "primary"
+  variant: "primary" | "secondary" = "primary"
 ): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
@@ -84,8 +80,6 @@ export const createButtonStyles = (
         return theme.colors.primary;
       case "secondary":
         return theme.colors.secondary;
-      case "tertiary":
-        return theme.colors.tertiary;
     }
   };
 
@@ -95,8 +89,6 @@ export const createButtonStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
     }
   };
 
@@ -115,7 +107,7 @@ export const createButtonStyles = (
 
 export const createCardStyles = (
   theme: Theme,
-  variant: "primary" | "secondary" | "tertiary" = "secondary"
+  variant: "primary" | "secondary" = "secondary"
 ): CSSProperties => {
   const getBackgroundColor = () => {
     switch (variant) {
@@ -123,8 +115,6 @@ export const createCardStyles = (
         return theme.colors.primary;
       case "secondary":
         return theme.colors.secondary;
-      case "tertiary":
-        return theme.colors.tertiary;
     }
   };
 
@@ -134,8 +124,6 @@ export const createCardStyles = (
         return theme.colors.text.onPrimary;
       case "secondary":
         return theme.colors.text.onSecondary;
-      case "tertiary":
-        return theme.colors.text.onTertiary;
     }
   };
 

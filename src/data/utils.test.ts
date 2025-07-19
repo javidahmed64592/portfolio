@@ -1,10 +1,10 @@
 import {
-  Pages,
-  AppData,
-  HomePageData,
-  ExperiencePageData,
-  ProjectsPageData,
-} from "./types";
+  mockAppData,
+  mockExperiencePageData,
+  mockHomePageData,
+  mockProjectsPageData,
+} from "../test-utils";
+import { Pages } from "./types";
 import {
   dataPath,
   iconPath,
@@ -46,17 +46,7 @@ describe("Utils", () => {
   describe("Data fetching functions", () => {
     describe("getAppData", () => {
       it("should fetch and process app data successfully", async () => {
-        const mockData: AppData = {
-          appHeaderText: "Test Header",
-          socialLinks: [
-            { name: "GitHub", url: "https://github.com", icon: "github.svg" },
-            {
-              name: "LinkedIn",
-              url: "https://linkedin.com",
-              icon: "linkedin.svg",
-            },
-          ],
-        };
+        const mockData = mockAppData();
 
         (fetch as jest.Mock).mockResolvedValueOnce({
           ok: true,
@@ -89,18 +79,7 @@ describe("Utils", () => {
 
     describe("getHomePageData", () => {
       it("should fetch and process home page data successfully", async () => {
-        const mockData: HomePageData = {
-          profileSummary: {
-            description: ["Line 1", "Line 2"],
-          },
-          technologies: [
-            { name: "React", url: "https://react.dev" },
-            {
-              name: "TypeScript",
-              url: "https://typescript.org",
-            },
-          ],
-        };
+        const mockData = mockHomePageData();
 
         (fetch as jest.Mock).mockResolvedValueOnce({
           ok: true,
@@ -130,31 +109,7 @@ describe("Utils", () => {
 
     describe("getExperiencePageData", () => {
       it("should fetch experience page data successfully", async () => {
-        const mockData: ExperiencePageData = {
-          professionalExperience: [
-            {
-              company: "Test Company",
-              position: "Developer",
-              startDate: "2023-01-01",
-              endDate: "2023-12-31",
-              projects: [{ title: "Project 1", description: "Description 1" }],
-            },
-          ],
-          academicExperience: [
-            {
-              institution: "Test University",
-              degree: "Computer Science",
-              startDate: "2020-01-01",
-              endDate: "2023-12-31",
-              projects: [
-                {
-                  title: "Academic Project",
-                  description: "Academic Description",
-                },
-              ],
-            },
-          ],
-        };
+        const mockData = mockExperiencePageData();
 
         (fetch as jest.Mock).mockResolvedValueOnce({
           ok: true,
@@ -183,20 +138,7 @@ describe("Utils", () => {
 
     describe("getProjectsPageData", () => {
       it("should fetch and process projects page data successfully", async () => {
-        const mockData: ProjectsPageData = {
-          projects: [
-            {
-              title: "Project 1",
-              description: "Description 1",
-              url: "https://github.com/user/project1",
-            },
-            {
-              title: "Project 2",
-              description: "Description 2",
-              url: "https://github.com/user/project2",
-            },
-          ],
-        };
+        const mockData = mockProjectsPageData();
 
         (fetch as jest.Mock).mockResolvedValueOnce({
           ok: true,

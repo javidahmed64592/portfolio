@@ -13,8 +13,8 @@ export const createAppStyles = (theme: Theme): CSSProperties => ({
 export const createPageStyles = (theme: Theme): CSSProperties => {
   return {
     position: "absolute",
-    top: "64px",
-    bottom: "60px",
+    top: "57px",
+    bottom: "55px",
     left: 0,
     right: 0,
     backgroundColor: theme.colors.background,

@@ -87,8 +87,8 @@ describe("styleUtils", () => {
 
       expect(styles).toEqual({
         position: "absolute",
-        top: "64px",
-        bottom: "60px",
+        top: "57px",
+        bottom: "55px",
         left: 0,
         right: 0,
         backgroundColor: mockTheme.colors.background,

@@ -17,8 +17,8 @@ export default function Footer({ socialLinks }: FooterProps) {
     alignItems: "center",
     width: "100%",
     marginTop: "auto",
-    paddingTop: theme.spacing.md,
-    paddingBottom: theme.spacing.md,
+    paddingTop: theme.spacing.sm,
+    paddingBottom: theme.spacing.sm,
     borderTop: `1px solid ${theme.colors.border}`,
   };
 
